@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="DataSourceManagerImpl" format="xml" multifile-model="true">
+    <data-source source="LOCAL" name="aiana-miachina_cpn@postgresql.aiana-miachina.myjino.ru" uuid="412047b9-36e3-4b59-a724-ec33796e6860">
+      <driver-ref>postgresql</driver-ref>
+      <synchronize>true</synchronize>
+      <jdbc-driver>org.postgresql.Driver</jdbc-driver>
+      <jdbc-url>jdbc:postgresql://postgresql.aiana-miachina.myjino.ru:5432/aiana-miachina_cpn</jdbc-url>
+    </data-source>
+  </component>
+</project>
