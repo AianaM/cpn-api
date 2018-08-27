@@ -2,6 +2,8 @@
 
 namespace App\Entity;
 
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Validator\Constraints as Assert;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
@@ -58,6 +60,16 @@ class User implements UserInterface
      * @Groups({"read"})
      */
     private $name;
+
+    /**
+     * @ORM\OneToMany(targetEntity="App\Entity\MediaObject", mappedBy="createdUser")
+     */
+    private $mediaObjects;
+
+    public function __construct()
+    {
+        $this->mediaObjects = new ArrayCollection();
+    }
 
     public function getId(): ?int
     {
@@ -124,6 +136,37 @@ class User implements UserInterface
 
     public function eraseCredentials()
     {
+    }
+
+    /**
+     * @return Collection|MediaObject[]
+     */
+    public function getMediaObjects(): Collection
+    {
+        return $this->mediaObjects;
+    }
+
+    public function addMediaObject(MediaObject $mediaObject): self
+    {
+        if (!$this->mediaObjects->contains($mediaObject)) {
+            $this->mediaObjects[] = $mediaObject;
+            $mediaObject->setCreatedUser($this);
+        }
+
+        return $this;
+    }
+
+    public function removeMediaObject(MediaObject $mediaObject): self
+    {
+        if ($this->mediaObjects->contains($mediaObject)) {
+            $this->mediaObjects->removeElement($mediaObject);
+            // set the owning side to null (unless already changed)
+            if ($mediaObject->getCreatedUser() === $this) {
+                $mediaObject->setCreatedUser(null);
+            }
+        }
+
+        return $this;
     }
 
 }
