@@ -16,9 +16,11 @@ use ApiPlatform\Core\Bridge\Doctrine\Orm\Filter\SearchFilter;
 /**
  * @ApiResource(
  *     normalizationContext={"groups"={"read"}},
- *     collectionOperations={"get", "byLastName"}
+ *     collectionOperations={"get",
+ *     "byLastName"={"denormalization_context"={"groups"={"lastName"}}}
+ *     }
  * )
- * @ApiFilter(SearchFilter::class, properties={"email": "exact", "name"="partial"})
+ * @ApiFilter(SearchFilter::class, properties={"email": "exact"})
  * @ORM\Table(name="app_users")
  * @ORM\Entity(repositoryClass="App\Repository\UserRepository")
  * @UniqueEntity(fields="email", message="Email already taken")
@@ -57,7 +59,7 @@ class User implements UserInterface
     /**
      * @var array
      * @Orm\Column(type="json_array", nullable=true, options={"jsonb": true})
-     * @Groups({"read"})
+     * @Groups({"read", "lastName"})
      */
     private $name;
 

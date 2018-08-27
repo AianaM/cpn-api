@@ -9,17 +9,19 @@ use Symfony\Component\Routing\Annotation\Route;
 class UserController extends AbstractController
 {
     /**
-     * @Route("/byLastName/{name}", name="byLastName", methods={"GET"},
+     * @Route("/byLastName", name="byLastName", methods={"POST"},
      *     defaults={
      *         "_api_resource_class"=User::class,
      *         "_api_collection_operation_name"="byLastName"
      *     })
+     * @param User $data
+     * @return User|null
      */
-    public function byLastNameAction(string $name)
+    public function byLastNameAction(User $data): User
     {
         $users = $this->getDoctrine()
             ->getRepository(User::class)
-            ->findOneByFirstName($name);
+            ->findOneByFirstName($data->getName());
         return $users;
     }
 }

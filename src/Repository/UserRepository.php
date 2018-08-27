@@ -22,13 +22,13 @@ class UserRepository extends ServiceEntityRepository
 
     public function findOneByFirstName($value): ?User
     {
-
         $em = $this->getEntityManager();
         $rsm = new ResultSetMappingBuilder($em);
         $rsm->addRootEntityFromClassMetadata('App\Entity\User', 'alias');
 
         $selectClause = $rsm->generateSelectClause([ 'alias' => 'table_alias' ]);
-        $sql = 'SELECT * FROM app_users WHERE name @> :value';
+
+        $sql = 'SELECT * FROM app_users WHERE name::json->>\'lastName\' LIKE :value';
 
         $query = $em->createNativeQuery($sql, $rsm);
         $query->execute(array('value' => $value));
