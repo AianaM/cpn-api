@@ -4,6 +4,7 @@ namespace App\Repository;
 
 use App\Entity\User;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
+use Doctrine\ORM\Query\ResultSetMappingBuilder;
 use Symfony\Bridge\Doctrine\RegistryInterface;
 
 /**
@@ -17,6 +18,24 @@ class UserRepository extends ServiceEntityRepository
     public function __construct(RegistryInterface $registry)
     {
         parent::__construct($registry, User::class);
+    }
+
+    public function findOneByFirstName($value): ?User
+    {
+
+        $em = $this->getEntityManager();
+        $rsm = new ResultSetMappingBuilder($em);
+        $rsm->addRootEntityFromClassMetadata('App\Entity\User', 'alias');
+
+        $selectClause = $rsm->generateSelectClause([ 'alias' => 'table_alias' ]);
+        $sql = 'SELECT * FROM app_users WHERE name @> :value';
+
+        $query = $em->createNativeQuery($sql, $rsm);
+        $query->execute(array('value' => $value));
+
+        $object = $query->getOneOrNullResult();
+
+        return $object;
     }
 
 //    /**

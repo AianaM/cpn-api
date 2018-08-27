@@ -8,11 +8,15 @@ use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 use Symfony\Component\Security\Core\User\UserInterface;
 use ApiPlatform\Core\Annotation\ApiResource;
 use Symfony\Component\Serializer\Annotation\Groups;
+use ApiPlatform\Core\Annotation\ApiFilter;
+use ApiPlatform\Core\Bridge\Doctrine\Orm\Filter\SearchFilter;
 
 /**
  * @ApiResource(
  *     normalizationContext={"groups"={"read"}},
+ *     collectionOperations={"get", "byLastName"}
  * )
+ * @ApiFilter(SearchFilter::class, properties={"email": "exact", "name"="partial"})
  * @ORM\Table(name="app_users")
  * @ORM\Entity(repositoryClass="App\Repository\UserRepository")
  * @UniqueEntity(fields="email", message="Email already taken")
@@ -47,6 +51,13 @@ class User implements UserInterface
      * @Groups({"read"})
      */
     private $roles;
+
+    /**
+     * @var array
+     * @Orm\Column(type="json_array", nullable=true, options={"jsonb": true})
+     * @Groups({"read"})
+     */
+    private $name;
 
     public function getId(): ?int
     {
@@ -85,6 +96,18 @@ class User implements UserInterface
     public function setRoles(array $roles): self
     {
         $this->roles = $roles;
+
+        return $this;
+    }
+
+    public function getName(): array
+    {
+        return $this->name;
+    }
+
+    public function setName(array $name): self
+    {
+        $this->name = $name;
 
         return $this;
     }
