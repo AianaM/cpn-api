@@ -57,6 +57,7 @@ class UserSubscriber implements EventSubscriber
         $entity = $args->getObject();
         if ($entity instanceof User) {
             $entity->setPassword($this->encodePassword($entity, $entity->getPassword()));
+            $entity->setRoles(['ROLE_USER']);
         } elseif ($entity instanceof MediaObject) {
             $entity->setCreatedAt(new \DateTimeImmutable());
         }
