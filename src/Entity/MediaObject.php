@@ -2,6 +2,7 @@
 
 namespace App\Entity;
 
+use ApiPlatform\Core\Annotation\ApiFilter;
 use ApiPlatform\Core\Annotation\ApiProperty;
 use ApiPlatform\Core\Annotation\ApiResource;
 use App\Controller\CreateMediaObjectAction;
@@ -11,6 +12,7 @@ use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\HttpFoundation\File\File;
 use Symfony\Component\Validator\Constraints as Assert;
 use Vich\UploaderBundle\Mapping\Annotation as Vich;
+use ApiPlatform\Core\Bridge\Doctrine\Orm\Filter\SearchFilter;
 
 /**
  * @ApiResource(iri="http://schema.org/MediaObject", collectionOperations={
@@ -22,6 +24,7 @@ use Vich\UploaderBundle\Mapping\Annotation as Vich;
  *         "defaults"={"_api_receive"=false},
  *     },
  * })
+ * @ApiFilter(SearchFilter::class, properties={"tags": "partial"})
  * @ORM\Entity(repositoryClass="App\Repository\MediaObjectRepository")
  * @Vich\Uploadable
  */

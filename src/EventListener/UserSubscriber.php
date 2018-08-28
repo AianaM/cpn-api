@@ -28,8 +28,19 @@ class UserSubscriber implements EventSubscriber
     {
         return array(
             'prePersist',
-            'preUpdate'
+            'preUpdate',
+            'postLoad'
         );
+    }
+
+    public function postLoad(LifecycleEventArgs $args)
+    {
+        $entity = $args->getObject();
+
+        if ($entity instanceof User && $entity->getPhoto() == null) {
+            $mediaObject = $args->getEntityManager()->getRepository(MediaObject::class)->find(1);
+            $entity->setPhoto($mediaObject);
+        }
     }
 
     public function preUpdate(PreUpdateEventArgs $eventArgs)
@@ -46,7 +57,7 @@ class UserSubscriber implements EventSubscriber
         $entity = $args->getObject();
         if ($entity instanceof User) {
             $entity->setPassword($this->encodePassword($entity, $entity->getPassword()));
-        }elseif ($entity instanceof MediaObject){
+        } elseif ($entity instanceof MediaObject) {
             $entity->setCreatedAt(new \DateTimeImmutable());
         }
     }
