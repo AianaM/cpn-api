@@ -38,22 +38,22 @@ final class CreateMediaObjectAction
         $mediaObject = new MediaObject();
 
         $form = $this->factory->create(MediaObjectType::class, $mediaObject);
+
         $form->handleRequest($request);
         if ($form->isSubmitted() && $form->isValid()) {
             $em = $this->doctrine->getManager();
             $user = $em->getRepository(User::class)->find(1);
             $mediaObject->setCreatedUser($user);
-            $mediaObject->setCreatedAt(new \DateTimeImmutable());
+            if ($form->get('avatar')->getData()) {
+                $user->setPhoto($mediaObject);
+            }
             $em->persist($mediaObject);
             $em->flush();
 
-            // Prevent the serialization of the file property
             $mediaObject->file = null;
 
             return $mediaObject;
         }
-
-        // This will be handled by API Platform and returns a validation error.
         throw new ValidationException($this->validator->validate($mediaObject));
     }
 }

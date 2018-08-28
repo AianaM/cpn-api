@@ -8,6 +8,7 @@
 
 namespace App\EventListener;
 
+use App\Entity\MediaObject;
 use App\Entity\User;
 use Doctrine\Common\EventSubscriber;
 use Doctrine\ORM\Event\LifecycleEventArgs;
@@ -36,7 +37,6 @@ class UserSubscriber implements EventSubscriber
         $entity = $eventArgs->getObject();
 
         if ($entity instanceof User && $eventArgs->hasChangedField('password')) {
-
             $eventArgs->setNewValue('password', $this->encodePassword($entity, $eventArgs->getNewValue('password')));
         }
     }
@@ -46,6 +46,8 @@ class UserSubscriber implements EventSubscriber
         $entity = $args->getObject();
         if ($entity instanceof User) {
             $entity->setPassword($this->encodePassword($entity, $entity->getPassword()));
+        }elseif ($entity instanceof MediaObject){
+            $entity->setCreatedAt(new \DateTimeImmutable());
         }
     }
 

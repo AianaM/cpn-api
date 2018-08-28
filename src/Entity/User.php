@@ -16,11 +16,11 @@ use ApiPlatform\Core\Bridge\Doctrine\Orm\Filter\SearchFilter;
 /**
  * @ApiResource(
  *     normalizationContext={"groups"={"read"}},
- *     collectionOperations={"get",
+ *     collectionOperations={"get", "post"={"denormalization_context"={"groups"={"createUser"}}},
  *     "byLastName"={"denormalization_context"={"groups"={"lastName"}}}
  *     }
  * )
- * @ApiFilter(SearchFilter::class, properties={"email": "exact"})
+ * @ApiFilter(SearchFilter::class, properties={"email": "exact", "roles": "partial"})
  * @ORM\Table(name="app_users")
  * @ORM\Entity(repositoryClass="App\Repository\UserRepository")
  * @UniqueEntity(fields="email", message="Email already taken")
@@ -39,7 +39,7 @@ class User implements UserInterface
      * @ORM\Column(type="string", length=255, unique=true)
      * @Assert\NotBlank()
      * @Assert\Email()
-     * @Groups({"read"})
+     * @Groups({"read", "createUser"})
      */
     private $email;
 
@@ -47,6 +47,7 @@ class User implements UserInterface
      * @ORM\Column(type="string", length=64)
      * @Assert\NotBlank()
      * @Assert\Length(max=4096)
+     * @Groups({"createUser"})
      */
     private $password;
 
@@ -59,14 +60,21 @@ class User implements UserInterface
     /**
      * @var array
      * @Orm\Column(type="json_array", nullable=true, options={"jsonb": true})
-     * @Groups({"read", "lastName"})
+     * @Groups({"read", "lastName", "createUser"})
      */
     private $name;
 
     /**
      * @ORM\OneToMany(targetEntity="App\Entity\MediaObject", mappedBy="createdUser")
+     * @Groups({"read"})
      */
     private $mediaObjects;
+
+    /**
+     * @ORM\ManyToOne(targetEntity="App\Entity\MediaObject", inversedBy="users")
+     * @Groups({"read"})
+     */
+    private $photo;
 
     public function __construct()
     {
@@ -167,6 +175,18 @@ class User implements UserInterface
                 $mediaObject->setCreatedUser(null);
             }
         }
+
+        return $this;
+    }
+
+    public function getPhoto(): ?MediaObject
+    {
+        return $this->photo;
+    }
+
+    public function setPhoto(?MediaObject $photo): self
+    {
+        $this->photo = $photo;
 
         return $this;
     }
