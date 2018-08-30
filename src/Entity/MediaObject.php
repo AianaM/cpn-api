@@ -10,20 +10,20 @@ use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\HttpFoundation\File\File;
+use Symfony\Component\Serializer\Annotation\Groups;
 use Symfony\Component\Validator\Constraints as Assert;
 use Vich\UploaderBundle\Mapping\Annotation as Vich;
 use ApiPlatform\Core\Bridge\Doctrine\Orm\Filter\SearchFilter;
 
 /**
- * @ApiResource(iri="http://schema.org/MediaObject", collectionOperations={
- *     "get",
- *     "post"={
- *         "method"="POST",
- *         "path"="/media_objects",
- *         "controller"=CreateMediaObjectAction::class,
- *         "defaults"={"_api_receive"=false},
+ * @ApiResource(iri="http://schema.org/MediaObject",
+ *     collectionOperations={
+ *          "get",
+ *          "post"={"method"="POST", "path"="/media_objects", "controller"=CreateMediaObjectAction::class, "defaults"={"_api_receive"=false}}
  *     },
- * })
+ *     attributes={
+ *          "normalization_context"={"groups"={"media", "media-user", "user"}}
+ *     })
  * @ApiFilter(SearchFilter::class, properties={"tags": "partial"})
  * @ORM\Entity(repositoryClass="App\Repository\MediaObjectRepository")
  * @Vich\Uploadable
@@ -34,6 +34,7 @@ class MediaObject
      * @ORM\Id()
      * @ORM\GeneratedValue()
      * @ORM\Column(type="integer")
+     * @Groups({"media"})
      */
     private $id;
 
@@ -41,6 +42,7 @@ class MediaObject
      * @var File
      * @Assert\NotNull()
      * @Vich\UploadableField(mapping="media_object", fileNameProperty="contentUrl", size="imageSize")
+     * @Groups({"media"})
      */
     public $file;
 
@@ -48,22 +50,26 @@ class MediaObject
      * @var string
      * @ORM\Column(type="string", length=255)
      * @ApiProperty(iri="http://schema.org/contentUrl")
+     * @Groups({"media"})
      */
     private $contentUrl;
 
     /**
      * @ORM\Column(type="integer")
+     * @Groups({"media"})
      */
     private $imageSize;
 
     /**
      * @ORM\Column(type="datetime")
+     * @Groups({"media"})
      */
     private $createdAt;
 
     /**
-     * @ORM\ManyToOne(targetEntity="App\Entity\User", inversedBy="mediaObjects")
+     * @ORM\ManyToOne(targetEntity="App\Entity\User")
      * @ORM\JoinColumn(nullable=false)
+     * @Groups({"media-user"})
      */
     private $createdUser;
 
@@ -71,17 +77,25 @@ class MediaObject
      * @ORM\Column(type="array", nullable=true)
      * @var array
      * @Assert\Type("array")
+     * @Groups({"media"})
      */
     private $tags;
 
     /**
      * @ORM\OneToMany(targetEntity="App\Entity\User", mappedBy="photo")
+     * @Groups({"media-user"})
      */
     private $users;
+
+    /**
+     * @ORM\ManyToMany(targetEntity="App\Entity\Realty", mappedBy="mediaObjects")
+     */
+    private $realties;
 
     public function __construct()
     {
         $this->users = new ArrayCollection();
+        $this->realties = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -176,6 +190,34 @@ class MediaObject
             if ($user->getPhoto() === $this) {
                 $user->setPhoto(null);
             }
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|Realty[]
+     */
+    public function getRealties(): Collection
+    {
+        return $this->realties;
+    }
+
+    public function addRealty(Realty $realty): self
+    {
+        if (!$this->realties->contains($realty)) {
+            $this->realties[] = $realty;
+            $realty->addMediaObject($this);
+        }
+
+        return $this;
+    }
+
+    public function removeRealty(Realty $realty): self
+    {
+        if ($this->realties->contains($realty)) {
+            $this->realties->removeElement($realty);
+            $realty->removeMediaObject($this);
         }
 
         return $this;

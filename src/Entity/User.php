@@ -2,8 +2,6 @@
 
 namespace App\Entity;
 
-use Doctrine\Common\Collections\ArrayCollection;
-use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Validator\Constraints as Assert;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
@@ -67,12 +65,6 @@ class User implements UserInterface
     private $name;
 
     /**
-     * @ORM\OneToMany(targetEntity="App\Entity\MediaObject", mappedBy="createdUser")
-     * @Groups({"read"})
-     */
-    private $mediaObjects;
-
-    /**
      * @ORM\ManyToOne(targetEntity="App\Entity\MediaObject", inversedBy="users")
      * @Groups({"read"})
      */
@@ -82,18 +74,6 @@ class User implements UserInterface
      * @Groups({"read"})
      */
     private $teamCard;
-
-    /**
-     * @ORM\OneToMany(targetEntity="App\Entity\Stream", mappedBy="createdUser")
-     * @Groups({"read"})
-     */
-    private $streams;
-
-    public function __construct()
-    {
-        $this->mediaObjects = new ArrayCollection();
-        $this->streams = new ArrayCollection();
-    }
 
     public function getId(): ?int
     {
@@ -163,37 +143,6 @@ class User implements UserInterface
     {
     }
 
-    /**
-     * @return Collection|MediaObject[]
-     */
-    public function getMediaObjects(): Collection
-    {
-        return $this->mediaObjects;
-    }
-
-    public function addMediaObject(MediaObject $mediaObject): self
-    {
-        if (!$this->mediaObjects->contains($mediaObject)) {
-            $this->mediaObjects[] = $mediaObject;
-            $mediaObject->setCreatedUser($this);
-        }
-
-        return $this;
-    }
-
-    public function removeMediaObject(MediaObject $mediaObject): self
-    {
-        if ($this->mediaObjects->contains($mediaObject)) {
-            $this->mediaObjects->removeElement($mediaObject);
-            // set the owning side to null (unless already changed)
-            if ($mediaObject->getCreatedUser() === $this) {
-                $mediaObject->setCreatedUser(null);
-            }
-        }
-
-        return $this;
-    }
-
     public function getPhoto(): ?MediaObject
     {
         return $this->photo;
@@ -217,37 +166,6 @@ class User implements UserInterface
     public function setTeamCard(array $teamCard): self
     {
         $this->name['teamCard'] = $teamCard;
-
-        return $this;
-    }
-
-    /**
-     * @return Collection|Stream[]
-     */
-    public function getStreams(): Collection
-    {
-        return $this->streams;
-    }
-
-    public function addStream(Stream $stream): self
-    {
-        if (!$this->streams->contains($stream)) {
-            $this->streams[] = $stream;
-            $stream->setCreatedUser($this);
-        }
-
-        return $this;
-    }
-
-    public function removeStream(Stream $stream): self
-    {
-        if ($this->streams->contains($stream)) {
-            $this->streams->removeElement($stream);
-            // set the owning side to null (unless already changed)
-            if ($stream->getCreatedUser() === $this) {
-                $stream->setCreatedUser(null);
-            }
-        }
 
         return $this;
     }
