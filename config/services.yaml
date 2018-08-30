@@ -33,5 +33,6 @@ services:
     App\EventListener\UserSubscriber:
         arguments:
             $passwordEncoder: '@security.user_password_encoder.generic'
+            $tokenStorage: '@security.token_storage'
         tags:
         - { name: doctrine.event_subscriber, connection: default }

@@ -33,7 +33,7 @@ class User implements UserInterface
      * @ORM\Id()
      * @ORM\GeneratedValue()
      * @ORM\Column(type="integer")
-     * @Groups({"read"})
+     * @Groups({"read", "user"})
      */
     private $id;
 
@@ -62,7 +62,7 @@ class User implements UserInterface
     /**
      * @var array
      * @Orm\Column(type="json_array", nullable=true, options={"jsonb": true})
-     * @Groups({"read", "lastName", "createUser"})
+     * @Groups({"read", "lastName", "createUser", "user"})
      */
     private $name;
 
@@ -83,9 +83,16 @@ class User implements UserInterface
      */
     private $teamCard;
 
+    /**
+     * @ORM\OneToMany(targetEntity="App\Entity\Stream", mappedBy="createdUser")
+     * @Groups({"read"})
+     */
+    private $streams;
+
     public function __construct()
     {
         $this->mediaObjects = new ArrayCollection();
+        $this->streams = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -201,12 +208,46 @@ class User implements UserInterface
 
     public function getTeamCard()
     {
-        return $this->name['teamCard'];
+        if(array_key_exists('teamCard', $this->name)){
+            $this->teamCard = $this->name['teamCard'];
+        }
+        return $this->teamCard;
     }
 
     public function setTeamCard(array $teamCard): self
     {
         $this->name['teamCard'] = $teamCard;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|Stream[]
+     */
+    public function getStreams(): Collection
+    {
+        return $this->streams;
+    }
+
+    public function addStream(Stream $stream): self
+    {
+        if (!$this->streams->contains($stream)) {
+            $this->streams[] = $stream;
+            $stream->setCreatedUser($this);
+        }
+
+        return $this;
+    }
+
+    public function removeStream(Stream $stream): self
+    {
+        if ($this->streams->contains($stream)) {
+            $this->streams->removeElement($stream);
+            // set the owning side to null (unless already changed)
+            if ($stream->getCreatedUser() === $this) {
+                $stream->setCreatedUser(null);
+            }
+        }
 
         return $this;
     }

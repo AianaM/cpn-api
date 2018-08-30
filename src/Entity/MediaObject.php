@@ -133,6 +133,7 @@ class MediaObject
     public function setCreatedUser(?User $createdUser): self
     {
         $this->createdUser = $createdUser;
+        $this->setCreatedAt(new \DateTimeImmutable());
 
         return $this;
     }

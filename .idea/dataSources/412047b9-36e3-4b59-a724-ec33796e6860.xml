@@ -53,8 +53,8 @@
     <schema id="10" parent="2" name="public">
       <ObjectId>31265117</ObjectId>
       <Owner>aiana-miachina_cpn</Owner>
-      <IntrospectionTimestamp>2018-08-27.18:19:29.995</IntrospectionTimestamp>
-      <IntrospectionStateNumber>98265619</IntrospectionStateNumber>
+      <IntrospectionTimestamp>2018-08-30.13:46:57.752</IntrospectionTimestamp>
+      <IntrospectionStateNumber>108595495</IntrospectionStateNumber>
       <Current>1</Current>
       <Visible>1</Visible>
     </schema>
@@ -114,43 +114,67 @@
       <SequenceIdentity>1</SequenceIdentity>
       <CacheSize>1</CacheSize>
     </sequence>
-    <table id="19" parent="10" name="app_users">
+    <sequence id="19" parent="10" name="refresh_tokens_id_seq">
+      <ObjectId>31899504</ObjectId>
+      <Owner>aiana-miachina_cpn</Owner>
+      <StateNumber>101439145</StateNumber>
+      <SequenceIdentity>1</SequenceIdentity>
+      <CacheSize>1</CacheSize>
+    </sequence>
+    <sequence id="20" parent="10" name="stream_id_seq">
+      <ObjectId>32668413</ObjectId>
+      <Owner>aiana-miachina_cpn</Owner>
+      <StateNumber>108595495</StateNumber>
+      <SequenceIdentity>1</SequenceIdentity>
+      <CacheSize>1</CacheSize>
+    </sequence>
+    <table id="21" parent="10" name="app_users">
       <ObjectId>31267601</ObjectId>
       <Owner>aiana-miachina_cpn</Owner>
-      <StateNumber>98265619</StateNumber>
+      <StateNumber>108595495</StateNumber>
     </table>
-    <table id="20" parent="10" name="media_object">
+    <table id="22" parent="10" name="media_object">
       <ObjectId>31523938</ObjectId>
       <Owner>aiana-miachina_cpn</Owner>
       <StateNumber>98265619</StateNumber>
     </table>
-    <table id="21" parent="10" name="migration_versions">
+    <table id="23" parent="10" name="migration_versions">
       <ObjectId>31267590</ObjectId>
       <Owner>aiana-miachina_cpn</Owner>
       <StateNumber>95690519</StateNumber>
     </table>
-    <column id="22" parent="19" name="id">
+    <table id="24" parent="10" name="refresh_tokens">
+      <ObjectId>31899508</ObjectId>
+      <Owner>aiana-miachina_cpn</Owner>
+      <StateNumber>101439152</StateNumber>
+    </table>
+    <table id="25" parent="10" name="stream">
+      <ObjectId>32668415</ObjectId>
+      <Owner>aiana-miachina_cpn</Owner>
+      <StateNumber>108595495</StateNumber>
+    </table>
+    <column id="26" parent="21" name="id">
       <Position>1</Position>
       <DataType>integer|0s</DataType>
       <NotNull>1</NotNull>
       <StateNumber>95690572</StateNumber>
       <TypeId>23</TypeId>
     </column>
-    <column id="23" parent="19" name="email">
+    <column id="27" parent="21" name="email">
       <Position>2</Position>
       <DataType>varchar(255)|0s</DataType>
       <NotNull>1</NotNull>
       <StateNumber>95690572</StateNumber>
       <TypeId>1043</TypeId>
     </column>
-    <column id="24" parent="19" name="password">
+    <column id="28" parent="21" name="password">
       <Position>3</Position>
       <DataType>varchar(64)|0s</DataType>
       <NotNull>1</NotNull>
       <StateNumber>95690572</StateNumber>
       <TypeId>1043</TypeId>
     </column>
-    <column id="25" parent="19" name="roles">
+    <column id="29" parent="21" name="roles">
       <Position>4</Position>
       <Comment>(DC2Type:array)</Comment>
       <DataType>text|0s</DataType>
@@ -158,40 +182,40 @@
       <StateNumber>95690572</StateNumber>
       <TypeId>25</TypeId>
     </column>
-    <column id="26" parent="19" name="name">
+    <column id="30" parent="21" name="name">
       <Position>5</Position>
       <Comment>(DC2Type:json_array)</Comment>
       <DataType>jsonb|0s</DataType>
       <StateNumber>95954636</StateNumber>
       <TypeId>3802</TypeId>
     </column>
-    <column id="27" parent="19" name="photo_id">
+    <column id="31" parent="21" name="photo_id">
       <Position>6</Position>
       <DataType>integer|0s</DataType>
       <StateNumber>98265619</StateNumber>
       <TypeId>23</TypeId>
     </column>
-    <index id="28" parent="19" name="app_users_pkey">
+    <index id="32" parent="21" name="app_users_pkey">
       <ObjectId>31267607</ObjectId>
       <ColNames>id</ColNames>
       <Unique>1</Unique>
     </index>
-    <index id="29" parent="19" name="uniq_c2502824e7927c74">
+    <index id="33" parent="21" name="uniq_c2502824e7927c74">
       <ObjectId>31267609</ObjectId>
       <ColNames>email</ColNames>
       <Unique>1</Unique>
     </index>
-    <index id="30" parent="19" name="idx_c25028247e9e4c8c">
+    <index id="34" parent="21" name="idx_c25028247e9e4c8c">
       <ObjectId>31553171</ObjectId>
       <ColNames>photo_id</ColNames>
     </index>
-    <key id="31" parent="19" name="app_users_pkey">
+    <key id="35" parent="21" name="app_users_pkey">
       <ObjectId>31267608</ObjectId>
       <ColNames>id</ColNames>
       <UnderlyingIndexName>app_users_pkey</UnderlyingIndexName>
       <Primary>1</Primary>
     </key>
-    <foreign-key id="32" parent="19" name="fk_c25028247e9e4c8c">
+    <foreign-key id="36" parent="21" name="fk_c25028247e9e4c8c">
       <ObjectId>31553166</ObjectId>
       <ColNames>photo_id</ColNames>
       <RefTableId>31523938</RefTableId>
@@ -200,64 +224,64 @@
       <RefKeyName>media_object_pkey</RefKeyName>
       <RefColNames>id</RefColNames>
     </foreign-key>
-    <column id="33" parent="20" name="id">
+    <column id="37" parent="22" name="id">
       <Position>1</Position>
       <DataType>integer|0s</DataType>
       <NotNull>1</NotNull>
       <StateNumber>98021716</StateNumber>
       <TypeId>23</TypeId>
     </column>
-    <column id="34" parent="20" name="created_user_id">
+    <column id="38" parent="22" name="created_user_id">
       <Position>2</Position>
       <DataType>integer|0s</DataType>
       <NotNull>1</NotNull>
       <StateNumber>98021716</StateNumber>
       <TypeId>23</TypeId>
     </column>
-    <column id="35" parent="20" name="content_url">
+    <column id="39" parent="22" name="content_url">
       <Position>3</Position>
       <DataType>varchar(255)|0s</DataType>
       <NotNull>1</NotNull>
       <StateNumber>98021716</StateNumber>
       <TypeId>1043</TypeId>
     </column>
-    <column id="36" parent="20" name="image_size">
+    <column id="40" parent="22" name="image_size">
       <Position>4</Position>
       <DataType>integer|0s</DataType>
       <NotNull>1</NotNull>
       <StateNumber>98021716</StateNumber>
       <TypeId>23</TypeId>
     </column>
-    <column id="37" parent="20" name="created_at">
+    <column id="41" parent="22" name="created_at">
       <Position>5</Position>
       <DataType>timestamp(0)|0s</DataType>
       <NotNull>1</NotNull>
       <StateNumber>98021716</StateNumber>
       <TypeId>1114</TypeId>
     </column>
-    <column id="38" parent="20" name="tags">
+    <column id="42" parent="22" name="tags">
       <Position>6</Position>
       <Comment>(DC2Type:array)</Comment>
       <DataType>text|0s</DataType>
       <StateNumber>98253773</StateNumber>
       <TypeId>25</TypeId>
     </column>
-    <index id="39" parent="20" name="media_object_pkey">
+    <index id="43" parent="22" name="media_object_pkey">
       <ObjectId>31523941</ObjectId>
       <ColNames>id</ColNames>
       <Unique>1</Unique>
     </index>
-    <index id="40" parent="20" name="idx_14d43132e104c1d3">
+    <index id="44" parent="22" name="idx_14d43132e104c1d3">
       <ObjectId>31523943</ObjectId>
       <ColNames>created_user_id</ColNames>
     </index>
-    <key id="41" parent="20" name="media_object_pkey">
+    <key id="45" parent="22" name="media_object_pkey">
       <ObjectId>31523942</ObjectId>
       <ColNames>id</ColNames>
       <UnderlyingIndexName>media_object_pkey</UnderlyingIndexName>
       <Primary>1</Primary>
     </key>
-    <foreign-key id="42" parent="20" name="fk_14d43132e104c1d3">
+    <foreign-key id="46" parent="22" name="fk_14d43132e104c1d3">
       <ObjectId>31523944</ObjectId>
       <ColNames>created_user_id</ColNames>
       <RefTableId>31267601</RefTableId>
@@ -266,23 +290,139 @@
       <RefKeyName>app_users_pkey</RefKeyName>
       <RefColNames>id</RefColNames>
     </foreign-key>
-    <column id="43" parent="21" name="version">
+    <column id="47" parent="23" name="version">
       <Position>1</Position>
       <DataType>varchar(255)|0s</DataType>
       <NotNull>1</NotNull>
       <StateNumber>95690519</StateNumber>
       <TypeId>1043</TypeId>
     </column>
-    <index id="44" parent="21" name="migration_versions_pkey">
+    <index id="48" parent="23" name="migration_versions_pkey">
       <ObjectId>31267593</ObjectId>
       <ColNames>version</ColNames>
       <Unique>1</Unique>
     </index>
-    <key id="45" parent="21" name="migration_versions_pkey">
+    <key id="49" parent="23" name="migration_versions_pkey">
       <ObjectId>31267594</ObjectId>
       <ColNames>version</ColNames>
       <UnderlyingIndexName>migration_versions_pkey</UnderlyingIndexName>
       <Primary>1</Primary>
     </key>
+    <column id="50" parent="24" name="id">
+      <Position>1</Position>
+      <DataType>integer|0s</DataType>
+      <NotNull>1</NotNull>
+      <StateNumber>101439152</StateNumber>
+      <TypeId>23</TypeId>
+    </column>
+    <column id="51" parent="24" name="refresh_token">
+      <Position>2</Position>
+      <DataType>varchar(128)|0s</DataType>
+      <NotNull>1</NotNull>
+      <StateNumber>101439152</StateNumber>
+      <TypeId>1043</TypeId>
+    </column>
+    <column id="52" parent="24" name="username">
+      <Position>3</Position>
+      <DataType>varchar(255)|0s</DataType>
+      <NotNull>1</NotNull>
+      <StateNumber>101439152</StateNumber>
+      <TypeId>1043</TypeId>
+    </column>
+    <column id="53" parent="24" name="valid">
+      <Position>4</Position>
+      <DataType>timestamp(0)|0s</DataType>
+      <NotNull>1</NotNull>
+      <StateNumber>101439152</StateNumber>
+      <TypeId>1114</TypeId>
+    </column>
+    <index id="54" parent="24" name="refresh_tokens_pkey">
+      <ObjectId>31899511</ObjectId>
+      <ColNames>id</ColNames>
+      <Unique>1</Unique>
+    </index>
+    <index id="55" parent="24" name="uniq_9bace7e1c74f2195">
+      <ObjectId>31899515</ObjectId>
+      <ColNames>refresh_token</ColNames>
+      <Unique>1</Unique>
+    </index>
+    <key id="56" parent="24" name="refresh_tokens_pkey">
+      <ObjectId>31899512</ObjectId>
+      <ColNames>id</ColNames>
+      <UnderlyingIndexName>refresh_tokens_pkey</UnderlyingIndexName>
+      <Primary>1</Primary>
+    </key>
+    <column id="57" parent="25" name="id">
+      <Position>1</Position>
+      <DataType>integer|0s</DataType>
+      <NotNull>1</NotNull>
+      <StateNumber>108595495</StateNumber>
+      <TypeId>23</TypeId>
+    </column>
+    <column id="58" parent="25" name="created_user_id">
+      <Position>2</Position>
+      <DataType>integer|0s</DataType>
+      <StateNumber>108595495</StateNumber>
+      <TypeId>23</TypeId>
+    </column>
+    <column id="59" parent="25" name="created_at">
+      <Position>3</Position>
+      <DataType>timestamp(0)|0s</DataType>
+      <NotNull>1</NotNull>
+      <StateNumber>108595495</StateNumber>
+      <TypeId>1114</TypeId>
+    </column>
+    <column id="60" parent="25" name="action">
+      <Position>4</Position>
+      <DataType>varchar(30)|0s</DataType>
+      <NotNull>1</NotNull>
+      <StateNumber>108595495</StateNumber>
+      <TypeId>1043</TypeId>
+    </column>
+    <column id="61" parent="25" name="snapshot">
+      <Position>5</Position>
+      <Comment>(DC2Type:json_array)</Comment>
+      <DataType>jsonb|0s</DataType>
+      <StateNumber>108595495</StateNumber>
+      <TypeId>3802</TypeId>
+    </column>
+    <column id="62" parent="25" name="item">
+      <Position>6</Position>
+      <DataType>varchar(30)|0s</DataType>
+      <NotNull>1</NotNull>
+      <StateNumber>108595495</StateNumber>
+      <TypeId>1043</TypeId>
+    </column>
+    <column id="63" parent="25" name="item_id">
+      <Position>7</Position>
+      <DataType>integer|0s</DataType>
+      <NotNull>1</NotNull>
+      <StateNumber>108595495</StateNumber>
+      <TypeId>23</TypeId>
+    </column>
+    <index id="64" parent="25" name="stream_pkey">
+      <ObjectId>32668421</ObjectId>
+      <ColNames>id</ColNames>
+      <Unique>1</Unique>
+    </index>
+    <index id="65" parent="25" name="idx_f0e9be1ce104c1d3">
+      <ObjectId>32668424</ObjectId>
+      <ColNames>created_user_id</ColNames>
+    </index>
+    <key id="66" parent="25" name="stream_pkey">
+      <ObjectId>32668422</ObjectId>
+      <ColNames>id</ColNames>
+      <UnderlyingIndexName>stream_pkey</UnderlyingIndexName>
+      <Primary>1</Primary>
+    </key>
+    <foreign-key id="67" parent="25" name="fk_f0e9be1ce104c1d3">
+      <ObjectId>32668425</ObjectId>
+      <ColNames>created_user_id</ColNames>
+      <RefTableId>31267601</RefTableId>
+      <RefColPositions>1</RefColPositions>
+      <RefTableName>app_users</RefTableName>
+      <RefKeyName>app_users_pkey</RefKeyName>
+      <RefColNames>id</RefColNames>
+    </foreign-key>
   </database-model>
 </dataSource>
