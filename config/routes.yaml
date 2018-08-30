@@ -5,5 +5,9 @@
 api_login_check:
   path: /login_check
 
+gesdinet_jwt_refresh_token:
+  path:     /token/refresh
+  defaults: { _controller: gesdinet.jwtrefreshtoken:refresh }
+
 logout:
   path: /logout

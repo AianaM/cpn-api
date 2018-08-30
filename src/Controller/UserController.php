@@ -24,4 +24,19 @@ class UserController extends AbstractController
             ->findOneByFirstName($data->getName());
         return $users;
     }
+
+    /**
+     * @Route("/authState", name="authState", methods={"GET"},
+     *     defaults={
+     *         "_api_resource_class"=User::class,
+     *         "_api_collection_operation_name"="authState"
+     *     })
+     * @return User|null
+     */
+    public function authStateAction(): User
+    {
+        return $this->getUser();
+    }
+
+
 }

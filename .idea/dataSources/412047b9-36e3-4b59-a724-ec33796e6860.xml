@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <dataSource name="aiana-miachina_cpn@postgresql.aiana-miachina.myjino.ru">
-  <database-model serializer="dbm" rdbms="POSTGRES" format-version="4.10">
+  <database-model serializer="dbm" rdbms="POSTGRES" format-version="4.11">
     <root id="1">
       <ServerVersion>9.6.10</ServerVersion>
     </root>

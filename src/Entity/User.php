@@ -16,8 +16,10 @@ use ApiPlatform\Core\Bridge\Doctrine\Orm\Filter\SearchFilter;
 /**
  * @ApiResource(
  *     normalizationContext={"groups"={"read"}},
- *     collectionOperations={"get", "post"={"denormalization_context"={"groups"={"createUser"}}},
- *     "byLastName"={"denormalization_context"={"groups"={"lastName"}}}
+ *     collectionOperations={"get",
+ *     "post"={"denormalization_context"={"groups"={"createUser"}}},
+ *     "byLastName"={"denormalization_context"={"groups"={"lastName"}}},
+ *     "authState"={"pagination_enabled"=false,"filters"={}, "_api_receive"=false}
  *     }
  * )
  * @ApiFilter(SearchFilter::class, properties={"email": "exact", "roles": "partial"})
@@ -76,6 +78,11 @@ class User implements UserInterface
      */
     private $photo;
 
+    /**
+     * @Groups({"read"})
+     */
+    private $teamCard;
+
     public function __construct()
     {
         $this->mediaObjects = new ArrayCollection();
@@ -117,7 +124,8 @@ class User implements UserInterface
 
     public function setRoles(array $roles): self
     {
-        $this->roles = $roles;
+        array_push($roles, "ROLE_USER");
+        $this->roles = array_unique($roles);
 
         return $this;
     }
@@ -187,6 +195,18 @@ class User implements UserInterface
     public function setPhoto(?MediaObject $photo): self
     {
         $this->photo = $photo;
+
+        return $this;
+    }
+
+    public function getTeamCard()
+    {
+        return $this->name['teamCard'];
+    }
+
+    public function setTeamCard(array $teamCard): self
+    {
+        $this->name['teamCard'] = $teamCard;
 
         return $this;
     }

@@ -14,9 +14,14 @@ security:
             stateless: true
             anonymous: true
             json_login:
-                check_path:               /login_check
-                success_handler:          lexik_jwt_authentication.handler.authentication_success
-                failure_handler:          lexik_jwt_authentication.handler.authentication_failure
+                check_path: /login_check
+                success_handler: lexik_jwt_authentication.handler.authentication_success
+                failure_handler: lexik_jwt_authentication.handler.authentication_failure
+        refresh:
+            pattern:  ^/token/refresh
+            stateless: true
+            anonymous: true
+
         main:
             pattern:   ^/
             anonymous: true
@@ -42,8 +47,7 @@ security:
     # Easy way to control access for large sections of your site
     # Note: Only the *first* access control that matches will be used
     access_control:
-        - { path: ^/login, roles: IS_AUTHENTICATED_ANONYMOUSLY }
-#        - { path: ^/api,       roles: IS_AUTHENTICATED_FULLY }
-#        - { path: ^/users, roles: ROLE_USER }
-        - { path: ^/users, roles: IS_AUTHENTICATED_FULLY }
-        # - { path: ^/profile, roles: ROLE_USER }
+        - { path: ^/login_check, roles: IS_AUTHENTICATED_ANONYMOUSLY }
+        - { path: ^/token/refresh, roles: IS_AUTHENTICATED_ANONYMOUSLY }
+        - { path: ^/authState,       roles: IS_AUTHENTICATED_FULLY }
+#        - { path: ^/users, roles: [ROLE_ADMIN, ROLE_MANAGER] }

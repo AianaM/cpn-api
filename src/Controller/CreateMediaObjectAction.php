@@ -19,18 +19,22 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Serializer\SerializerInterface;
 use Symfony\Component\Validator\Validator\ValidatorInterface;
+use Symfony\Component\Security\Core\Authentication\Token\Storage\TokenStorageInterface;
+
 
 final class CreateMediaObjectAction
 {
     private $validator;
     private $doctrine;
     private $factory;
+    private $user;
 
-    public function __construct(RegistryInterface $doctrine, FormFactoryInterface $factory, ValidatorInterface $validator)
+    public function __construct(RegistryInterface $doctrine, FormFactoryInterface $factory, ValidatorInterface $validator, TokenStorageInterface $tokenStorage)
     {
         $this->validator = $validator;
         $this->doctrine = $doctrine;
         $this->factory = $factory;
+        $this->user = $tokenStorage->getToken()->getUser();
     }
 
     public function __invoke(Request $request): MediaObject
@@ -42,10 +46,9 @@ final class CreateMediaObjectAction
         $form->handleRequest($request);
         if ($form->isSubmitted() && $form->isValid()) {
             $em = $this->doctrine->getManager();
-            $user = $em->getRepository(User::class)->find(1);
-            $mediaObject->setCreatedUser($user);
+            $mediaObject->setCreatedUser($this->user);
             if ($form->get('avatar')->getData()) {
-                $user->setPhoto($mediaObject);
+                $this->user->setPhoto($mediaObject);
             }
             $em->persist($mediaObject);
             $em->flush();

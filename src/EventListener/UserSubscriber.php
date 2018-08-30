@@ -46,7 +46,6 @@ class UserSubscriber implements EventSubscriber
     public function preUpdate(PreUpdateEventArgs $eventArgs)
     {
         $entity = $eventArgs->getObject();
-
         if ($entity instanceof User && $eventArgs->hasChangedField('password')) {
             $eventArgs->setNewValue('password', $this->encodePassword($entity, $eventArgs->getNewValue('password')));
         }
