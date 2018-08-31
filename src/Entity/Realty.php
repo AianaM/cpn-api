@@ -66,9 +66,9 @@ class Realty
     private $fee;
 
     /**
-     * @ORM\Column(type="boolean")
+     * @ORM\Column(type="boolean", options={"default"=false})
      */
-    private $exclusive;
+    private $exclusive = false;
 
     /**
      * @ORM\Column(type="json_array", nullable=true)

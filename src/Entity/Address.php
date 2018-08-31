@@ -49,9 +49,9 @@ class Address
     private $developer;
 
     /**
-     * @ORM\Column(type="boolean")
+     * @ORM\Column(type="boolean", options={"default"=false})
      */
-    private $newBuilding;
+    private $newBuilding = false;
 
     /**
      * @ORM\Column(type="integer", nullable=true)

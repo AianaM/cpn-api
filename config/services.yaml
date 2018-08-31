@@ -36,3 +36,9 @@ services:
             $tokenStorage: '@security.token_storage'
         tags:
         - { name: doctrine.event_subscriber, connection: default }
+
+    App\EventListener\StreamSubscriber:
+        arguments:
+            $tokenStorage: '@security.token_storage'
+        tags:
+        - { name: doctrine.event_subscriber, connection: default }

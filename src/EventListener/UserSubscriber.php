@@ -9,11 +9,9 @@
 namespace App\EventListener;
 
 use App\Entity\MediaObject;
-use App\Entity\Stream;
 use App\Entity\User;
 use Doctrine\Common\EventSubscriber;
 use Doctrine\ORM\Event\LifecycleEventArgs;
-use Doctrine\ORM\Event\OnFlushEventArgs;
 use Doctrine\ORM\Event\PreUpdateEventArgs;
 use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
 use Symfony\Component\Security\Core\Authentication\Token\Storage\TokenStorageInterface;
@@ -35,7 +33,6 @@ class UserSubscriber implements EventSubscriber
             'prePersist',
             'preUpdate',
             'postLoad',
-            'onFlush'
         );
     }
 
@@ -79,81 +76,6 @@ class UserSubscriber implements EventSubscriber
     public function encodePassword(User $user, string $password)
     {
         return $this->passwordEncoder->encodePassword($user, $password);
-    }
-
-    public function onFlush(OnFlushEventArgs $args)
-    {
-        $em = $args->getEntityManager();
-        $uow = $em->getUnitOfWork();
-
-        foreach ($uow->getScheduledEntityInsertions() as $entity) {
-            if (!$entity instanceof Stream) {
-
-                $item = $em->getClassMetadata(get_class($entity))->getName();
-                $user = $this->tokenStorage->getToken()->getUser();
-                $user = $user instanceof User ? $user : null;
-
-                $stream = new Stream();
-                $stream->setAction('insert');
-                $stream->setItem($item);
-                $stream->setItemId($entity->getId());
-                $stream->setSnapshot($uow->getOriginalEntityData($entity));
-                $stream->setCreatedUser($user);
-                $em->persist($stream);
-                $classMetadata = $em->getClassMetadata('App\Entity\Stream');
-                $uow->computeChangeSet($classMetadata, $stream);
-
-            }
-        }
-
-        foreach ($uow->getScheduledEntityUpdates() as $entity) {
-
-            if (!$entity instanceof Stream) {
-
-                $item = $em->getClassMetadata(get_class($entity))->getName();
-                $user = $this->tokenStorage->getToken()->getUser();
-                $user = $user instanceof User ? $user : null;
-
-                $stream = new Stream();
-                $stream->setAction('update');
-                $stream->setItem($item);
-                $stream->setItemId($entity->getId());
-                $stream->setSnapshot($uow->getEntityChangeSet($entity));
-                $stream->setCreatedUser($user);
-                $em->persist($stream);
-                $classMetadata = $em->getClassMetadata('App\Entity\Stream');
-                $uow->computeChangeSet($classMetadata, $stream);
-
-            }
-        }
-
-        foreach ($uow->getScheduledEntityDeletions() as $entity) {
-            if (!$entity instanceof Stream) {
-
-                $item = $em->getClassMetadata(get_class($entity))->getName();
-                $user = $this->tokenStorage->getToken()->getUser();
-                $user = $user instanceof User ? $user : null;
-
-                $stream = new Stream();
-                $stream->setAction('delete');
-                $stream->setItem($item);
-                $stream->setItemId($entity->getId());
-                $stream->setSnapshot(null);
-                $stream->setCreatedUser($user);
-                $em->persist($stream);
-                $classMetadata = $em->getClassMetadata('App\Entity\Stream');
-                $uow->computeChangeSet($classMetadata, $stream);
-
-            }
-        }
-
-        foreach ($uow->getScheduledCollectionDeletions() as $col) {
-
-        }
-
-        foreach ($uow->getScheduledCollectionUpdates() as $col) {
-
-        }
     }
 
 }
