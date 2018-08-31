@@ -8,14 +8,18 @@
 
 namespace App\EventListener;
 
-
 use App\Entity\Stream;
 use App\Entity\User;
+use Doctrine\Common\Annotations\AnnotationReader;
 use Doctrine\Common\EventSubscriber;
 use Doctrine\ORM\Event\OnFlushEventArgs;
 use Doctrine\ORM\Event\PostFlushEventArgs;
 use Gesdinet\JWTRefreshTokenBundle\Entity\RefreshToken;
 use Symfony\Component\Security\Core\Authentication\Token\Storage\TokenStorageInterface;
+use Symfony\Component\Serializer\Mapping\Factory\ClassMetadataFactory;
+use Symfony\Component\Serializer\Mapping\Loader\AnnotationLoader;
+use Symfony\Component\Serializer\Normalizer\ObjectNormalizer;
+use Symfony\Component\Serializer\Serializer;
 
 class StreamSubscriber implements EventSubscriber
 {
@@ -48,10 +52,13 @@ class StreamSubscriber implements EventSubscriber
                 $stream->setCreatedUser($this->getUser());
                 $stream->setAction('insert');
 
-                $snapshot = $uow->getOriginalEntityData($entity);
-                if (in_array('password', $snapshot)) {
+                $snapshot = $this->convert($entity);
+//                $snapshot = $uow->getOriginalEntityData($entity);
+
+                if ($entity instanceof User) {
                     $snapshot['password'] = "***";
                 }
+
                 $stream->setSnapshot($snapshot);
                 $stream->setItemId($entity->getId());
                 $stream->setItem($em->getClassMetadata(get_class($entity))->getName());
@@ -109,6 +116,14 @@ class StreamSubscriber implements EventSubscriber
             $this->stream = [];
             $em->flush();
         }
+    }
+
+    private function convert($entity){
+        $classMetadataFactory = new ClassMetadataFactory(new AnnotationLoader(new AnnotationReader()));
+        $normalizer = new ObjectNormalizer($classMetadataFactory);
+
+        $serializer = new Serializer(array($normalizer));
+        return $serializer->normalize($entity);
     }
 
 }
