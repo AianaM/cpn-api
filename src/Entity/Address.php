@@ -2,12 +2,18 @@
 
 namespace App\Entity;
 
+use ApiPlatform\Core\Annotation\ApiFilter;
 use ApiPlatform\Core\Annotation\ApiResource;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
+use Symfony\Component\Serializer\Annotation\Groups;
+use ApiPlatform\Core\Serializer\Filter\GroupFilter;
 
 /**
  * @ApiResource()
+ * @ApiFilter(GroupFilter::class, arguments={"parameterName": "groups", "overrideDefaultGroups": false, "whitelist": {"street"}})
  * @ORM\Entity(repositoryClass="App\Repository\AddressRepository")
+ * @UniqueEntity(fields={"street", "number"}, errorPath="number", message="This number is already in use on that street.")
  */
 class Address
 {
@@ -15,26 +21,31 @@ class Address
      * @ORM\Id()
      * @ORM\GeneratedValue()
      * @ORM\Column(type="integer")
+     * @Groups({"address"})
      */
     private $id;
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @Groups({"address", "street"})
      */
     private $street;
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @Groups({"address", "street"})
      */
     private $number;
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @Groups({"address"})
      */
     private $district;
 
     /**
      * @ORM\Column(type="string", length=255, nullable=true)
+     * @Groups({"address"})
      */
     private $name;
 

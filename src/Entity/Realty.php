@@ -6,9 +6,12 @@ use ApiPlatform\Core\Annotation\ApiResource;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Serializer\Annotation\Groups;
 
 /**
- * @ApiResource()
+ * @ApiResource(attributes={
+ *   "normalization_context"={"groups"={"realty", "realty-address", "address"}}
+ * })
  * @ORM\Entity(repositoryClass="App\Repository\RealtyRepository")
  */
 class Realty
@@ -17,82 +20,101 @@ class Realty
      * @ORM\Id()
      * @ORM\GeneratedValue()
      * @ORM\Column(type="integer")
+     * @Groups({"realty"})
      */
     private $id;
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @Groups({"realty"})
      */
     private $category;
 
     /**
      * @ORM\Column(type="integer", nullable=true)
+     * @Groups({"realty"})
      */
     private $area;
 
     /**
      * @ORM\Column(type="integer", nullable=true)
+     * @Groups({"realty"})
      */
     private $price;
 
     /**
      * @ORM\Column(type="json_array", nullable=true)
+     * @Groups({"realty"})
      */
     private $description;
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @Groups({"realty"})
      */
     private $status;
 
     /**
      * @ORM\ManyToOne(targetEntity="App\Entity\User")
+     * @Groups({"realty"})
      */
     private $manager;
 
     /**
      * @ORM\ManyToMany(targetEntity="App\Entity\MediaObject", inversedBy="realties")
+     * @Groups({"realty"})
      */
     private $mediaObjects;
 
     /**
      * @ORM\Column(type="string", length=255, nullable=true)
+     * @Groups({"realty"})
      */
     private $cadastralNumber;
 
     /**
      * @ORM\Column(type="integer", nullable=true)
+     * @Groups({"realty"})
      */
     private $fee;
 
     /**
      * @ORM\Column(type="boolean", options={"default"=false})
+     * @Groups({"realty"})
      */
     private $exclusive = false;
 
     /**
      * @ORM\Column(type="json_array", nullable=true)
+     * @Groups({"realty"})
      */
     private $hiddenInfo;
 
     /**
      * @ORM\Column(type="integer", nullable=true)
+     * @Groups({"realty"})
      */
     private $rooms;
 
     /**
      * @ORM\Column(type="integer", nullable=true)
+     * @Groups({"realty"})
      */
     private $floor;
 
     /**
+     *
+     * @var Address
+     *
      * @ORM\ManyToOne(targetEntity="App\Entity\Address")
-     * @ORM\JoinColumn(nullable=false)
+     * @ORM\JoinColumn(nullable=false, referencedColumnName="id")
+     * @Groups({"realty-address"})
      */
     private $address;
 
     /**
      * @ORM\Column(type="json_array")
+     * @Groups({"realty"})
      */
     private $owner;
 
