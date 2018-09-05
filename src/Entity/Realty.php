@@ -9,9 +9,10 @@ use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Serializer\Annotation\Groups;
 
 /**
- * @ApiResource(attributes={
- *   "normalization_context"={"groups"={"realty", "realty-address", "address"}}
- * })
+ * @ApiResource(
+ *     normalizationContext={"groups"={"realty"}},
+ *     denormalizationContext={"groups"={"realty"}}
+ * )
  * @ORM\Entity(repositoryClass="App\Repository\RealtyRepository")
  */
 class Realty
@@ -20,25 +21,26 @@ class Realty
      * @ORM\Id()
      * @ORM\GeneratedValue()
      * @ORM\Column(type="integer")
-     * @Groups({"realty"})
+     * @Groups({"realty", "address"})
      */
     private $id;
 
     /**
+     * @var string
      * @ORM\Column(type="string", length=255)
-     * @Groups({"realty"})
+     * @Groups({"realty","address"})
      */
     private $category;
 
     /**
      * @ORM\Column(type="integer", nullable=true)
-     * @Groups({"realty"})
+     * @Groups({"realty","address"})
      */
     private $area;
 
     /**
      * @ORM\Column(type="integer", nullable=true)
-     * @Groups({"realty"})
+     * @Groups({"realty","address"})
      */
     private $price;
 
@@ -106,9 +108,9 @@ class Realty
      *
      * @var Address
      *
-     * @ORM\ManyToOne(targetEntity="App\Entity\Address")
-     * @ORM\JoinColumn(nullable=false, referencedColumnName="id")
-     * @Groups({"realty-address"})
+     * @ORM\ManyToOne(targetEntity="App\Entity\Address", inversedBy="realty", cascade={"persist"})
+     * @ORM\JoinColumn(name="realty", nullable=false, referencedColumnName="id")
+     * @Groups({"realty"})
      */
     private $address;
 

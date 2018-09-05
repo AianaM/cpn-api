@@ -4,13 +4,18 @@ namespace App\Entity;
 
 use ApiPlatform\Core\Annotation\ApiFilter;
 use ApiPlatform\Core\Annotation\ApiResource;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 use Symfony\Component\Serializer\Annotation\Groups;
 use ApiPlatform\Core\Serializer\Filter\GroupFilter;
 
 /**
- * @ApiResource()
+ * @ApiResource(
+ *     normalizationContext={"groups"={"address"}},
+ *     denormalizationContext={"groups"={"address"}}
+ * )
  * @ApiFilter(GroupFilter::class, arguments={"parameterName": "groups", "overrideDefaultGroups": false, "whitelist": {"street"}})
  * @ORM\Entity(repositoryClass="App\Repository\AddressRepository")
  * @UniqueEntity(fields={"street", "number"}, errorPath="number", message="This number is already in use on that street.")
@@ -18,66 +23,95 @@ use ApiPlatform\Core\Serializer\Filter\GroupFilter;
 class Address
 {
     /**
+     * @Groups({"address", "realty"})
+     *
      * @ORM\Id()
      * @ORM\GeneratedValue()
      * @ORM\Column(type="integer")
-     * @Groups({"address"})
      */
     private $id;
 
     /**
+     * @Groups({"address", "realty", "street"})
+     *
      * @ORM\Column(type="string", length=255)
-     * @Groups({"address", "street"})
      */
     private $street;
 
     /**
+     * @Groups({"address", "realty", "street"})
+     *
      * @ORM\Column(type="string", length=255)
-     * @Groups({"address", "street"})
      */
     private $number;
 
     /**
+     * @Groups({"address", "realty"})
+     *
      * @ORM\Column(type="string", length=255)
-     * @Groups({"address"})
      */
     private $district;
 
     /**
+     * @Groups({"address", "realty"})
+     *
      * @ORM\Column(type="string", length=255, nullable=true)
-     * @Groups({"address"})
      */
     private $name;
 
     /**
+     * @Groups({"address", "realty"})
+     *
      * @ORM\Column(type="string", length=255, nullable=true)
      */
     private $type;
 
     /**
+     * @Groups({"address", "realty"})
+     *
      * @ORM\Column(type="string", length=255, nullable=true)
      */
     private $developer;
 
     /**
+     * @Groups({"address", "realty"})
+     *
      * @ORM\Column(type="boolean", options={"default"=false})
      */
     private $newBuilding = false;
 
     /**
+     * @Groups({"address", "realty"})
+     *
      * @ORM\Column(type="integer", nullable=true)
      */
     private $year;
 
     /**
+     * @Groups({"address", "realty"})
+     *
      * @ORM\Column(type="integer", nullable=true)
      */
     private $floors;
 
     /**
+     * @Groups({"address", "realty"})
+     *
      * @ORM\Column(type="json_array", nullable=true)
      */
     private $description;
+
+    /**
+     * @Groups({"address"})
+     *
+     * @ORM\OneToMany(targetEntity="App\Entity\Realty", mappedBy="address")
+     */
+    private $realty;
+
+    public function __construct()
+    {
+        $this->realty = new ArrayCollection();
+    }
 
     public function getId(): ?int
     {
@@ -200,6 +234,37 @@ class Address
     public function setDescription($description): self
     {
         $this->description = $description;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|Realty[]
+     */
+    public function getRealty(): Collection
+    {
+        return $this->realty;
+    }
+
+    public function addRealty(Realty $realty): self
+    {
+        if (!$this->realty->contains($realty)) {
+            $this->realty[] = $realty;
+            $realty->setAddress($this);
+        }
+
+        return $this;
+    }
+
+    public function removeRealty(Realty $realty): self
+    {
+        if ($this->realty->contains($realty)) {
+            $this->realty->removeElement($realty);
+            // set the owning side to null (unless already changed)
+            if ($realty->getAddress() === $this) {
+                $realty->setAddress(null);
+            }
+        }
 
         return $this;
     }

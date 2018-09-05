@@ -122,6 +122,10 @@ class StreamSubscriber implements EventSubscriber
         $classMetadataFactory = new ClassMetadataFactory(new AnnotationLoader(new AnnotationReader()));
         $normalizer = new ObjectNormalizer($classMetadataFactory);
 
+        $normalizer->setCircularReferenceHandler(function ($object) {
+            return $object->getId();
+        });
+
         $serializer = new Serializer(array($normalizer));
         return $serializer->normalize($entity);
     }

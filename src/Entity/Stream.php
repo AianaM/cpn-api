@@ -8,7 +8,8 @@ use Symfony\Component\Serializer\Annotation\Groups;
 
 /**
  * @ApiResource(attributes={
- *   "normalization_context"={"groups"={"stream", "stream-user", "user"}}
+ *     "normalization_context"={"groups"={"stream", "stream-user", "user"}},
+ *     "order"={"createdAt": "DESC"}
  * })
  * @ORM\Entity(repositoryClass="App\Repository\StreamRepository")
  */
