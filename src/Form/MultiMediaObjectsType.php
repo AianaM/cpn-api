@@ -2,19 +2,19 @@
 /**
  * Created by PhpStorm.
  * User: aiana
- * Date: 07.09.2018
- * Time: 20:42
+ * Date: 08.09.2018
+ * Time: 18:41
  */
 
 namespace App\Form;
 
-use App\Entity\Realty;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\CollectionType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
-class RealtyMediaObjectType extends AbstractType
+
+class MultiMediaObjectsType extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
@@ -30,7 +30,6 @@ class RealtyMediaObjectType extends AbstractType
     public function configureOptions(OptionsResolver $resolver)
     {
         $resolver->setDefaults([
-            'data_class' => Realty::class,
             'csrf_protection' => false
         ]);
     }
@@ -39,5 +38,4 @@ class RealtyMediaObjectType extends AbstractType
     {
         return '';
     }
-
 }

@@ -63,7 +63,7 @@ class Realty
     private $manager;
 
     /**
-     * @ORM\ManyToMany(targetEntity="App\Entity\MediaObject", inversedBy="realties", cascade={"persist"})
+     * @ORM\ManyToMany(targetEntity="App\Entity\MediaObject", inversedBy="realties")
      * @Groups({"realty"})
      */
     private $mediaObjects;

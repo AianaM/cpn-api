@@ -6,7 +6,7 @@ use ApiPlatform\Core\Annotation\ApiFilter;
 use ApiPlatform\Core\Annotation\ApiProperty;
 use ApiPlatform\Core\Annotation\ApiResource;
 use App\Controller\CreateMediaObjectAction;
-use App\Controller\RealtyMediaObjectAction;
+use App\Controller\CreateMultipleMediaObjectAction;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
@@ -21,7 +21,7 @@ use ApiPlatform\Core\Bridge\Doctrine\Orm\Filter\SearchFilter;
  *     collectionOperations={
  *          "get",
  *          "post"={"method"="POST", "path"="/media_objects", "controller"=CreateMediaObjectAction::class, "defaults"={"_api_receive"=false}},
- *          "realtyMedia"={"method"="POST", "path"="/media_objects/realties/{id}", "controller"=RealtyMediaObjectAction::class, "defaults"={"_api_receive"=false},
+ *          "postMultiple"={"method"="POST", "path"="/media_objects/multi", "controller"=CreateMultipleMediaObjectAction::class, "defaults"={"_api_receive"=false},
  *     "normalization_context"={"groups"={"realty"}}}
  *     },
  *     attributes={
@@ -46,7 +46,7 @@ class MediaObject
      * @var File
      * @Assert\NotNull()
      * @Vich\UploadableField(mapping="media_object", fileNameProperty="contentUrl", size="imageSize")
-     * @Groups({"media", "realty"})
+     * @Groups({"media"})
      */
     public $file;
 
@@ -87,7 +87,7 @@ class MediaObject
 
     /**
      * @ORM\OneToMany(targetEntity="App\Entity\User", mappedBy="photo")
-     * @Groups({"media", "realty", "user"})
+     * @Groups({"media", "user"})
      */
     private $users;
 

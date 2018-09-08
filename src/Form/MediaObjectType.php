@@ -9,8 +9,9 @@
 namespace App\Form;
 
 use App\Entity\MediaObject;
+use App\Entity\Realty;
+use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
-use Symfony\Component\Form\Extension\Core\Type\CheckboxType;
 use Symfony\Component\Form\Extension\Core\Type\CollectionType;
 use Symfony\Component\Form\Extension\Core\Type\FileType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
@@ -33,8 +34,9 @@ final class MediaObjectType extends AbstractType
                 'prototype_data' => 'New Tag Placeholder',
                 'required' => false,
             ])
-            ->add('avatar', CheckboxType::class, [
-                'mapped' => false,
+            ->add('realties', EntityType::class, [
+                'class' => Realty::class,
+                'multiple' => true,
                 'required' => false,
             ]);
     }

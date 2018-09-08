@@ -2,19 +2,19 @@
 /**
  * Created by PhpStorm.
  * User: aiana
- * Date: 07.09.2018
- * Time: 20:46
+ * Date: 08.09.2018
+ * Time: 18:59
  */
 
 namespace App\Controller;
 
-use App\Entity\Realty;
-use App\Form\RealtyMediaObjectType;
+use App\Form\MultiMediaObjectsType;
 use Symfony\Bridge\Doctrine\RegistryInterface;
 use Symfony\Component\Form\FormFactoryInterface;
 use Symfony\Component\HttpFoundation\Request;
 
-class RealtyMediaObjectAction
+
+class CreateMultipleMediaObjectAction
 {
     private $doctrine;
     private $factory;
@@ -25,20 +25,23 @@ class RealtyMediaObjectAction
         $this->factory = $factory;
     }
 
-    public function __invoke($id, Request $request): Realty
+    public function __invoke(Request $request)
     {
-        $em = $this->doctrine->getManager();
-        $realty = $em->getRepository(Realty::class)->find($id);
-
-        $form = $this->factory->create(RealtyMediaObjectType::class, $realty);
+        $form = $this->factory->create(MultiMediaObjectsType::class);
 
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
-            $em->persist($realty);
+            $em = $this->doctrine->getManager();
+            $data = $form->getData();
+            $mediaObjects = $data['mediaObjects'];
+
+            foreach ($mediaObjects as $mediaObject) {
+                $em->persist($mediaObject);
+            }
             $em->flush();
 
-            return $realty;
+            return $mediaObjects;
         }
         throw new \Error('Form not valid!');
     }
