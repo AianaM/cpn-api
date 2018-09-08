@@ -53,11 +53,6 @@ class StreamSubscriber implements EventSubscriber
                 $stream->setAction('insert');
 
                 $snapshot = $this->convert($entity);
-//                $snapshot = $uow->getOriginalEntityData($entity);
-
-                if ($entity instanceof User) {
-                    $snapshot['password'] = "***";
-                }
 
                 $stream->setSnapshot($snapshot);
                 $stream->setItemId($entity->getId());
@@ -127,7 +122,7 @@ class StreamSubscriber implements EventSubscriber
         });
 
         $serializer = new Serializer(array($normalizer));
-        $normalizer->setIgnoredAttributes(array('file'));
+        $normalizer->setIgnoredAttributes(array('file', 'password'));
         return $serializer->normalize($entity);
     }
 

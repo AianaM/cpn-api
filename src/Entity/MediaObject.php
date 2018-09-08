@@ -59,6 +59,12 @@ class MediaObject
     private $contentUrl;
 
     /**
+     * @var array
+     * @Groups({"media", "realty"})
+     */
+    public $links;
+
+    /**
      * @ORM\Column(type="integer")
      * @Groups({"media", "realty"})
      */

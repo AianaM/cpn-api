@@ -83,6 +83,9 @@
     "gesdinet/jwt-refresh-token-bundle": {
         "version": "v0.4.0"
     },
+    "imagine/imagine": {
+        "version": "v0.7.1"
+    },
     "jdorn/sql-formatter": {
         "version": "v1.2.17"
     },
@@ -99,6 +102,15 @@
             "branch": "master",
             "version": "2.5",
             "ref": "509b1542f3180a1cfe248ade8b7bf5092c2d4127"
+        }
+    },
+    "liip/imagine-bundle": {
+        "version": "1.8",
+        "recipe": {
+            "repo": "github.com/symfony/recipes-contrib",
+            "branch": "master",
+            "version": "1.8",
+            "ref": "c2b5a9fc9b79b2c757b7ffcc36a09e7066dfc1d2"
         }
     },
     "namshi/jose": {
