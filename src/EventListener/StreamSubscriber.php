@@ -127,6 +127,9 @@ class StreamSubscriber implements EventSubscriber
         });
 
         $serializer = new Serializer(array($normalizer));
+        if($entity->file) {
+            $entity->file = null;
+        }
         return $serializer->normalize($entity);
     }
 

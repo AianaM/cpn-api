@@ -61,6 +61,9 @@ class UserSubscriber implements EventSubscriber
             $entity->setPassword($this->encodePassword($entity, $entity->getPassword()));
             $entity->setRoles(['ROLE_USER']);
         }
+        if($entity instanceof MediaObject) {
+            $entity->setCreatedUser($this->getUser());
+        }
     }
 
     public function index(LifecycleEventArgs $args)
@@ -76,6 +79,12 @@ class UserSubscriber implements EventSubscriber
     public function encodePassword(User $user, string $password)
     {
         return $this->passwordEncoder->encodePassword($user, $password);
+    }
+
+    private function getUser()
+    {
+        $user = $this->tokenStorage->getToken()->getUser();
+        return $user instanceof User ? $user : null;
     }
 
 }

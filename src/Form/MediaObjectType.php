@@ -43,7 +43,7 @@ final class MediaObjectType extends AbstractType
     {
         $resolver->setDefaults([
             'data_class' => MediaObject::class,
-            'csrf_protection' => false,
+            'csrf_protection' => false
         ]);
     }
 

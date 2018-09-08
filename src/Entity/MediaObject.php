@@ -6,6 +6,7 @@ use ApiPlatform\Core\Annotation\ApiFilter;
 use ApiPlatform\Core\Annotation\ApiProperty;
 use ApiPlatform\Core\Annotation\ApiResource;
 use App\Controller\CreateMediaObjectAction;
+use App\Controller\RealtyMediaObjectAction;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
@@ -19,10 +20,13 @@ use ApiPlatform\Core\Bridge\Doctrine\Orm\Filter\SearchFilter;
  * @ApiResource(iri="http://schema.org/MediaObject",
  *     collectionOperations={
  *          "get",
- *          "post"={"method"="POST", "path"="/media_objects", "controller"=CreateMediaObjectAction::class, "defaults"={"_api_receive"=false}}
+ *          "post"={"method"="POST", "path"="/media_objects", "controller"=CreateMediaObjectAction::class, "defaults"={"_api_receive"=false}},
+ *          "realtyMedia"={"method"="POST", "path"="/media_objects/realties/{id}", "controller"=RealtyMediaObjectAction::class, "defaults"={"_api_receive"=false},
+ *     "normalization_context"={"groups"={"realty"}}}
  *     },
  *     attributes={
- *          "normalization_context"={"groups"={"media", "media-user", "user"}}
+ *          "normalization_context"={"groups"={"media"}},
+ *          "denormalization_context"={"groups"={"media"}}
  *     })
  * @ApiFilter(SearchFilter::class, properties={"tags": "partial"})
  * @ORM\Entity(repositoryClass="App\Repository\MediaObjectRepository")
@@ -34,7 +38,7 @@ class MediaObject
      * @ORM\Id()
      * @ORM\GeneratedValue()
      * @ORM\Column(type="integer")
-     * @Groups({"media"})
+     * @Groups({"media", "realty"})
      */
     private $id;
 
@@ -42,7 +46,7 @@ class MediaObject
      * @var File
      * @Assert\NotNull()
      * @Vich\UploadableField(mapping="media_object", fileNameProperty="contentUrl", size="imageSize")
-     * @Groups({"media"})
+     * @Groups({"media", "realty"})
      */
     public $file;
 
@@ -50,26 +54,26 @@ class MediaObject
      * @var string
      * @ORM\Column(type="string", length=255)
      * @ApiProperty(iri="http://schema.org/contentUrl")
-     * @Groups({"media"})
+     * @Groups({"media", "realty"})
      */
     private $contentUrl;
 
     /**
      * @ORM\Column(type="integer")
-     * @Groups({"media"})
+     * @Groups({"media", "realty"})
      */
     private $imageSize;
 
     /**
      * @ORM\Column(type="datetime")
-     * @Groups({"media"})
+     * @Groups({"media", "realty"})
      */
     private $createdAt;
 
     /**
      * @ORM\ManyToOne(targetEntity="App\Entity\User")
      * @ORM\JoinColumn(nullable=false)
-     * @Groups({"media-user"})
+     * @Groups({"media", "realty", "user"})
      */
     private $createdUser;
 
@@ -77,18 +81,19 @@ class MediaObject
      * @ORM\Column(type="array", nullable=true)
      * @var array
      * @Assert\Type("array")
-     * @Groups({"media"})
+     * @Groups({"media", "realty"})
      */
     private $tags;
 
     /**
      * @ORM\OneToMany(targetEntity="App\Entity\User", mappedBy="photo")
-     * @Groups({"media-user"})
+     * @Groups({"media", "realty", "user"})
      */
     private $users;
 
     /**
      * @ORM\ManyToMany(targetEntity="App\Entity\Realty", mappedBy="mediaObjects")
+     * @Groups({"media"})
      */
     private $realties;
 
