@@ -13,7 +13,8 @@ use ApiPlatform\Core\Bridge\Doctrine\Orm\Filter\SearchFilter;
 
 /**
  * @ApiResource(
- *     normalizationContext={"groups"={"read"}},
+ *     normalizationContext={"groups"={"user"}},
+ *     denormalizationContext={"groups"={"user"}},
  *     collectionOperations={"get",
  *     "post"={"denormalization_context"={"groups"={"createUser"}}},
  *     "byLastName"={"denormalization_context"={"groups"={"lastName"}}},
@@ -31,7 +32,7 @@ class User implements UserInterface
      * @ORM\Id()
      * @ORM\GeneratedValue()
      * @ORM\Column(type="integer")
-     * @Groups({"read", "user"})
+     * @Groups({"user"})
      */
     private $id;
 
@@ -39,7 +40,7 @@ class User implements UserInterface
      * @ORM\Column(type="string", length=255, unique=true)
      * @Assert\NotBlank()
      * @Assert\Email()
-     * @Groups({"read", "createUser"})
+     * @Groups({"user", "createUser"})
      */
     private $email;
 
@@ -53,25 +54,25 @@ class User implements UserInterface
 
     /**
      * @ORM\Column(type="array")
-     * @Groups({"read"})
+     * @Groups({"user"})
      */
     private $roles;
 
     /**
      * @var array
      * @Orm\Column(type="json_array", nullable=true, options={"jsonb": true})
-     * @Groups({"read", "lastName", "createUser", "user"})
+     * @Groups({"user", "lastName", "createUser"})
      */
     private $name;
 
     /**
      * @ORM\ManyToOne(targetEntity="App\Entity\MediaObject", inversedBy="users")
-     * @Groups({"read"})
+     * @Groups({"user"})
      */
     private $photo;
 
     /**
-     * @Groups({"read"})
+     * @Groups({"user"})
      */
     private $teamCard;
 

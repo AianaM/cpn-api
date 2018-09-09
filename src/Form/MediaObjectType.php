@@ -10,6 +10,7 @@ namespace App\Form;
 
 use App\Entity\MediaObject;
 use App\Entity\Realty;
+use App\Entity\User;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\CollectionType;
@@ -38,6 +39,12 @@ final class MediaObjectType extends AbstractType
                 'class' => Realty::class,
                 'multiple' => true,
                 'required' => false,
+            ])
+            ->add('users', EntityType::class, [
+                'class' => User::class,
+                'multiple' => true,
+                'required' => false,
+                'by_reference' => false
             ]);
     }
 

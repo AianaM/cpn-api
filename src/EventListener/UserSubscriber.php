@@ -32,18 +32,7 @@ class UserSubscriber implements EventSubscriber
         return array(
             'prePersist',
             'preUpdate',
-            'postLoad',
         );
-    }
-
-    public function postLoad(LifecycleEventArgs $args)
-    {
-        $entity = $args->getObject();
-
-        if ($entity instanceof User && $entity->getPhoto() == null) {
-            $mediaObject = $args->getEntityManager()->getRepository(MediaObject::class)->find(1);
-            $entity->setPhoto($mediaObject);
-        }
     }
 
     public function preUpdate(PreUpdateEventArgs $eventArgs)
@@ -60,6 +49,10 @@ class UserSubscriber implements EventSubscriber
         if ($entity instanceof User) {
             $entity->setPassword($this->encodePassword($entity, $entity->getPassword()));
             $entity->setRoles(['ROLE_USER']);
+            if($entity->getPhoto() === null) {
+                $noPhotoMediaObject = $args->getEntityManager()->getRepository(MediaObject::class)->find(41);
+                $entity->setPhoto($noPhotoMediaObject);
+            }
         }
         if($entity instanceof MediaObject) {
             $entity->setCreatedUser($this->getUser());

@@ -38,7 +38,7 @@ class MediaObject
      * @ORM\Id()
      * @ORM\GeneratedValue()
      * @ORM\Column(type="integer")
-     * @Groups({"media", "realty"})
+     * @Groups({"media", "realty", "user"})
      */
     private $id;
 
@@ -54,13 +54,13 @@ class MediaObject
      * @var string
      * @ORM\Column(type="string", length=255)
      * @ApiProperty(iri="http://schema.org/contentUrl")
-     * @Groups({"media", "realty"})
+     * @Groups({"media", "realty", "user"})
      */
     private $contentUrl;
 
     /**
      * @var array
-     * @Groups({"media", "realty"})
+     * @Groups({"media", "realty", "user"})
      */
     public $links;
 
@@ -79,7 +79,7 @@ class MediaObject
     /**
      * @ORM\ManyToOne(targetEntity="App\Entity\User")
      * @ORM\JoinColumn(nullable=false)
-     * @Groups({"media", "realty", "user"})
+     * @Groups({"media", "realty"})
      */
     private $createdUser;
 
@@ -93,7 +93,7 @@ class MediaObject
 
     /**
      * @ORM\OneToMany(targetEntity="App\Entity\User", mappedBy="photo")
-     * @Groups({"media", "user"})
+     * @Groups({"media"})
      */
     private $users;
 
