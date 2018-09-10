@@ -40,7 +40,8 @@ class MediaObjectSubscriber implements EventSubscriber
         if ($entity instanceof MediaObject) {
             $path = $this->vichUploaderHelper->asset($entity, 'file');
             $entity->links = [
-                'squared_thumbnail' => $this->imagineCacheManager->getBrowserPath($path, 'squared_thumbnail')
+                'squared_thumbnail' => $this->imagineCacheManager->getBrowserPath($path, 'squared_thumbnail'),
+                'squared_thumbnail_64' => $this->imagineCacheManager->getBrowserPath($path, 'squared_thumbnail_64')
             ];
         }
     }

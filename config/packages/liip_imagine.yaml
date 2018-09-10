@@ -23,13 +23,33 @@ liip_imagine:
                 strip: ~
 
                 # scale and square the image to the given dimensions
+#                upscale:
+#                    min: [253, 253]
+#                downscale:
+#                    max: [253, 253]
+                relative_resize:
+                    heighten: 253
+                    widen: 253
                 thumbnail:
-                    size:          [253, 253]
-                    mode:          outbound
+                    size: [253, 253]
+                    mode: outbound
                     allow_upscale: true
 
-                # create border by placing image on larger black background
-                background:
-                    size:     [256, 256]
-                    position: center
-                    color:    '#fff'
+#                # create border by placing image on larger black background
+#                background:
+#                    size:     [256, 256]
+#                    position: center
+#                    color:    '#fff'
+        squared_thumbnail_64:
+            jpeg_quality:          85
+            png_compression_level: 8
+            filters:
+                auto_rotate: ~
+                strip: ~
+                relative_resize:
+                    heighten: 64
+                    widen: 64
+                thumbnail:
+                    size: [64, 64]
+                    mode: outbound
+                    allow_upscale: true
