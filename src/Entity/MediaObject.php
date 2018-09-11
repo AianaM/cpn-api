@@ -26,7 +26,7 @@ use ApiPlatform\Core\Bridge\Doctrine\Orm\Filter\SearchFilter;
  *     },
  *     attributes={
  *          "normalization_context"={"groups"={"media"}},
- *          "denormalization_context"={"groups"={"media"}}
+ *          "denormalization_context"={"groups"={"media:input"}}
  *     })
  * @ApiFilter(SearchFilter::class, properties={"tags": "partial"})
  * @ORM\Entity(repositoryClass="App\Repository\MediaObjectRepository")
@@ -46,7 +46,7 @@ class MediaObject
      * @var File
      * @Assert\NotNull()
      * @Vich\UploadableField(mapping="media_object", fileNameProperty="contentUrl", size="imageSize")
-     * @Groups({"media"})
+     * @Groups({"media:input"})
      */
     public $file;
 
@@ -59,7 +59,7 @@ class MediaObject
     private $contentUrl;
 
     /**
-     * @var array
+     * @var array|null
      * @Groups({"media", "realty", "user"})
      */
     public $links;
@@ -87,19 +87,19 @@ class MediaObject
      * @ORM\Column(type="array", nullable=true)
      * @var array
      * @Assert\Type("array")
-     * @Groups({"media", "realty"})
+     * @Groups({"media", "realty", "media:input"})
      */
     private $tags;
 
     /**
      * @ORM\OneToMany(targetEntity="App\Entity\User", mappedBy="photo")
-     * @Groups({"media"})
+     * @Groups({"media", "media:input"})
      */
     private $users;
 
     /**
      * @ORM\ManyToMany(targetEntity="App\Entity\Realty", mappedBy="mediaObjects")
-     * @Groups({"media"})
+     * @Groups({"media", "media:input"})
      */
     private $realties;
 

@@ -33,13 +33,13 @@ class Realty
     private $category;
 
     /**
-     * @ORM\Column(type="integer", nullable=true)
+     * @ORM\Column(type="decimal", precision=5, scale=2, nullable=true)
      * @Groups({"realty","address"})
      */
     private $area;
 
     /**
-     * @ORM\Column(type="integer", nullable=true)
+     * @ORM\Column(type="decimal", precision=5, scale=2, nullable=true)
      * @Groups({"realty","address"})
      */
     private $price;
@@ -75,7 +75,7 @@ class Realty
     private $cadastralNumber;
 
     /**
-     * @ORM\Column(type="integer", nullable=true)
+     * @ORM\Column(type="decimal", precision=5, scale=2, nullable=true)
      * @Groups({"realty"})
      */
     private $fee;
