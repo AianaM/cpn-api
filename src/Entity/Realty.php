@@ -7,6 +7,7 @@ use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Serializer\Annotation\Groups;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * @ApiResource(
@@ -33,13 +34,17 @@ class Realty
     private $category;
 
     /**
+     * @Assert\Range(min=0, max=99999)
+     *
      * @ORM\Column(type="decimal", precision=5, scale=2, nullable=true)
      * @Groups({"realty","address"})
      */
     private $area;
 
     /**
-     * @ORM\Column(type="decimal", precision=5, scale=2, nullable=true)
+     * @Assert\Range(min=0, max=9999999999)
+     *
+     * @ORM\Column(type="decimal", precision=10, scale=2, nullable=true)
      * @Groups({"realty","address"})
      */
     private $price;
@@ -75,7 +80,9 @@ class Realty
     private $cadastralNumber;
 
     /**
-     * @ORM\Column(type="decimal", precision=5, scale=2, nullable=true)
+     * @Assert\Range(min=0, max=99999)
+     *
+     * @ORM\Column(type="decimal", precision=10, scale=2, nullable=true)
      * @Groups({"realty"})
      */
     private $fee;
@@ -93,13 +100,13 @@ class Realty
     private $hiddenInfo;
 
     /**
-     * @ORM\Column(type="integer", nullable=true)
+     * @ORM\Column(type="smallint", nullable=true)
      * @Groups({"realty"})
      */
     private $rooms;
 
     /**
-     * @ORM\Column(type="integer", nullable=true)
+     * @ORM\Column(type="smallint", nullable=true)
      * @Groups({"realty"})
      */
     private $floor;
@@ -142,24 +149,24 @@ class Realty
         return $this;
     }
 
-    public function getArea(): ?int
+    public function getArea(): ?string
     {
         return $this->area;
     }
 
-    public function setArea(?int $area): self
+    public function setArea(?string $area): self
     {
         $this->area = $area;
 
         return $this;
     }
 
-    public function getPrice(): ?int
+    public function getPrice(): ?string
     {
         return $this->price;
     }
 
-    public function setPrice(?int $price): self
+    public function setPrice(?string $price): self
     {
         $this->price = $price;
 
@@ -240,12 +247,12 @@ class Realty
         return $this;
     }
 
-    public function getFee(): ?int
+    public function getFee(): ?string
     {
         return $this->fee;
     }
 
-    public function setFee(?int $fee): self
+    public function setFee(?string $fee): self
     {
         $this->fee = $fee;
 

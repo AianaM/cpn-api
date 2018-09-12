@@ -8,7 +8,7 @@ use Doctrine\Migrations\AbstractMigration;
 /**
  * Auto-generated Migration: Please modify to your needs!
  */
-final class Version20180905143237 extends AbstractMigration
+final class Version20180911073933 extends AbstractMigration
 {
     public function up(Schema $schema) : void
     {
@@ -34,7 +34,7 @@ final class Version20180905143237 extends AbstractMigration
         $this->addSql('CREATE TABLE media_object (id INT NOT NULL, created_user_id INT NOT NULL, content_url VARCHAR(255) NOT NULL, image_size INT NOT NULL, created_at TIMESTAMP(0) WITHOUT TIME ZONE NOT NULL, tags TEXT DEFAULT NULL, PRIMARY KEY(id))');
         $this->addSql('CREATE INDEX IDX_14D43132E104C1D3 ON media_object (created_user_id)');
         $this->addSql('COMMENT ON COLUMN media_object.tags IS \'(DC2Type:array)\'');
-        $this->addSql('CREATE TABLE realty (id INT NOT NULL, manager_id INT DEFAULT NULL, realty INT NOT NULL, category VARCHAR(255) NOT NULL, area INT DEFAULT NULL, price INT DEFAULT NULL, description JSON DEFAULT NULL, status VARCHAR(255) NOT NULL, cadastral_number VARCHAR(255) DEFAULT NULL, fee INT DEFAULT NULL, exclusive BOOLEAN DEFAULT \'false\' NOT NULL, hidden_info JSON DEFAULT NULL, rooms INT DEFAULT NULL, floor INT DEFAULT NULL, owner JSON NOT NULL, PRIMARY KEY(id))');
+        $this->addSql('CREATE TABLE realty (id INT NOT NULL, manager_id INT DEFAULT NULL, realty INT NOT NULL, category VARCHAR(255) NOT NULL, area NUMERIC(5, 2) DEFAULT NULL, price NUMERIC(5, 2) DEFAULT NULL, description JSON DEFAULT NULL, status VARCHAR(255) NOT NULL, cadastral_number VARCHAR(255) DEFAULT NULL, fee NUMERIC(5, 2) DEFAULT NULL, exclusive BOOLEAN DEFAULT \'false\' NOT NULL, hidden_info JSON DEFAULT NULL, rooms INT DEFAULT NULL, floor INT DEFAULT NULL, owner JSON NOT NULL, PRIMARY KEY(id))');
         $this->addSql('CREATE INDEX IDX_627221C783E3463 ON realty (manager_id)');
         $this->addSql('CREATE INDEX IDX_627221C627221C ON realty (realty)');
         $this->addSql('COMMENT ON COLUMN realty.description IS \'(DC2Type:json_array)\'');

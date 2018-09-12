@@ -53,8 +53,8 @@ class MediaObjectController extends AbstractController
             ->find($id);
 
         $path = $vichUploaderHelper->asset($media, 'file');
-
-        return new RedirectResponse($imagineCacheManager->resolve($path, $filter), 302);
+        return new RedirectResponse($imagineCacheManager->getBrowserPath($path, $filter), 302);
+//        return new RedirectResponse($imagineCacheManager->resolve($path, $filter), 302);
     }
 
 }
