@@ -8,21 +8,25 @@
 
 namespace App\Controller;
 
+use App\Entity\MediaObject;
 use App\Form\MultiMediaObjectsType;
 use Symfony\Bridge\Doctrine\RegistryInterface;
 use Symfony\Component\Form\FormFactoryInterface;
 use Symfony\Component\HttpFoundation\Request;
-
+use Symfony\Component\Security\Core\Authorization\AuthorizationCheckerInterface;
+use Symfony\Component\Security\Core\Exception\AccessDeniedException;
 
 class CreateMultipleMediaObjectAction
 {
     private $doctrine;
     private $factory;
+    private $authChecker;
 
-    public function __construct(RegistryInterface $doctrine, FormFactoryInterface $factory)
+    public function __construct(RegistryInterface $doctrine, FormFactoryInterface $factory, AuthorizationCheckerInterface $authChecker)
     {
         $this->doctrine = $doctrine;
         $this->factory = $factory;
+        $this->authChecker = $authChecker;
     }
 
     public function __invoke(Request $request)
@@ -37,7 +41,14 @@ class CreateMultipleMediaObjectAction
             $mediaObjects = $data['mediaObjects'];
 
             foreach ($mediaObjects as $mediaObject) {
-                $em->persist($mediaObject);
+                if ($mediaObject instanceof MediaObject) {
+                    if (false === $this->authChecker->isGranted('ROLE_ADMIN') && false === $this->authChecker->isGranted('ROLE_MANAGER') &&
+                        !$mediaObject->getRealties()->isEmpty()) {
+                        $em->clear();
+                        throw new AccessDeniedException('Только менеджеры могут добавлять фотографии к объектам');
+                    }
+                    $em->persist($mediaObject);
+                }
             }
             $em->flush();
 

@@ -2,16 +2,11 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="a9e7079d-a76e-4f83-a7d8-b05a5588615f" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/Serializer/AdminContextBuilder.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/config/services.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/config/services.yaml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Controller/CreateMediaObjectAction.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/CreateMediaObjectAction.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Controller/UserController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/UserController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Controller/CreateMultipleMediaObjectAction.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/CreateMultipleMediaObjectAction.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Entity/Address.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/Address.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Entity/MediaObject.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/MediaObject.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Entity/Realty.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/Realty.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Entity/Stream.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/Stream.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Entity/User.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/User.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/EventListener/UserSubscriber.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/EventListener/UserSubscriber.php" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -96,9 +91,9 @@
           <entry key="category" value="1" />
           <entry key="dist" value="4" />
           <entry key="env" value="8" />
-          <entry key="media_object" value="4" />
+          <entry key="media_object" value="5" />
           <entry key="migration_versions" value="1" />
-          <entry key="php" value="424" />
+          <entry key="php" value="436" />
           <entry key="product" value="2" />
           <entry key="realty" value="5" />
           <entry key="realty_media_object" value="1" />
@@ -111,8 +106,8 @@
       </usages-collector>
       <usages-collector id="statistics.file.types.open">
         <counts>
-          <entry key="Database Element" value="44" />
-          <entry key="PHP" value="424" />
+          <entry key="Database Element" value="45" />
+          <entry key="PHP" value="436" />
           <entry key="PLAIN_TEXT" value="12" />
           <entry key="Scratch" value="15" />
           <entry key="Twig" value="1" />
@@ -122,7 +117,7 @@
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
           <entry key="env" value="1" />
-          <entry key="php" value="11896" />
+          <entry key="php" value="12524" />
           <entry key="sql" value="231" />
           <entry key="twig" value="1" />
           <entry key="txt" value="1" />
@@ -131,7 +126,7 @@
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
-          <entry key="PHP" value="11896" />
+          <entry key="PHP" value="12524" />
           <entry key="PLAIN_TEXT" value="2" />
           <entry key="Scratch" value="231" />
           <entry key="Twig" value="1" />
@@ -148,15 +143,40 @@
       <usages-collector id="statistics.php.composer.actions" />
       <usages-collector id="statistics.php.new.test" />
       <usages-collector id="statistics.php.composer.command.options" />
+      <usages-collector id="statistics.vcs.git.usages" />
     </session>
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/Entity/Realty.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="142">
-              <caret line="60" column="7" lean-forward="true" selection-start-line="60" selection-start-column="7" selection-end-line="60" selection-end-column="7" />
+            <state relative-caret-position="345">
+              <caret line="23" column="8" selection-start-line="23" selection-start-column="8" selection-end-line="23" selection-end-column="8" />
+              <folding>
+                <element signature="e#30#74#0#PHP" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/Entity/MediaObject.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="3165">
+              <caret line="211" column="33" selection-start-line="211" selection-start-column="20" selection-end-line="211" selection-end-column="33" />
+              <folding>
+                <element signature="e#30#72#0#PHP" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/Entity/Stream.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="165">
+              <caret line="11" column="7" selection-start-line="11" selection-start-column="7" selection-end-line="11" selection-end-column="7" />
               <folding>
                 <element signature="e#30#74#0#PHP" expanded="true" />
               </folding>
@@ -167,10 +187,22 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/Entity/User.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="510">
-              <caret line="34" column="1" lean-forward="true" selection-start-line="34" selection-start-column="1" selection-end-line="34" selection-end-column="1" />
+            <state relative-caret-position="375">
+              <caret line="25" column="74" selection-start-line="25" selection-start-column="74" selection-end-line="25" selection-end-column="74" />
               <folding>
                 <element signature="e#30#62#0#PHP" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/Entity/Address.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="375">
+              <caret line="25" column="8" lean-forward="true" selection-start-line="25" selection-start-column="8" selection-end-line="25" selection-end-column="8" />
+              <folding>
+                <element signature="e#30#72#0#PHP" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -218,14 +250,12 @@
         <option value="$PROJECT_DIR$/config/packages/framework.yaml" />
         <option value="$PROJECT_DIR$/src/Entity/Product.php" />
         <option value="$PROJECT_DIR$/src/Entity/Category.php" />
-        <option value="$PROJECT_DIR$/src/Entity/Address.php" />
         <option value="$PROJECT_DIR$/src/Controller/RealtyMediaObjectsAction.php" />
         <option value="$PROJECT_DIR$/src/Controller/CreateRealtyMediaObjectsAction.php" />
         <option value="$PROJECT_DIR$/src/Form/RealtyMediaObjectsType.php" />
         <option value="$PROJECT_DIR$/src/Form/MultiMediaObjectsType.php" />
         <option value="$PROJECT_DIR$/src/Form/RealtyMediaObjectType.php" />
         <option value="$PROJECT_DIR$/src/Controller/RealtyMediaObjectAction.php" />
-        <option value="$PROJECT_DIR$/src/Controller/CreateMultipleMediaObjectAction.php" />
         <option value="$PROJECT_DIR$/src/EventListener/StreamSubscriber.php" />
         <option value="$PROJECT_DIR$/src/Form/MediaObjectType.php" />
         <option value="$PROJECT_DIR$/src/EventListener/MediaObjectSubscriber.php" />
@@ -237,13 +267,15 @@
         <option value="$PROJECT_DIR$/src/Controller/MediaObjectController.php" />
         <option value="$PROJECT_DIR$/src/EventListener/UserSubscriber.php" />
         <option value="$PROJECT_DIR$/src/Serializer/AdminContextBuilder.php" />
-        <option value="$PROJECT_DIR$/src/Entity/User.php" />
         <option value="$PROJECT_DIR$/src/Controller/UserController.php" />
         <option value="$PROJECT_DIR$/config/services.yaml" />
-        <option value="$PROJECT_DIR$/src/Entity/MediaObject.php" />
         <option value="$PROJECT_DIR$/src/Controller/CreateMediaObjectAction.php" />
         <option value="$PROJECT_DIR$/src/Entity/Stream.php" />
+        <option value="$PROJECT_DIR$/src/Entity/User.php" />
+        <option value="$PROJECT_DIR$/src/Entity/MediaObject.php" />
+        <option value="$PROJECT_DIR$/src/Controller/CreateMultipleMediaObjectAction.php" />
         <option value="$PROJECT_DIR$/src/Entity/Realty.php" />
+        <option value="$PROJECT_DIR$/src/Entity/Address.php" />
       </list>
     </option>
   </component>
@@ -410,18 +442,6 @@
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="Entity" type="462c0819:PsiDirectoryNode" />
             </path>
-            <path>
-              <item name="cpn-api" type="b2602c69:ProjectViewProjectNode" />
-              <item name="cpn-api" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="EventListener" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="cpn-api" type="b2602c69:ProjectViewProjectNode" />
-              <item name="cpn-api" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="Serializer" type="462c0819:PsiDirectoryNode" />
-            </path>
           </expand>
           <select />
         </subPane>
@@ -470,18 +490,18 @@
       <workItem from="1535443072945" duration="26062000" />
       <workItem from="1535680864560" duration="20740000" />
       <workItem from="1536032676214" duration="27231000" />
-      <workItem from="1536830109051" duration="8879000" />
+      <workItem from="1536830109051" duration="14595000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="200638000" />
+    <option name="totallyTimeSpent" value="206354000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="0" width="1680" height="1050" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.49895614" visible="true" weight="0.15506716" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.49895614" visible="true" weight="0.21733822" />
       <window_info id="Favorites" order="1" side_tool="true" />
       <window_info id="Structure" order="2" sideWeight="0.50104386" weight="0.25885227" />
       <window_info anchor="bottom" id="Message" order="0" />
@@ -562,14 +582,6 @@
     <option name="myLimit" value="2678400000" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="das://412047b9-36e3-4b59-a724-ec33796e6860/database/aiana-miachina_cpn/schema/public/table/media_object" />
-    <entry file="file://$PROJECT_DIR$/vendor/doctrine/orm/lib/Doctrine/ORM/EntityManager.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="311">
-          <caret line="358" selection-start-line="358" selection-end-line="358" />
-        </state>
-      </provider>
-    </entry>
     <entry file="das://412047b9-36e3-4b59-a724-ec33796e6860/database/aiana-miachina_cpn/schema/public/table/app_users">
       <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
         <state>
@@ -681,16 +693,6 @@
           <caret line="55" selection-start-line="55" selection-end-line="55" />
           <folding>
             <element signature="e#119#141#0#PHP" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Entity/Address.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-1558">
-          <caret line="33" column="7" lean-forward="true" selection-start-line="33" selection-start-column="7" selection-end-line="33" selection-end-column="7" />
-          <folding>
-            <element signature="e#30#72#0#PHP" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -808,16 +810,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Controller/MediaObjectController.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="780">
-          <caret line="57" column="5" lean-forward="true" selection-start-line="57" selection-start-column="5" selection-end-line="57" selection-end-column="5" />
-          <folding>
-            <element signature="e#117#144#0#PHP" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/config/services.yaml">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="765">
@@ -831,26 +823,6 @@
           <caret line="79" column="52" selection-start-line="78" selection-start-column="8" selection-end-line="79" selection-end-column="52" />
           <folding>
             <element signature="e#119#146#0#PHP" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Controller/CreateMultipleMediaObjectAction.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="510">
-          <caret line="39" column="43" selection-start-line="39" selection-start-column="43" selection-end-line="39" selection-end-column="43" />
-          <folding>
-            <element signature="e#116#151#0#PHP" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Entity/MediaObject.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="330">
-          <caret line="22" column="194" selection-start-line="22" selection-start-column="194" selection-end-line="22" selection-end-column="194" />
-          <folding>
-            <element signature="e#30#72#0#PHP" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -875,6 +847,40 @@
         </state>
       </provider>
     </entry>
+    <entry file="das://412047b9-36e3-4b59-a724-ec33796e6860/database/aiana-miachina_cpn/schema/public/table/media_object">
+      <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
+        <state>
+          <filtering enabled="true" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="das://412047b9-36e3-4b59-a724-ec33796e6860/database/aiana-miachina_cpn/schema/public/table/media_object">
+      <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
+        <state>
+          <filtering enabled="true" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Controller/CreateMultipleMediaObjectAction.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="615">
+          <caret line="46" column="37" selection-start-line="46" selection-start-column="37" selection-end-line="46" selection-end-column="37" />
+          <folding>
+            <element signature="e#116#143#0#PHP" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Controller/MediaObjectController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="780">
+          <caret line="57" column="5" selection-start-line="57" selection-start-column="5" selection-end-line="57" selection-end-column="5" />
+          <folding>
+            <element signature="e#117#144#0#PHP" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/Entity/Stream.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="165">
@@ -887,20 +893,40 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/Entity/User.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="510">
-          <caret line="34" column="1" lean-forward="true" selection-start-line="34" selection-start-column="1" selection-end-line="34" selection-end-column="1" />
+        <state relative-caret-position="375">
+          <caret line="25" column="74" selection-start-line="25" selection-start-column="74" selection-end-line="25" selection-end-column="74" />
           <folding>
             <element signature="e#30#62#0#PHP" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/Entity/MediaObject.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="3165">
+          <caret line="211" column="33" selection-start-line="211" selection-start-column="20" selection-end-line="211" selection-end-column="33" />
+          <folding>
+            <element signature="e#30#72#0#PHP" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/Entity/Realty.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="142">
-          <caret line="60" column="7" lean-forward="true" selection-start-line="60" selection-start-column="7" selection-end-line="60" selection-end-column="7" />
+        <state relative-caret-position="345">
+          <caret line="23" column="8" selection-start-line="23" selection-start-column="8" selection-end-line="23" selection-end-column="8" />
           <folding>
             <element signature="e#30#74#0#PHP" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Entity/Address.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="375">
+          <caret line="25" column="8" lean-forward="true" selection-start-line="25" selection-start-column="8" selection-end-line="25" selection-end-column="8" />
+          <folding>
+            <element signature="e#30#72#0#PHP" expanded="true" />
           </folding>
         </state>
       </provider>

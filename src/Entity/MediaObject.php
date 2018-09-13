@@ -21,10 +21,10 @@ use ApiPlatform\Core\Bridge\Doctrine\Orm\Filter\SearchFilter;
  *     collectionOperations={
  *          "get",
  *          "post"={"method"="POST", "path"="/media_objects", "controller"=CreateMediaObjectAction::class, "defaults"={"_api_receive"=false}, "access_control"="is_granted('IS_AUTHENTICATED_FULLY')"},
- *          "postMultiple"={"method"="POST", "path"="/media_objects/multi", "controller"=CreateMultipleMediaObjectAction::class, "defaults"={"_api_receive"=false},
- *     "normalization_context"={"groups"={"realty"}}}
+ *          "postMultiple"={"method"="POST", "path"="/media_objects/multi", "controller"=CreateMultipleMediaObjectAction::class, "defaults"={"_api_receive"=false}, "access_control"="is_granted('IS_AUTHENTICATED_FULLY')"}
  *     },
  *     attributes={
+ *          "access_control_message"="Только зарегистрированные пользователи могут загружать файлы",
  *          "normalization_context"={"groups"={"media"}},
  *          "denormalization_context"={"groups"={"media:input"}}
  *     })
@@ -38,7 +38,7 @@ class MediaObject
      * @ORM\Id()
      * @ORM\GeneratedValue()
      * @ORM\Column(type="integer")
-     * @Groups({"media", "realty", "user"})
+     * @Groups({"media", "realty:input", "realty:output", "user"})
      */
     private $id;
 
@@ -54,32 +54,32 @@ class MediaObject
      * @var string
      * @ORM\Column(type="string", length=255)
      * @ApiProperty(iri="http://schema.org/contentUrl")
-     * @Groups({"media", "realty", "user"})
+     * @Groups({"media", "realty:output", "user"})
      */
     private $contentUrl;
 
     /**
      * @var array|null
-     * @Groups({"media", "realty", "user"})
+     * @Groups({"media", "realty:output", "user"})
      */
     public $links;
 
     /**
      * @ORM\Column(type="integer")
-     * @Groups({"media", "realty"})
+     * @Groups({"media"})
      */
     private $imageSize;
 
     /**
      * @ORM\Column(type="datetime")
-     * @Groups({"media", "realty"})
+     * @Groups({"media"})
      */
     private $createdAt;
 
     /**
      * @ORM\ManyToOne(targetEntity="App\Entity\User")
      * @ORM\JoinColumn(nullable=false)
-     * @Groups({"media", "realty"})
+     * @Groups({"media"})
      */
     private $createdUser;
 
@@ -87,7 +87,7 @@ class MediaObject
      * @ORM\Column(type="array", nullable=true)
      * @var array
      * @Assert\Type("array")
-     * @Groups({"media", "realty", "media:input"})
+     * @Groups({"media", "realty:input", "realty:output", "media:input"})
      */
     private $tags;
 

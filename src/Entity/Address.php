@@ -14,7 +14,16 @@ use ApiPlatform\Core\Serializer\Filter\GroupFilter;
 /**
  * @ApiResource(
  *     normalizationContext={"groups"={"address"}},
- *     denormalizationContext={"groups"={"address"}}
+ *     denormalizationContext={"groups"={"address"}},
+ *     attributes={"access_control_message"="Только менеджеры могут создавать и изменять объявления"},
+ *     collectionOperations={
+ *          "post"={"access_control"="is_granted('ROLE_ADMIN') or is_granted('ROLE_MANAGER')"},
+ *          "get"
+ *     },
+ *     itemOperations={
+ *          "put"={"access_control"="is_granted('ROLE_ADMIN') or is_granted('ROLE_MANAGER')"},
+ *          "get"
+ *     }
  * )
  * @ApiFilter(GroupFilter::class, arguments={"parameterName": "groups", "overrideDefaultGroups": false, "whitelist": {"street"}})
  * @ORM\Entity(repositoryClass="App\Repository\AddressRepository")
@@ -23,7 +32,7 @@ use ApiPlatform\Core\Serializer\Filter\GroupFilter;
 class Address
 {
     /**
-     * @Groups({"address", "realty"})
+     * @Groups({"address", "realty:input", "realty:output"})
      *
      * @ORM\Id()
      * @ORM\GeneratedValue()
@@ -32,70 +41,70 @@ class Address
     private $id;
 
     /**
-     * @Groups({"address", "realty", "street"})
+     * @Groups({"address", "realty:input", "realty:output", "street"})
      *
      * @ORM\Column(type="string", length=255)
      */
     private $street;
 
     /**
-     * @Groups({"address", "realty", "street"})
+     * @Groups({"address", "realty:input", "realty:output", "street"})
      *
      * @ORM\Column(type="string", length=255)
      */
     private $number;
 
     /**
-     * @Groups({"address", "realty"})
+     * @Groups({"address", "realty:input", "realty:output"})
      *
      * @ORM\Column(type="string", length=255)
      */
     private $district;
 
     /**
-     * @Groups({"address", "realty"})
+     * @Groups({"address", "realty:input", "realty:output"})
      *
      * @ORM\Column(type="string", length=255, nullable=true)
      */
     private $name;
 
     /**
-     * @Groups({"address", "realty"})
+     * @Groups({"address", "realty:input", "realty:output"})
      *
      * @ORM\Column(type="string", length=255, nullable=true)
      */
     private $type;
 
     /**
-     * @Groups({"address", "realty"})
+     * @Groups({"address", "realty:input", "realty:output"})
      *
      * @ORM\Column(type="string", length=255, nullable=true)
      */
     private $developer;
 
     /**
-     * @Groups({"address", "realty"})
+     * @Groups({"address", "realty:input", "realty:output"})
      *
      * @ORM\Column(type="boolean", options={"default"=false})
      */
     private $newBuilding = false;
 
     /**
-     * @Groups({"address", "realty"})
+     * @Groups({"address", "realty:input", "realty:output"})
      *
      * @ORM\Column(type="integer", nullable=true)
      */
     private $year;
 
     /**
-     * @Groups({"address", "realty"})
+     * @Groups({"address", "realty:input", "realty:output"})
      *
      * @ORM\Column(type="integer", nullable=true)
      */
     private $floors;
 
     /**
-     * @Groups({"address", "realty"})
+     * @Groups({"address", "realty:input", "realty:output"})
      *
      * @ORM\Column(type="json_array", nullable=true)
      */

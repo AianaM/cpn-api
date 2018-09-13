@@ -11,8 +11,17 @@ use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * @ApiResource(
- *     normalizationContext={"groups"={"realty"}},
- *     denormalizationContext={"groups"={"realty"}}
+ *     normalizationContext={"groups"={"realty:output"}},
+ *     denormalizationContext={"groups"={"realty:input"}},
+ *     attributes={"access_control_message"="Только менеджеры могут создавать и изменять объявления"},
+ *     collectionOperations={
+ *          "post"={"access_control"="is_granted('ROLE_ADMIN') or is_granted('ROLE_MANAGER')"},
+ *          "get"
+ *     },
+ *     itemOperations={
+ *          "put"={"access_control"="is_granted('ROLE_ADMIN') or is_granted('ROLE_MANAGER')"},
+ *          "get"
+ *     }
  * )
  * @ORM\Entity(repositoryClass="App\Repository\RealtyRepository")
  */
@@ -22,14 +31,14 @@ class Realty
      * @ORM\Id()
      * @ORM\GeneratedValue()
      * @ORM\Column(type="integer")
-     * @Groups({"realty", "address"})
+     * @Groups({"realty:input", "realty:output", "address"})
      */
     private $id;
 
     /**
      * @var string
      * @ORM\Column(type="string", length=255)
-     * @Groups({"realty","address"})
+     * @Groups({"realty:input", "realty:output", "address"})
      */
     private $category;
 
@@ -37,7 +46,7 @@ class Realty
      * @Assert\Range(min=0, max=99999)
      *
      * @ORM\Column(type="decimal", precision=5, scale=2, nullable=true)
-     * @Groups({"realty","address"})
+     * @Groups({"realty:input", "realty:output", "address"})
      */
     private $area;
 
@@ -45,37 +54,37 @@ class Realty
      * @Assert\Range(min=0, max=9999999999)
      *
      * @ORM\Column(type="decimal", precision=10, scale=2, nullable=true)
-     * @Groups({"realty","address"})
+     * @Groups({"realty:input", "realty:output", "address"})
      */
     private $price;
 
     /**
      * @ORM\Column(type="json_array", nullable=true)
-     * @Groups({"realty"})
+     * @Groups({"realty:input", "realty:output"})
      */
     private $description;
 
     /**
      * @ORM\Column(type="string", length=255)
-     * @Groups({"realty"})
+     * @Groups({"realty:input", "realty:output"})
      */
     private $status;
 
     /**
      * @ORM\ManyToOne(targetEntity="App\Entity\User")
-     * @Groups({"realty"})
+     * @Groups({"realty:input", "realty:output"})
      */
     private $manager;
 
     /**
      * @ORM\ManyToMany(targetEntity="App\Entity\MediaObject", inversedBy="realties")
-     * @Groups({"realty"})
+     * @Groups({"realty:input", "realty:output"})
      */
     private $mediaObjects;
 
     /**
      * @ORM\Column(type="string", length=255, nullable=true)
-     * @Groups({"adminOrManager:input", "adminOrManager:output"})
+     * @Groups({"realty:input", "adminOrManager:output"})
      */
     private $cadastralNumber;
 
@@ -83,31 +92,31 @@ class Realty
      * @Assert\Range(min=0, max=99999)
      *
      * @ORM\Column(type="decimal", precision=10, scale=2, nullable=true)
-     * @Groups({"adminOrManager:input", "adminOrManager:output"})
+     * @Groups({"realty:input", "adminOrManager:output"})
      */
     private $fee;
 
     /**
      * @ORM\Column(type="boolean", options={"default"=false})
-     * @Groups({"adminOrManager:input", "adminOrManager:output"})
+     * @Groups({"realty:input", "adminOrManager:output"})
      */
     private $exclusive = false;
 
     /**
      * @ORM\Column(type="json_array", nullable=true)
-     * @Groups({"adminOrManager:input", "adminOrManager:output"})
+     * @Groups({"realty:input", "adminOrManager:output"})
      */
     private $hiddenInfo;
 
     /**
      * @ORM\Column(type="smallint", nullable=true)
-     * @Groups({"realty"})
+     * @Groups({"realty:input", "realty:output"})
      */
     private $rooms;
 
     /**
      * @ORM\Column(type="smallint", nullable=true)
-     * @Groups({"realty"})
+     * @Groups({"realty:input", "realty:output"})
      */
     private $floor;
 
@@ -117,13 +126,13 @@ class Realty
      *
      * @ORM\ManyToOne(targetEntity="App\Entity\Address", inversedBy="realty", cascade={"persist"})
      * @ORM\JoinColumn(name="realty", nullable=false, referencedColumnName="id")
-     * @Groups({"realty"})
+     * @Groups({"realty:input", "realty:output"})
      */
     private $address;
 
     /**
      * @ORM\Column(type="json_array")
-     * @Groups({"adminOrManager:input", "adminOrManager:output"})
+     * @Groups({"realty:input", "adminOrManager:output"})
      */
     private $owner;
 
