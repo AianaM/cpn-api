@@ -14,11 +14,16 @@ use ApiPlatform\Core\Bridge\Doctrine\Orm\Filter\SearchFilter;
 /**
  * @ApiResource(
  *     normalizationContext={"groups"={"user"}},
- *     denormalizationContext={"groups"={"user"}},
+ *     denormalizationContext={"groups"={"user:input"}},
  *     collectionOperations={"get",
  *     "post"={"denormalization_context"={"groups"={"createUser"}}},
  *     "byLastName"={"denormalization_context"={"groups"={"lastName"}}},
  *     "authState"={"pagination_enabled"=false,"filters"={}, "_api_receive"=false}
+ *     },
+ *     itemOperations={
+ *         "get"={"access_control"="(is_granted('ROLE_USER') and object == user) or is_granted('ROLE_MANAGER') or is_granted('ROLE_ADMIN')", "access_control_message"="У вас не достаточно прав"},
+ *         "put"={"access_control"="is_granted('ROLE_USER') and object == user", "access_control_message"="У вас не достаточно прав"},
+ *         "saveRoles"={"denormalization_context"={"groups"={"userRoles"}}}
  *     }
  * )
  * @ApiFilter(SearchFilter::class, properties={"email": "exact", "roles": "partial"})
@@ -32,7 +37,7 @@ class User implements UserInterface
      * @ORM\Id()
      * @ORM\GeneratedValue()
      * @ORM\Column(type="integer")
-     * @Groups({"user"})
+     * @Groups({"user", "userRoles"})
      */
     private $id;
 
@@ -40,7 +45,7 @@ class User implements UserInterface
      * @ORM\Column(type="string", length=255, unique=true)
      * @Assert\NotBlank()
      * @Assert\Email()
-     * @Groups({"user", "createUser"})
+     * @Groups({"user", "createUser", "user:input"})
      */
     private $email;
 
@@ -54,25 +59,25 @@ class User implements UserInterface
 
     /**
      * @ORM\Column(type="array")
-     * @Groups({"user"})
+     * @Groups({"user", "userRoles"})
      */
     private $roles;
 
     /**
      * @var array
      * @Orm\Column(type="json_array", nullable=true, options={"jsonb": true})
-     * @Groups({"user", "lastName", "createUser"})
+     * @Groups({"user", "lastName", "createUser", "user:input"})
      */
     private $name;
 
     /**
      * @ORM\ManyToOne(targetEntity="App\Entity\MediaObject", inversedBy="users")
-     * @Groups({"user"})
+     * @Groups({"user", "user:input"})
      */
     private $photo;
 
     /**
-     * @Groups({"user"})
+     * @Groups({"user", "userRoles"})
      */
     private $teamCard;
 
@@ -125,7 +130,14 @@ class User implements UserInterface
 
     public function setName(array $name): self
     {
-        $this->name = $name;
+//        $this->name = $name;
+        if (array_key_exists('lastName', $name)) {
+            $this->name['lastName'] = $name['lastName'];
+        }
+
+        if (array_key_exists('firstName', $name)) {
+            $this->name['firstName'] = $name['firstName'];
+        }
 
         return $this;
     }
@@ -158,7 +170,7 @@ class User implements UserInterface
 
     public function getTeamCard()
     {
-        if(array_key_exists('teamCard', $this->name)){
+        if (array_key_exists('teamCard', $this->name)) {
             $this->teamCard = $this->name['teamCard'];
         }
         return $this->teamCard;

@@ -38,5 +38,24 @@ class UserController extends AbstractController
         return $this->getUser();
     }
 
+    /**
+     * @Route("/saveRoles/{id}", name="saveRoles", methods={"PUT"},
+     *     defaults={
+     *         "_api_resource_class"=User::class,
+     *         "_api_item_operation_name"="saveRoles"
+     *     })
+     * @param User $data
+     * @return User|null
+     */
+    public function saveRolesAction(User $data): User
+    {
+        $this->denyAccessUnlessGranted('ROLE_ADMIN', null, 'Вы не можете изменять права');
+
+        $em = $this->getDoctrine()->getManager();
+        $em->persist($data);
+        $em->flush();
+
+        return $data;
+    }
 
 }

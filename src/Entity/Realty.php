@@ -75,7 +75,7 @@ class Realty
 
     /**
      * @ORM\Column(type="string", length=255, nullable=true)
-     * @Groups({"realty"})
+     * @Groups({"adminOrManager:input", "adminOrManager:output"})
      */
     private $cadastralNumber;
 
@@ -83,19 +83,19 @@ class Realty
      * @Assert\Range(min=0, max=99999)
      *
      * @ORM\Column(type="decimal", precision=10, scale=2, nullable=true)
-     * @Groups({"realty"})
+     * @Groups({"adminOrManager:input", "adminOrManager:output"})
      */
     private $fee;
 
     /**
      * @ORM\Column(type="boolean", options={"default"=false})
-     * @Groups({"realty"})
+     * @Groups({"adminOrManager:input", "adminOrManager:output"})
      */
     private $exclusive = false;
 
     /**
      * @ORM\Column(type="json_array", nullable=true)
-     * @Groups({"realty"})
+     * @Groups({"adminOrManager:input", "adminOrManager:output"})
      */
     private $hiddenInfo;
 
@@ -123,7 +123,7 @@ class Realty
 
     /**
      * @ORM\Column(type="json_array")
-     * @Groups({"realty"})
+     * @Groups({"adminOrManager:input", "adminOrManager:output"})
      */
     private $owner;
 

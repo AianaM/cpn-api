@@ -8,6 +8,8 @@ use Symfony\Component\Serializer\Annotation\Groups;
 
 /**
  * @ApiResource(attributes={
+ *     "access_control"="is_granted('ROLE_MANAGER') or is_granted('ROLE_ADMIN')",
+ *     "access_control_message"="У вас не достаточно прав",
  *     "normalization_context"={"groups"={"stream", "stream-user", "user"}},
  *     "order"={"createdAt": "DESC"}
  * })

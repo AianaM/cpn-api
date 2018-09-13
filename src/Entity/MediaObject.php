@@ -20,7 +20,7 @@ use ApiPlatform\Core\Bridge\Doctrine\Orm\Filter\SearchFilter;
  * @ApiResource(iri="http://schema.org/MediaObject",
  *     collectionOperations={
  *          "get",
- *          "post"={"method"="POST", "path"="/media_objects", "controller"=CreateMediaObjectAction::class, "defaults"={"_api_receive"=false}},
+ *          "post"={"method"="POST", "path"="/media_objects", "controller"=CreateMediaObjectAction::class, "defaults"={"_api_receive"=false}, "access_control"="is_granted('IS_AUTHENTICATED_FULLY')"},
  *          "postMultiple"={"method"="POST", "path"="/media_objects/multi", "controller"=CreateMultipleMediaObjectAction::class, "defaults"={"_api_receive"=false},
  *     "normalization_context"={"groups"={"realty"}}}
  *     },
