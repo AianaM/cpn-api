@@ -106,7 +106,7 @@ class Address
     /**
      * @Groups({"address", "realty:input", "realty:output"})
      *
-     * @ORM\Column(type="json_array", nullable=true)
+     * @ORM\Column(type="json_array", nullable=true, options={"jsonb": true})
      */
     private $description;
 

@@ -53,8 +53,8 @@
     <schema id="10" parent="2" name="public">
       <ObjectId>34929117</ObjectId>
       <Owner>aiana-miachina_cpn</Owner>
-      <IntrospectionTimestamp>2018-09-11.16:41:21.367</IntrospectionTimestamp>
-      <IntrospectionStateNumber>117528907</IntrospectionStateNumber>
+      <IntrospectionTimestamp>2018-09-15.23:26:38.235</IntrospectionTimestamp>
+      <IntrospectionStateNumber>119072053</IntrospectionStateNumber>
       <Current>1</Current>
       <Visible>1</Visible>
     </schema>
@@ -145,7 +145,7 @@
     <table id="23" parent="10" name="address">
       <ObjectId>34929247</ObjectId>
       <Owner>aiana-miachina_cpn</Owner>
-      <StateNumber>117528907</StateNumber>
+      <StateNumber>119072053</StateNumber>
     </table>
     <table id="24" parent="10" name="app_users">
       <ObjectId>34929259</ObjectId>
@@ -165,7 +165,7 @@
     <table id="27" parent="10" name="realty">
       <ObjectId>34929287</ObjectId>
       <Owner>aiana-miachina_cpn</Owner>
-      <StateNumber>117528907</StateNumber>
+      <StateNumber>119071886</StateNumber>
     </table>
     <table id="28" parent="10" name="realty_media_object">
       <ObjectId>34929302</ObjectId>
@@ -254,9 +254,9 @@
     <column id="41" parent="23" name="description">
       <Position>11</Position>
       <Comment>(DC2Type:json_array)</Comment>
-      <DataType>json|0s</DataType>
-      <StateNumber>117528907</StateNumber>
-      <TypeId>114</TypeId>
+      <DataType>jsonb|0s</DataType>
+      <StateNumber>119072053</StateNumber>
+      <TypeId>3802</TypeId>
     </column>
     <index id="42" parent="23" name="address_pkey">
       <ObjectId>34929257</ObjectId>
@@ -460,17 +460,17 @@
     </column>
     <column id="73" parent="27" name="price">
       <Position>6</Position>
-      <DataType>numeric(5,2 digit)|0s</DataType>
-      <StateNumber>117528907</StateNumber>
+      <DataType>numeric(10,2 digit)|0s</DataType>
+      <StateNumber>117555010</StateNumber>
       <DefaultExpression>NULL::numeric</DefaultExpression>
       <TypeId>1700</TypeId>
     </column>
     <column id="74" parent="27" name="description">
       <Position>7</Position>
       <Comment>(DC2Type:json_array)</Comment>
-      <DataType>json|0s</DataType>
-      <StateNumber>117528907</StateNumber>
-      <TypeId>114</TypeId>
+      <DataType>jsonb|0s</DataType>
+      <StateNumber>119071325</StateNumber>
+      <TypeId>3802</TypeId>
     </column>
     <column id="75" parent="27" name="status">
       <Position>8</Position>
@@ -488,8 +488,8 @@
     </column>
     <column id="77" parent="27" name="fee">
       <Position>10</Position>
-      <DataType>numeric(5,2 digit)|0s</DataType>
-      <StateNumber>117528907</StateNumber>
+      <DataType>numeric(10,2 digit)|0s</DataType>
+      <StateNumber>117555010</StateNumber>
       <DefaultExpression>NULL::numeric</DefaultExpression>
       <TypeId>1700</TypeId>
     </column>
@@ -504,29 +504,29 @@
     <column id="79" parent="27" name="hidden_info">
       <Position>12</Position>
       <Comment>(DC2Type:json_array)</Comment>
-      <DataType>json|0s</DataType>
-      <StateNumber>117528907</StateNumber>
-      <TypeId>114</TypeId>
+      <DataType>jsonb|0s</DataType>
+      <StateNumber>119071860</StateNumber>
+      <TypeId>3802</TypeId>
     </column>
     <column id="80" parent="27" name="rooms">
       <Position>13</Position>
-      <DataType>integer|0s</DataType>
-      <StateNumber>117528907</StateNumber>
-      <TypeId>23</TypeId>
+      <DataType>smallint|0s</DataType>
+      <StateNumber>117554591</StateNumber>
+      <TypeId>21</TypeId>
     </column>
     <column id="81" parent="27" name="floor">
       <Position>14</Position>
-      <DataType>integer|0s</DataType>
-      <StateNumber>117528907</StateNumber>
-      <TypeId>23</TypeId>
+      <DataType>smallint|0s</DataType>
+      <StateNumber>117554591</StateNumber>
+      <TypeId>21</TypeId>
     </column>
     <column id="82" parent="27" name="owner">
       <Position>15</Position>
       <Comment>(DC2Type:json_array)</Comment>
-      <DataType>json|0s</DataType>
+      <DataType>jsonb|0s</DataType>
       <NotNull>1</NotNull>
-      <StateNumber>117528907</StateNumber>
-      <TypeId>114</TypeId>
+      <StateNumber>119071886</StateNumber>
+      <TypeId>3802</TypeId>
     </column>
     <index id="83" parent="27" name="realty_pkey">
       <ObjectId>34929298</ObjectId>

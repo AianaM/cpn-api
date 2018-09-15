@@ -59,7 +59,7 @@ class Realty
     private $price;
 
     /**
-     * @ORM\Column(type="json_array", nullable=true)
+     * @ORM\Column(type="json_array", nullable=true, options={"jsonb": true})
      * @Groups({"realty:input", "realty:output"})
      */
     private $description;
@@ -103,7 +103,7 @@ class Realty
     private $exclusive = false;
 
     /**
-     * @ORM\Column(type="json_array", nullable=true)
+     * @ORM\Column(type="json_array", nullable=true, options={"jsonb": true})
      * @Groups({"realty:input", "adminOrManager:output"})
      */
     private $hiddenInfo;
@@ -131,7 +131,7 @@ class Realty
     private $address;
 
     /**
-     * @ORM\Column(type="json_array")
+     * @ORM\Column(type="json_array", options={"jsonb": true})
      * @Groups({"realty:input", "adminOrManager:output"})
      */
     private $owner;
