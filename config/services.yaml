@@ -53,3 +53,7 @@ services:
     App\Serializer\AdminContextBuilder:
         decorates: 'api_platform.serializer.context_builder'
         autoconfigure: false
+
+    App\Filter\AndPartialFilter:
+    # Uncomment only if autoconfiguration isn't enabled
+    #tags: [ 'api_platform.filter' ]

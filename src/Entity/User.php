@@ -10,15 +10,18 @@ use ApiPlatform\Core\Annotation\ApiResource;
 use Symfony\Component\Serializer\Annotation\Groups;
 use ApiPlatform\Core\Annotation\ApiFilter;
 use ApiPlatform\Core\Bridge\Doctrine\Orm\Filter\SearchFilter;
+use App\Filter\AndPartialFilter;
 
 /**
  * @ApiResource(
  *     normalizationContext={"groups"={"user"}},
  *     denormalizationContext={"groups"={"user:input"}},
- *     collectionOperations={"get",
+ *     collectionOperations={
+ *     "get"={"access_control"="is_granted('ROLE_ADMIN') or is_granted('ROLE_MANAGER')", "access_control_message"="У вас не достаточно прав"},
  *     "post"={"denormalization_context"={"groups"={"createUser"}}},
  *     "byLastName"={"denormalization_context"={"groups"={"lastName"}}},
- *     "authState"={"pagination_enabled"=false,"filters"={}, "_api_receive"=false}
+ *     "authState"={"pagination_enabled"=false,"filters"={}, "_api_receive"=false},
+ *     "team"={"normalization_context"={"groups"={"team"}}}
  *     },
  *     itemOperations={
  *         "get"={"access_control"="(is_granted('ROLE_USER') and object == user) or is_granted('ROLE_MANAGER') or is_granted('ROLE_ADMIN')", "access_control_message"="У вас не достаточно прав"},
@@ -26,7 +29,8 @@ use ApiPlatform\Core\Bridge\Doctrine\Orm\Filter\SearchFilter;
  *         "saveRoles"={"denormalization_context"={"groups"={"userRoles"}}}
  *     }
  * )
- * @ApiFilter(SearchFilter::class, properties={"email": "exact", "roles": "partial"})
+ * @ApiFilter(SearchFilter::class, properties={"email": "exact"})
+ * @ApiFilter(AndPartialFilter::class, properties={"roles": "partial"})
  * @ORM\Table(name="app_users")
  * @ORM\Entity(repositoryClass="App\Repository\UserRepository")
  * @UniqueEntity(fields="email", message="Email already taken")
@@ -37,7 +41,7 @@ class User implements UserInterface
      * @ORM\Id()
      * @ORM\GeneratedValue()
      * @ORM\Column(type="integer")
-     * @Groups({"user", "userRoles"})
+     * @Groups({"user", "userRoles", "realty:input", "realty:output"})
      */
     private $id;
 
@@ -77,7 +81,7 @@ class User implements UserInterface
     private $photo;
 
     /**
-     * @Groups({"user", "userRoles"})
+     * @Groups({"user", "userRoles", "team", "realty:output"})
      */
     private $teamCard;
 

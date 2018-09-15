@@ -26,7 +26,7 @@ class UserRepository extends ServiceEntityRepository
         $rsm = new ResultSetMappingBuilder($em);
         $rsm->addRootEntityFromClassMetadata('App\Entity\User', 'alias');
 
-        $selectClause = $rsm->generateSelectClause([ 'alias' => 'table_alias' ]);
+        $selectClause = $rsm->generateSelectClause(['alias' => 'table_alias']);
 
         $sql = 'SELECT * FROM app_users WHERE name::json->>\'lastName\' LIKE :value';
 
@@ -36,6 +36,19 @@ class UserRepository extends ServiceEntityRepository
         $object = $query->getOneOrNullResult();
 
         return $object;
+    }
+
+    /**
+     * @return User[] Returns an array of User objects
+     */
+    public function findAllByRoleTeammate()
+    {
+        return $this->createQueryBuilder('u')
+            ->andWhere('u.roles LIKE :val')
+            ->setParameter('val', '%ROLE_TEAMMATE%')
+            ->orderBy('u.id', 'ASC')
+            ->getQuery()
+            ->getResult();
     }
 
 //    /**

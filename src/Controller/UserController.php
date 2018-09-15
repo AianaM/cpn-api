@@ -58,4 +58,18 @@ class UserController extends AbstractController
         return $data;
     }
 
+    /**
+     * @Route("/team", name="team", methods={"GET"},
+     *     defaults={
+     *         "_api_resource_class"=User::class,
+     *         "_api_collection_operation_name"="team"
+     *     })
+     * @return User[]|null
+     */
+    public function getTeamAction()
+    {
+        return $this->getDoctrine()->getRepository(User::class)
+            ->findAllByRoleTeammate();
+    }
+
 }
