@@ -57,3 +57,4 @@ services:
     App\Filter\AndPartialFilter:
     # Uncomment only if autoconfiguration isn't enabled
     #tags: [ 'api_platform.filter' ]
+    App\Filter\SearchJsonbFilter:
