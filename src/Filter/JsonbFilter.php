@@ -7,6 +7,7 @@
  */
 
 namespace App\Filter;
+
 use Doctrine\ORM\Mapping\ClassMetaData;
 use Doctrine\ORM\Query\Filter\SQLFilter;
 
@@ -21,8 +22,12 @@ final class JsonbFilter extends SQLFilter
             return '';
         }
 
-        return sprintf('%s.%s->>%s LIKE %s', $targetTableAlias, $this->property,
-            $this->getParameter('key'), $this->getParameter('value'));
+        $key = $this->getParameter('key');
+        $value = $this->getParameter('value');
+        if ($key === '\'any\'') {
+            return sprintf('%s.%s::jsonb::text LIKE %s', $targetTableAlias, $this->property, $value);
+        }
+        return sprintf('%s.%s->>%s LIKE %s', $targetTableAlias, $this->property, $key, $value);
     }
 
     public function setResource(string $resourceClass, string $property): void

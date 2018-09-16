@@ -2,12 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="a9e7079d-a76e-4f83-a7d8-b05a5588615f" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/Filter/JsonbFilter.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Filter/SearchJsonbFilter.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/config/packages/doctrine.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/config/packages/doctrine.yaml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/config/services.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/config/services.yaml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Entity/Realty.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/Realty.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Filter/JsonbFilter.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Filter/JsonbFilter.php" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -106,12 +102,12 @@
           <entry key="env" value="8" />
           <entry key="media_object" value="5" />
           <entry key="migration_versions" value="1" />
-          <entry key="php" value="495" />
+          <entry key="php" value="500" />
           <entry key="product" value="2" />
           <entry key="realty" value="9" />
           <entry key="realty_media_object" value="1" />
           <entry key="refresh_tokens" value="5" />
-          <entry key="sql" value="22" />
+          <entry key="sql" value="23" />
           <entry key="stream" value="8" />
           <entry key="twig" value="1" />
           <entry key="yaml" value="96" />
@@ -120,9 +116,9 @@
       <usages-collector id="statistics.file.types.open">
         <counts>
           <entry key="Database Element" value="52" />
-          <entry key="PHP" value="495" />
+          <entry key="PHP" value="500" />
           <entry key="PLAIN_TEXT" value="12" />
-          <entry key="Scratch" value="22" />
+          <entry key="Scratch" value="23" />
           <entry key="Twig" value="1" />
           <entry key="YAML" value="96" />
         </counts>
@@ -130,8 +126,8 @@
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
           <entry key="env" value="1" />
-          <entry key="php" value="13993" />
-          <entry key="sql" value="1049" />
+          <entry key="php" value="14100" />
+          <entry key="sql" value="1094" />
           <entry key="twig" value="1" />
           <entry key="txt" value="5" />
           <entry key="yaml" value="451" />
@@ -139,10 +135,10 @@
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
-          <entry key="PHP" value="13993" />
+          <entry key="PHP" value="14100" />
           <entry key="PLAIN_TEXT" value="6" />
           <entry key="SQL" value="11" />
-          <entry key="Scratch" value="1038" />
+          <entry key="Scratch" value="1083" />
           <entry key="Twig" value="1" />
           <entry key="YAML" value="451" />
         </counts>
@@ -163,24 +159,12 @@
   <component name="FileEditorManager">
     <leaf>
       <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/Entity/Realty.php">
+        <entry file="file://$PROJECT_DIR$/src/Filter/JsonbFilter.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="405">
-              <caret line="28" column="58" selection-start-line="28" selection-start-column="58" selection-end-line="28" selection-end-column="58" />
+            <state relative-caret-position="315">
+              <caret line="26" column="29" selection-start-line="26" selection-start-column="29" selection-end-line="26" selection-end-column="29" />
               <folding>
-                <element signature="e#30#72#0#PHP" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/Entity/User.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="480">
-              <caret line="32" column="1" selection-start-line="32" selection-start-column="1" selection-end-line="32" selection-end-column="71" />
-              <folding>
-                <element signature="e#30#62#0#PHP" expanded="true" />
+                <element signature="e#110#149#0#PHP" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -253,13 +237,13 @@
         <option value="$PROJECT_DIR$/src/Filter/AndPartialFilter.php" />
         <option value="$PROJECT_DIR$/src/Entity/User.php" />
         <option value="$PROJECT_DIR$/src/Entity/Address.php" />
-        <option value="$APPLICATION_CONFIG_DIR$/consoles/db/412047b9-36e3-4b59-a724-ec33796e6860/console.sql" />
         <option value="$PROJECT_DIR$/src/Annotation/RealtyAware.php" />
-        <option value="$PROJECT_DIR$/src/Filter/JsonbFilter.php" />
-        <option value="$PROJECT_DIR$/src/Filter/SearchJsonbFilter.php" />
         <option value="$PROJECT_DIR$/config/packages/doctrine.yaml" />
         <option value="$PROJECT_DIR$/config/services.yaml" />
+        <option value="$PROJECT_DIR$/src/Filter/SearchJsonbFilter.php" />
         <option value="$PROJECT_DIR$/src/Entity/Realty.php" />
+        <option value="$APPLICATION_CONFIG_DIR$/consoles/db/412047b9-36e3-4b59-a724-ec33796e6860/console.sql" />
+        <option value="$PROJECT_DIR$/src/Filter/JsonbFilter.php" />
       </list>
     </option>
   </component>
@@ -411,12 +395,6 @@
             <path>
               <item name="cpn-api" type="b2602c69:ProjectViewProjectNode" />
               <item name="cpn-api" type="462c0819:PsiDirectoryNode" />
-              <item name="config" type="462c0819:PsiDirectoryNode" />
-              <item name="packages" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="cpn-api" type="b2602c69:ProjectViewProjectNode" />
-              <item name="cpn-api" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
@@ -453,7 +431,7 @@
   <component name="PropertiesComponent">
     <property name="DatabaseDriversLRU" value="postgresql" />
     <property name="WebServerToolWindowFactoryState" value="true" />
-    <property name="database.console.LAST_STATE" value="true" />
+    <property name="database.console.LAST_STATE" value="false" />
     <property name="last_opened_file_path" value="$USER_HOME$/.npm/node-sass/4.9.3/darwin-x64-57_binding.node" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
@@ -503,13 +481,13 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="238945000" />
+    <option name="totallyTimeSpent" value="241231000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="0" width="1680" height="1050" extended-state="0" />
     <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.49895614" visible="true" weight="0.23443224" />
+      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.49895614" visible="true" weight="0.23443224" />
       <window_info id="Favorites" order="1" side_tool="true" />
       <window_info id="Structure" order="2" sideWeight="0.50104386" weight="0.25885227" />
       <window_info anchor="bottom" id="Message" order="0" />
@@ -519,7 +497,7 @@
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" />
-      <window_info active="true" anchor="bottom" id="Database Console" order="7" visible="true" weight="0.32985386" />
+      <window_info anchor="bottom" id="Database Console" order="7" weight="0.32985386" />
       <window_info anchor="bottom" id="Docker" order="8" show_stripe_button="false" />
       <window_info anchor="bottom" id="Version Control" order="9" weight="0.32985386" />
       <window_info anchor="bottom" id="Database Changes" order="10" weight="0.32985386" />
@@ -805,6 +783,9 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="739">
           <caret line="56" column="40" lean-forward="true" selection-start-line="56" selection-start-column="23" selection-end-line="56" selection-end-column="40" />
+          <folding>
+            <element signature="e#30#72#0#PHP" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -812,6 +793,9 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1392">
           <caret line="108" column="76" selection-start-line="108" selection-start-column="76" selection-end-line="108" selection-end-column="76" />
+          <folding>
+            <element signature="e#30#72#0#PHP" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -819,6 +803,9 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-139">
           <caret line="11" column="7" selection-start-line="11" selection-start-column="7" selection-end-line="11" selection-end-column="7" />
+          <folding>
+            <element signature="e#30#74#0#PHP" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -831,13 +818,6 @@
             <column name="hidden_info" languageId="JSON" />
             <column name="owner" languageId="JSON" />
           </column-attributes>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$APPLICATION_CONFIG_DIR$/consoles/db/412047b9-36e3-4b59-a724-ec33796e6860/console.sql">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="45">
-          <caret line="3" column="51" selection-start-line="3" selection-start-column="51" selection-end-line="3" selection-end-column="51" />
         </state>
       </provider>
     </entry>
@@ -882,40 +862,41 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/Filter/SearchJsonbFilter.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="390">
-          <caret line="31" selection-start-line="31" selection-end-line="31" />
-          <folding>
-            <element signature="e#112#187#0#PHP" expanded="true" />
-          </folding>
+        <state relative-caret-position="420">
+          <caret line="35" column="33" lean-forward="true" selection-start-line="35" selection-start-column="33" selection-end-line="35" selection-end-column="33" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Filter/JsonbFilter.php">
+    <entry file="file://$PROJECT_DIR$/src/Entity/Realty.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="315">
-          <caret line="26" column="72" selection-start-line="26" selection-start-column="20" selection-end-line="26" selection-end-column="72" />
+        <state relative-caret-position="63">
+          <caret line="29" column="53" selection-start-line="29" selection-start-column="53" selection-end-line="29" selection-end-column="53" />
           <folding>
-            <element signature="e#110#149#0#PHP" expanded="true" />
+            <element signature="e#30#72#0#PHP" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/Entity/User.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="480">
-          <caret line="32" column="1" selection-start-line="32" selection-start-column="1" selection-end-line="32" selection-end-column="71" />
-          <folding>
-            <element signature="e#30#62#0#PHP" expanded="true" />
-          </folding>
+        <state relative-caret-position="165">
+          <caret line="11" selection-start-line="11" selection-end-line="11" selection-end-column="61" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Entity/Realty.php">
+    <entry file="file://$APPLICATION_CONFIG_DIR$/consoles/db/412047b9-36e3-4b59-a724-ec33796e6860/console.sql">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="405">
-          <caret line="28" column="58" selection-start-line="28" selection-start-column="58" selection-end-line="28" selection-end-column="58" />
+        <state relative-caret-position="75">
+          <caret line="5" lean-forward="true" selection-start-line="5" selection-end-line="5" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Filter/JsonbFilter.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="315">
+          <caret line="26" column="29" selection-start-line="26" selection-start-column="29" selection-end-line="26" selection-end-column="29" />
           <folding>
-            <element signature="e#30#72#0#PHP" expanded="true" />
+            <element signature="e#110#149#0#PHP" expanded="true" />
           </folding>
         </state>
       </provider>
