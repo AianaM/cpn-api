@@ -10,8 +10,9 @@ use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Serializer\Annotation\Groups;
 use Symfony\Component\Validator\Constraints as Assert;
 use ApiPlatform\Core\Bridge\Doctrine\Orm\Filter\SearchFilter;
+use ApiPlatform\Core\Bridge\Doctrine\Orm\Filter\BooleanFilter;
+use ApiPlatform\Core\Bridge\Doctrine\Orm\Filter\RangeFilter;
 use App\Filter\SearchJsonbFilter;
-
 /**
  * @ApiResource(
  *     normalizationContext={"groups"={"realty:output"}},
@@ -27,8 +28,12 @@ use App\Filter\SearchJsonbFilter;
  *     }
  * )
  * @ORM\Entity(repositoryClass="App\Repository\RealtyRepository")
- * @ApiFilter(SearchFilter::class, properties={"rooms": "exact"})
- * @ApiFilter(SearchJsonbFilter::class, properties={"owner": "partial"})
+ * @ApiFilter(SearchFilter::class, properties={"rooms": "exact", "category": "exact",
+ *     "address.district": "exact", "address.floors": "exact", "address.developer": "exact", "address.type": "exact",
+ * })
+ * @ApiFilter(BooleanFilter::class, properties={"address.newBuilding"})
+ * @ApiFilter(RangeFilter::class, properties={"price", "area", "address.year"})
+ * @ApiFilter(SearchJsonbFilter::class, properties={"owner": "partial", "description": "partial", "address.description": "partial"})
  */
 class Realty
 {
@@ -50,7 +55,7 @@ class Realty
     /**
      * @Assert\Range(min=0, max=99999)
      *
-     * @ORM\Column(type="decimal", precision=5, scale=2, nullable=true)
+     * @ORM\Column(type="decimal", precision=7, scale=2, nullable=true)
      * @Groups({"realty:input", "realty:output", "address"})
      */
     private $area;
@@ -58,7 +63,7 @@ class Realty
     /**
      * @Assert\Range(min=0, max=9999999999)
      *
-     * @ORM\Column(type="decimal", precision=10, scale=2, nullable=true)
+     * @ORM\Column(type="decimal", precision=12, scale=2, nullable=true)
      * @Groups({"realty:input", "realty:output", "address"})
      */
     private $price;
@@ -94,9 +99,9 @@ class Realty
     private $cadastralNumber;
 
     /**
-     * @Assert\Range(min=0, max=99999)
+     * @Assert\Range(min=0, max=999999)
      *
-     * @ORM\Column(type="decimal", precision=10, scale=2, nullable=true)
+     * @ORM\Column(type="decimal", precision=8, scale=2, nullable=true)
      * @Groups({"realty:input", "adminOrManager:output"})
      */
     private $fee;
@@ -140,6 +145,19 @@ class Realty
      * @Groups({"realty:input", "adminOrManager:output"})
      */
     private $owner;
+
+    /**
+     * @ORM\Column(type="datetime")
+     * @Groups({"realty:input", "realty:output"})
+     */
+    private $updatedAt;
+
+    /**
+     * @ORM\ManyToOne(targetEntity="App\Entity\User")
+     * @ORM\JoinColumn(nullable=false)
+     * @Groups({"realty:output"})
+     */
+    private $updatedUser;
 
     public function __construct()
     {
@@ -341,6 +359,31 @@ class Realty
     public function setOwner($owner): self
     {
         $this->owner = $owner;
+
+        return $this;
+    }
+
+    public function getUpdatedAt()
+    {
+        return $this->updatedAt;
+    }
+
+    public function setUpdatedAt($updatedAt): self
+    {
+        $this->updatedAt = $updatedAt;
+
+        return $this;
+    }
+
+    public function getUpdatedUser()
+    {
+        return $this->updatedUser;
+    }
+
+    public function setUpdatedUser($updatedUser): self
+    {
+        $this->updatedUser = $updatedUser;
+        $this->setUpdatedAt(new \DateTimeImmutable());
 
         return $this;
     }

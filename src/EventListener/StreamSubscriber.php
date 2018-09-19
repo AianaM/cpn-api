@@ -56,8 +56,8 @@ class StreamSubscriber implements EventSubscriber
 
                 $stream->setSnapshot($snapshot);
                 $stream->setItemId($entity->getId());
-                $stream->setItem($em->getClassMetadata(get_class($entity))->getName());
-
+                $item = new \ReflectionClass(get_class($entity));
+                $stream->setItem($item->getShortName());
 
                 $this->stream[] = $stream;
             }
@@ -69,11 +69,11 @@ class StreamSubscriber implements EventSubscriber
                 $stream = new Stream();
 
                 $stream->setCreatedUser($this->getUser());
-                $stream->setAction('insert');
+                $stream->setAction('update');
                 $stream->setSnapshot($uow->getEntityChangeSet($entity));
                 $stream->setItemId($entity->getId());
-                $stream->setItem($em->getClassMetadata(get_class($entity))->getName());
-
+                $item = new \ReflectionClass(get_class($entity));
+                $stream->setItem($item->getShortName());
 
                 $this->stream[] = $stream;
             }
@@ -120,6 +120,14 @@ class StreamSubscriber implements EventSubscriber
         $normalizer->setCircularReferenceHandler(function ($object) {
             return $object->getId();
         });
+
+        $callback = function ($dateTime) {
+            return $dateTime instanceof \DateTime
+                ? $dateTime->format(\DateTime::ISO8601)
+                : '';
+        };
+
+        $normalizer->setCallbacks(array('createdAt' => $callback, 'updatedAt' => $callback));
 
         $serializer = new Serializer(array($normalizer));
         $normalizer->setIgnoredAttributes(array('file', 'password'));

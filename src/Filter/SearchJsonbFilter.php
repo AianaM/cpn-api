@@ -25,9 +25,20 @@ final class SearchJsonbFilter extends AbstractContextAwareFilter
 
         foreach ($value as $key => $val) {
             $filter = $queryBuilder->getEntityManager()->getFilters()->enable('jsonb_filter');
-            $filter->setParameter('key', $key);
-            $filter->setParameter('value', '%'.$val.'%');
-            $filter->setResource($resourceClass, $property);
+            if (is_array($val)) {
+                $filter->setParameter('key', '{' . $key . '}');
+                $filter->setParameter('array', '["' . join('","', $val) . '"]');
+            } else {
+                $filter->setParameter('key', $key);
+                $filter->setParameter('value', '%' . $val . '%');
+            }
+//            $check = explode('.', $property);
+//            if (count($check) > 1) {
+//                $filter->setResource($check[0], $check[1]);
+//            } else {
+//                $filter->setResource($resourceClass, $property);
+//            }
+                $filter->setResource($resourceClass, $property);
         }
     }
 

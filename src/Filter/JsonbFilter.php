@@ -23,6 +23,10 @@ final class JsonbFilter extends SQLFilter
         }
 
         $key = $this->getParameter('key');
+        if($this->hasParameter('array')) {
+            $array = $this->getParameter('array');
+            return sprintf('%s.%s#>%s @> %s::jsonb', $targetTableAlias, $this->property, $key, $array);
+        }
         $value = $this->getParameter('value');
         if ($key === '\'any\'') {
             return sprintf('%s.%s::jsonb::text LIKE %s', $targetTableAlias, $this->property, $value);

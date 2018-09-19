@@ -9,6 +9,7 @@
 namespace App\EventListener;
 
 use App\Entity\MediaObject;
+use App\Entity\Realty;
 use App\Entity\User;
 use Doctrine\Common\EventSubscriber;
 use Doctrine\ORM\Event\LifecycleEventArgs;
@@ -41,6 +42,10 @@ class UserSubscriber implements EventSubscriber
         if ($entity instanceof User && $eventArgs->hasChangedField('password')) {
             $eventArgs->setNewValue('password', $this->encodePassword($entity, $eventArgs->getNewValue('password')));
         }
+        if($entity instanceof Realty) {
+            $entity->setUpdatedUser($this->getUser());
+//            $eventArgs->setNewValue('updatedUser', $this->getUser());
+        }
     }
 
     public function prePersist(LifecycleEventArgs $args)
@@ -56,6 +61,9 @@ class UserSubscriber implements EventSubscriber
         }
         if($entity instanceof MediaObject) {
             $entity->setCreatedUser($this->getUser());
+        }
+        if($entity instanceof Realty) {
+            $entity->setUpdatedUser($this->getUser());
         }
     }
 
