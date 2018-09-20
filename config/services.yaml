@@ -58,3 +58,7 @@ services:
     # Uncomment only if autoconfiguration isn't enabled
     #tags: [ 'api_platform.filter' ]
     App\Filter\SearchJsonbFilter:
+    App\Doctrine\RealtyStatusExtension:
+        tags:
+        - { name: api_platform.doctrine.orm.query_extension.collection, priority: 9 }
+        - { name: api_platform.doctrine.orm.query_extension.item }

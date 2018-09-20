@@ -17,7 +17,8 @@ use App\Filter\SearchJsonbFilter;
  * @ApiResource(
  *     normalizationContext={"groups"={"realty:output"}},
  *     denormalizationContext={"groups"={"realty:input"}},
- *     attributes={"access_control_message"="Только менеджеры могут создавать и изменять объявления"},
+ *     attributes={"order"={"updatedAt": "DESC"},
+ *     "access_control_message"="Только менеджеры могут создавать и изменять объявления"},
  *     collectionOperations={
  *          "post"={"access_control"="is_granted('ROLE_ADMIN') or is_granted('ROLE_MANAGER')"},
  *          "get"

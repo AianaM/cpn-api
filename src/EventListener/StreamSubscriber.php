@@ -64,7 +64,7 @@ class StreamSubscriber implements EventSubscriber
         }
 
         foreach ($uow->getScheduledEntityUpdates() as $entity) {
-            if (!$entity instanceof Stream && !$entity instanceof RefreshToken) {
+            if (!$entity instanceof Stream && !$entity instanceof RefreshToken && !empty($uow->getEntityChangeSet($entity))) {
 
                 $stream = new Stream();
 
