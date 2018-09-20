@@ -37,16 +37,16 @@ services:
         tags:
         - { name: doctrine.event_subscriber, connection: default }
 
-    App\EventListener\StreamSubscriber:
-        arguments:
-            $tokenStorage: '@security.token_storage'
-        tags:
-        - { name: doctrine.event_subscriber, connection: default }
-
     App\EventListener\MediaObjectSubscriber:
         arguments:
             $imagineCacheManager: '@liip_imagine.cache.manager'
             $vichUploaderHelper: '@vich_uploader.templating.helper.uploader_helper'
+        tags:
+        - { name: doctrine.event_subscriber, connection: default }
+
+    App\EventListener\StreamSubscriber:
+        arguments:
+            $tokenStorage: '@security.token_storage'
         tags:
         - { name: doctrine.event_subscriber, connection: default }
 

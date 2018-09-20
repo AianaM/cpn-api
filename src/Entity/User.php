@@ -41,7 +41,7 @@ class User implements UserInterface
      * @ORM\Id()
      * @ORM\GeneratedValue()
      * @ORM\Column(type="integer")
-     * @Groups({"user", "userRoles", "realty:input", "realty:output"})
+     * @Groups({"user", "userRoles", "realty:input", "realty:output", "media"})
      */
     private $id;
 
@@ -70,7 +70,7 @@ class User implements UserInterface
     /**
      * @var array
      * @Orm\Column(type="json_array", nullable=true, options={"jsonb": true})
-     * @Groups({"user", "lastName", "createUser", "user:input"})
+     * @Groups({"user", "lastName", "createUser", "user:input", "media"})
      */
     private $name;
 
@@ -81,7 +81,7 @@ class User implements UserInterface
     private $photo;
 
     /**
-     * @Groups({"user", "userRoles", "team", "realty:output"})
+     * @Groups({"user", "userRoles", "team", "realty:output", "media"})
      */
     private $teamCard;
 
@@ -134,7 +134,6 @@ class User implements UserInterface
 
     public function setName(array $name): self
     {
-//        $this->name = $name;
         if (array_key_exists('lastName', $name)) {
             $this->name['lastName'] = $name['lastName'];
         }

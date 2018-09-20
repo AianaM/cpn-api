@@ -42,9 +42,9 @@ class UserSubscriber implements EventSubscriber
         if ($entity instanceof User && $eventArgs->hasChangedField('password')) {
             $eventArgs->setNewValue('password', $this->encodePassword($entity, $eventArgs->getNewValue('password')));
         }
-        if($entity instanceof Realty) {
+        if($entity instanceof Realty && $eventArgs->getEntityChangeSet() !== null) {
             $entity->setUpdatedUser($this->getUser());
-//            $eventArgs->setNewValue('updatedUser', $this->getUser());
+            $entity->setUpdatedAt(new \DateTimeImmutable());
         }
     }
 
@@ -54,6 +54,7 @@ class UserSubscriber implements EventSubscriber
         if ($entity instanceof User) {
             $entity->setPassword($this->encodePassword($entity, $entity->getPassword()));
             $entity->setRoles(['ROLE_USER']);
+//            $entity->setRoles(['ROLE_USER', 'ROLE_ADMIN']);
             if($entity->getPhoto() === null) {
                 $noPhotoMediaObject = $args->getEntityManager()->getRepository(MediaObject::class)->find(1);
                 $entity->setPhoto($noPhotoMediaObject);
@@ -64,6 +65,7 @@ class UserSubscriber implements EventSubscriber
         }
         if($entity instanceof Realty) {
             $entity->setUpdatedUser($this->getUser());
+            $entity->setUpdatedAt(new \DateTimeImmutable());
         }
     }
 

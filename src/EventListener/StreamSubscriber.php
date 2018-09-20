@@ -8,6 +8,8 @@
 
 namespace App\EventListener;
 
+use App\Entity\MediaObject;
+use App\Entity\Realty;
 use App\Entity\Stream;
 use App\Entity\User;
 use Doctrine\Common\Annotations\AnnotationReader;
@@ -70,8 +72,12 @@ class StreamSubscriber implements EventSubscriber
 
                 $stream->setCreatedUser($this->getUser());
                 $stream->setAction('update');
-                $stream->setSnapshot($uow->getEntityChangeSet($entity));
+
+                $snapshot = $this->convert($entity);
+
+                $stream->setSnapshot($snapshot);
                 $stream->setItemId($entity->getId());
+
                 $item = new \ReflectionClass(get_class($entity));
                 $stream->setItem($item->getShortName());
 
@@ -80,7 +86,22 @@ class StreamSubscriber implements EventSubscriber
         }
 
         foreach ($uow->getScheduledEntityDeletions() as $entity) {
+            if (!$entity instanceof Stream && !$entity instanceof RefreshToken) {
 
+                $stream = new Stream();
+
+                $stream->setCreatedUser($this->getUser());
+                $stream->setAction('delete');
+
+                $snapshot = $this->convert($entity);
+
+                $stream->setSnapshot($snapshot);
+                $stream->setItemId($entity->getId());
+                $item = new \ReflectionClass(get_class($entity));
+                $stream->setItem($item->getShortName());
+
+                $this->stream[] = $stream;
+            }
         }
 
         foreach ($uow->getScheduledCollectionDeletions() as $col) {
@@ -91,13 +112,8 @@ class StreamSubscriber implements EventSubscriber
 
         }
 
-        $uow->computeChangeSets();
-    }
 
-    private function getUser()
-    {
-        $user = $this->tokenStorage->getToken()->getUser();
-        return $user instanceof User ? $user : null;
+        $uow->computeChangeSets();
     }
 
     public function postFlush(PostFlushEventArgs $args)
@@ -113,7 +129,24 @@ class StreamSubscriber implements EventSubscriber
         }
     }
 
-    private function convert($entity){
+    private function getUser()
+    {
+        $user = $this->tokenStorage->getToken()->getUser();
+        return $user instanceof User ? $user : null;
+    }
+
+    private function dateTime($dateTime)
+    {
+        if ($dateTime instanceof \DateTimeImmutable) {
+            return $dateTime->format(\DateTime::ISO8601);
+        }
+        if ($dateTime instanceof \DateTime) {
+            return $dateTime->format(\DateTime::ISO8601);
+        }
+    }
+
+    private function convert($entity)
+    {
         $classMetadataFactory = new ClassMetadataFactory(new AnnotationLoader(new AnnotationReader()));
         $normalizer = new ObjectNormalizer($classMetadataFactory);
 
@@ -122,15 +155,19 @@ class StreamSubscriber implements EventSubscriber
         });
 
         $callback = function ($dateTime) {
-            return $dateTime instanceof \DateTime
-                ? $dateTime->format(\DateTime::ISO8601)
-                : '';
+            return $this->dateTime($dateTime);
         };
 
         $normalizer->setCallbacks(array('createdAt' => $callback, 'updatedAt' => $callback));
 
         $serializer = new Serializer(array($normalizer));
         $normalizer->setIgnoredAttributes(array('file', 'password'));
+        if ($entity instanceof Realty) {
+            return $serializer->normalize($entity, null, ['groups' => ['realty:output']]);
+        }
+        if ($entity instanceof MediaObject) {
+            return $serializer->normalize($entity, null, ['groups' => ['media']]);
+        }
         return $serializer->normalize($entity);
     }
 

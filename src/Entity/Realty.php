@@ -13,6 +13,7 @@ use ApiPlatform\Core\Bridge\Doctrine\Orm\Filter\SearchFilter;
 use ApiPlatform\Core\Bridge\Doctrine\Orm\Filter\BooleanFilter;
 use ApiPlatform\Core\Bridge\Doctrine\Orm\Filter\RangeFilter;
 use App\Filter\SearchJsonbFilter;
+
 /**
  * @ApiResource(
  *     normalizationContext={"groups"={"realty:output"}},
@@ -42,14 +43,14 @@ class Realty
      * @ORM\Id()
      * @ORM\GeneratedValue()
      * @ORM\Column(type="integer")
-     * @Groups({"realty:input", "realty:output", "address"})
+     * @Groups({"realty:input", "realty:output", "address", "media"})
      */
     private $id;
 
     /**
      * @var string
      * @ORM\Column(type="string", length=255)
-     * @Groups({"realty:input", "realty:output", "address"})
+     * @Groups({"realty:input", "realty:output", "address", "media"})
      */
     private $category;
 
@@ -137,7 +138,7 @@ class Realty
      *
      * @ORM\ManyToOne(targetEntity="App\Entity\Address", inversedBy="realty", cascade={"persist"})
      * @ORM\JoinColumn(name="realty", nullable=false, referencedColumnName="id")
-     * @Groups({"realty:input", "realty:output"})
+     * @Groups({"realty:input", "realty:output", "media"})
      */
     private $address;
 
@@ -384,7 +385,6 @@ class Realty
     public function setUpdatedUser($updatedUser): self
     {
         $this->updatedUser = $updatedUser;
-        $this->setUpdatedAt(new \DateTimeImmutable());
 
         return $this;
     }
