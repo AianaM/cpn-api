@@ -3,16 +3,13 @@
   <component name="ChangeListManager">
     <list default="true" id="a9e7079d-a76e-4f83-a7d8-b05a5588615f" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/config/services.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/config/services.yaml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/media/5ba1f7d46a72a678685628.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/media/5ba25e169e22c393281688.jpeg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/media/5ba25e16d6cee037399477.jpeg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/media/5ba25e16f1602437987120.jpeg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/config/packages/liip_imagine.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/config/packages/liip_imagine.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Entity/Address.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/Address.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Entity/MediaObject.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/MediaObject.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Entity/Realty.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/Realty.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Entity/Stream.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/Stream.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Entity/User.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/User.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/EventListener/StreamSubscriber.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/EventListener/StreamSubscriber.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/EventListener/UserSubscriber.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/EventListener/UserSubscriber.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Migrations/Version20180919052302.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/EventListener/MediaObjectSubscriber.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/EventListener/MediaObjectSubscriber.php" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -81,21 +78,23 @@
     <session id="-1784567696">
       <usages-collector id="statistics.lifecycle.project">
         <counts>
-          <entry key="project.closed" value="14" />
+          <entry key="project.closed" value="18" />
+          <entry key="project.open.time.1" value="1" />
           <entry key="project.open.time.10" value="1" />
           <entry key="project.open.time.13" value="1" />
           <entry key="project.open.time.2" value="3" />
-          <entry key="project.open.time.5" value="2" />
+          <entry key="project.open.time.4" value="1" />
+          <entry key="project.open.time.5" value="4" />
           <entry key="project.open.time.6" value="4" />
           <entry key="project.open.time.7" value="1" />
           <entry key="project.open.time.9" value="3" />
-          <entry key="project.opened" value="15" />
+          <entry key="project.opened" value="19" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.open">
         <counts>
           <entry key="address" value="4" />
-          <entry key="app_users" value="19" />
+          <entry key="app_users" value="20" />
           <entry key="category" value="1" />
           <entry key="dist" value="10" />
           <entry key="env" value="18" />
@@ -103,7 +102,7 @@
           <entry key="json" value="1" />
           <entry key="media_object" value="5" />
           <entry key="migration_versions" value="1" />
-          <entry key="php" value="564" />
+          <entry key="php" value="581" />
           <entry key="product" value="2" />
           <entry key="realty" value="13" />
           <entry key="realty_media_object" value="1" />
@@ -111,18 +110,18 @@
           <entry key="sql" value="30" />
           <entry key="stream" value="16" />
           <entry key="twig" value="2" />
-          <entry key="yaml" value="98" />
+          <entry key="yaml" value="101" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.open">
         <counts>
-          <entry key="Database Element" value="67" />
+          <entry key="Database Element" value="68" />
           <entry key="JSON" value="1" />
-          <entry key="PHP" value="564" />
+          <entry key="PHP" value="581" />
           <entry key="PLAIN_TEXT" value="28" />
           <entry key="Scratch" value="30" />
           <entry key="Twig" value="2" />
-          <entry key="YAML" value="98" />
+          <entry key="YAML" value="101" />
           <entry key="htaccess" value="3" />
         </counts>
       </usages-collector>
@@ -131,21 +130,21 @@
           <entry key="cell" value="1" />
           <entry key="dist" value="5" />
           <entry key="env" value="9" />
-          <entry key="php" value="16175" />
+          <entry key="php" value="16279" />
           <entry key="sql" value="1330" />
           <entry key="twig" value="1" />
           <entry key="txt" value="6" />
-          <entry key="yaml" value="460" />
+          <entry key="yaml" value="461" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
-          <entry key="PHP" value="16175" />
+          <entry key="PHP" value="16279" />
           <entry key="PLAIN_TEXT" value="20" />
           <entry key="SQL" value="11" />
           <entry key="Scratch" value="1320" />
           <entry key="Twig" value="1" />
-          <entry key="YAML" value="460" />
+          <entry key="YAML" value="461" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.php.new.class">
@@ -162,36 +161,81 @@
     </session>
   </component>
   <component name="FileEditorManager">
-    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
+    <leaf>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/Controller/UserController.php">
+        <entry file="file://$PROJECT_DIR$/src/Entity/Address.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="750">
-              <caret line="52" selection-start-line="52" selection-end-line="52" />
+            <state relative-caret-position="450">
+              <caret line="30" column="69" selection-start-line="30" selection-start-column="1" selection-end-line="30" selection-end-column="69" />
+              <folding>
+                <element signature="e#30#72#0#PHP" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/EventListener/UserSubscriber.php">
+        <entry file="file://$PROJECT_DIR$/src/Entity/MediaObject.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="378">
-              <caret line="55" column="42" selection-start-line="55" selection-start-column="42" selection-end-line="55" selection-end-column="42" />
+            <state relative-caret-position="390">
+              <caret line="26" column="7" selection-start-line="26" selection-start-column="7" selection-end-line="26" selection-end-column="7" />
               <folding>
-                <element signature="e#119#146#0#PHP" expanded="true" />
+                <element signature="e#30#72#0#PHP" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/EventListener/MediaObjectSubscriber.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="660">
+              <caret line="49" column="1" selection-start-line="49" selection-start-column="1" selection-end-line="49" selection-end-column="1" />
+              <folding>
+                <element signature="e#120#147#0#PHP" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/config/packages/liip_imagine.yaml">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="746">
+              <caret line="58" column="24" selection-start-line="58" selection-start-column="24" selection-end-line="58" selection-end-column="24" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/Entity/Realty.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="300">
+              <caret line="20" column="90" selection-start-line="20" selection-start-column="50" selection-end-line="20" selection-end-column="90" />
+              <folding>
+                <element signature="e#30#72#0#PHP" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/Entity/Stream.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="285">
+              <caret line="19" column="24" selection-start-line="19" selection-start-column="24" selection-end-line="19" selection-end-column="24" />
+              <folding>
+                <element signature="e#30#72#0#PHP" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/EventListener/StreamSubscriber.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1785">
-              <caret line="124" selection-start-line="124" selection-end-line="124" />
-              <folding>
-                <element signature="e#119#146#0#PHP" expanded="true" />
-              </folding>
+            <state relative-caret-position="443">
+              <caret line="54" column="42" selection-start-line="54" selection-start-column="36" selection-end-line="54" selection-end-column="42" />
             </state>
           </provider>
         </entry>
@@ -244,20 +288,16 @@
         <option value="$PROJECT_DIR$/src/Form/RealtyMediaObjectType.php" />
         <option value="$PROJECT_DIR$/src/Controller/RealtyMediaObjectAction.php" />
         <option value="$PROJECT_DIR$/src/Form/MediaObjectType.php" />
-        <option value="$PROJECT_DIR$/src/EventListener/MediaObjectSubscriber.php" />
         <option value="$PROJECT_DIR$/src/Controller/MediaObject.php" />
         <option value="$APPLICATION_CONFIG_DIR$/consoles/db/412047b9-36e3-4b59-a724-ec33796e6860/console_2.sql" />
         <option value="$PROJECT_DIR$/config/packages/nelmio_cors.yaml" />
-        <option value="$PROJECT_DIR$/config/packages/liip_imagine.yaml" />
         <option value="$PROJECT_DIR$/config/packages/dev/web_profiler.yaml" />
         <option value="$PROJECT_DIR$/src/Controller/MediaObjectController.php" />
         <option value="$PROJECT_DIR$/src/Serializer/AdminContextBuilder.php" />
         <option value="$PROJECT_DIR$/src/Controller/CreateMediaObjectAction.php" />
-        <option value="$PROJECT_DIR$/src/Entity/MediaObject.php" />
         <option value="$PROJECT_DIR$/src/Controller/CreateMultipleMediaObjectAction.php" />
         <option value="$PROJECT_DIR$/src/Repository/UserRepository.php" />
         <option value="$PROJECT_DIR$/src/Filter/AndPartialFilter.php" />
-        <option value="$PROJECT_DIR$/src/Entity/Address.php" />
         <option value="$PROJECT_DIR$/src/Annotation/RealtyAware.php" />
         <option value="$PROJECT_DIR$/config/packages/doctrine.yaml" />
         <option value="$PROJECT_DIR$/.htaccess" />
@@ -266,15 +306,19 @@
         <option value="$PROJECT_DIR$/public/.htaccess" />
         <option value="$PROJECT_DIR$/.env.dist" />
         <option value="$PROJECT_DIR$/.env" />
-        <option value="$PROJECT_DIR$/src/Entity/Stream.php" />
         <option value="$PROJECT_DIR$/src/Doctrine/RealtyStatusExtension.php" />
         <option value="$PROJECT_DIR$/config/services.yaml" />
         <option value="$PROJECT_DIR$/src/Controller/UserController.php" />
         <option value="$APPLICATION_CONFIG_DIR$/consoles/db/412047b9-36e3-4b59-a724-ec33796e6860/console.sql" />
         <option value="$PROJECT_DIR$/src/EventListener/UserSubscriber.php" />
-        <option value="$PROJECT_DIR$/src/Entity/Realty.php" />
-        <option value="$PROJECT_DIR$/src/Entity/User.php" />
         <option value="$PROJECT_DIR$/src/EventListener/StreamSubscriber.php" />
+        <option value="$PROJECT_DIR$/src/Entity/User.php" />
+        <option value="$PROJECT_DIR$/src/Entity/Stream.php" />
+        <option value="$PROJECT_DIR$/src/Entity/Realty.php" />
+        <option value="$PROJECT_DIR$/src/Entity/Address.php" />
+        <option value="$PROJECT_DIR$/src/Entity/MediaObject.php" />
+        <option value="$PROJECT_DIR$/config/packages/liip_imagine.yaml" />
+        <option value="$PROJECT_DIR$/src/EventListener/MediaObjectSubscriber.php" />
       </list>
     </option>
   </component>
@@ -422,13 +466,18 @@
             <path>
               <item name="cpn-api" type="b2602c69:ProjectViewProjectNode" />
               <item name="cpn-api" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="config" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="cpn-api" type="b2602c69:ProjectViewProjectNode" />
+              <item name="cpn-api" type="462c0819:PsiDirectoryNode" />
+              <item name="config" type="462c0819:PsiDirectoryNode" />
+              <item name="packages" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="cpn-api" type="b2602c69:ProjectViewProjectNode" />
               <item name="cpn-api" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="Entity" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="cpn-api" type="b2602c69:ProjectViewProjectNode" />
@@ -498,18 +547,22 @@
       <workItem from="1537032697611" duration="1328000" />
       <workItem from="1537276449995" duration="6253000" />
       <workItem from="1537340748416" duration="21998000" />
-      <workItem from="1537453196874" duration="3292000" />
+      <workItem from="1537453196874" duration="3757000" />
+      <workItem from="1537505767636" duration="917000" />
+      <workItem from="1537568877750" duration="6496000" />
+      <workItem from="1537929816680" duration="3177000" />
+      <workItem from="1538383439052" duration="11425000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="293847000" />
+    <option name="totallyTimeSpent" value="316327000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="0" width="1680" height="1050" extended-state="0" />
     <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.49895614" visible="true" weight="0.24236874" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.49895614" visible="true" weight="0.25457877" />
       <window_info id="Favorites" order="1" side_tool="true" />
       <window_info id="Structure" order="2" sideWeight="0.50104386" weight="0.25885227" />
       <window_info anchor="bottom" id="Message" order="0" />
@@ -594,13 +647,6 @@
     <option name="myLimit" value="2678400000" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/config/packages/nelmio_cors.yaml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="120">
-          <caret line="8" lean-forward="true" selection-start-line="8" selection-end-line="8" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/vendor/liip/imagine-bundle/Controller/ImagineController.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="300">
@@ -629,13 +675,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/config/packages/liip_imagine.yaml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="240">
-          <caret line="16" column="8" selection-start-line="16" selection-start-column="8" selection-end-line="16" selection-end-column="8" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/config/packages/dev/web_profiler.yaml">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="90">
@@ -654,13 +693,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state>
           <caret column="1069" selection-start-column="1069" selection-end-column="1069" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Serializer/AdminContextBuilder.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="345">
-          <caret line="31" column="12" selection-start-line="31" selection-start-column="12" selection-end-line="31" selection-end-column="44" />
         </state>
       </provider>
     </entry>
@@ -770,13 +802,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/EventListener/MediaObjectSubscriber.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="540">
-          <caret line="45" column="9" lean-forward="true" selection-start-line="45" selection-start-column="9" selection-end-line="45" selection-end-column="9" />
-        </state>
-      </provider>
-    </entry>
     <entry file="das://412047b9-36e3-4b59-a724-ec33796e6860/database/aiana-miachina_cpn/schema/public/table/address">
       <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
         <state>
@@ -812,16 +837,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="135">
           <caret line="16" column="53" lean-forward="true" selection-start-line="16" selection-start-column="53" selection-end-line="16" selection-end-column="53" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Doctrine/RealtyStatusExtension.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="150">
-          <caret line="15" column="80" selection-start-line="15" selection-start-column="80" selection-end-line="15" selection-end-column="80" />
-          <folding>
-            <element signature="e#114#199#0#PHP" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -868,16 +883,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Entity/Stream.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1536">
-          <caret line="114" column="20" selection-start-line="114" selection-start-column="20" selection-end-line="114" selection-end-column="20" />
-          <folding>
-            <element signature="e#30#74#0#PHP" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$APPLICATION_CONFIG_DIR$/consoles/db/412047b9-36e3-4b59-a724-ec33796e6860/console.sql">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="270">
@@ -892,6 +897,30 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/EventListener/UserSubscriber.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="750">
+          <caret line="55" column="42" selection-start-line="55" selection-start-column="42" selection-end-line="55" selection-end-column="42" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/config/packages/lexik_jwt_authentication.yaml">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Serializer/AdminContextBuilder.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="465">
+          <caret line="39" column="1" lean-forward="true" selection-start-line="39" selection-start-column="1" selection-end-line="39" selection-end-column="1" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Doctrine/RealtyStatusExtension.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="75">
+          <caret line="15" column="80" selection-start-line="15" selection-start-column="80" selection-end-line="15" selection-end-column="80" />
+        </state>
+      </provider>
+    </entry>
     <entry file="das://412047b9-36e3-4b59-a724-ec33796e6860/database/aiana-miachina_cpn/schema/public/table/app_users">
       <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
         <state>
@@ -902,27 +931,31 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/EventListener/UserSubscriber.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="378">
-          <caret line="55" column="42" selection-start-line="55" selection-start-column="42" selection-end-line="55" selection-end-column="42" />
-          <folding>
-            <element signature="e#119#146#0#PHP" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/Controller/UserController.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="750">
-          <caret line="52" selection-start-line="52" selection-end-line="52" />
+        <state relative-caret-position="900">
+          <caret line="62" column="21" selection-start-line="62" selection-start-column="21" selection-end-line="62" selection-end-column="21" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Entity/MediaObject.php">
+    <entry file="file://$PROJECT_DIR$/src/Entity/User.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-409">
-          <caret line="34" column="6" selection-start-line="34" selection-start-column="6" selection-end-line="34" selection-end-column="6" />
+        <state relative-caret-position="104">
+          <caret line="33" column="31" lean-forward="true" selection-start-line="33" selection-start-column="31" selection-end-line="33" selection-end-column="31" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/EventListener/StreamSubscriber.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="443">
+          <caret line="54" column="42" selection-start-line="54" selection-start-column="36" selection-end-line="54" selection-end-column="42" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Entity/Stream.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="285">
+          <caret line="19" column="24" selection-start-line="19" selection-start-column="24" selection-end-line="19" selection-end-column="24" />
           <folding>
             <element signature="e#30#72#0#PHP" expanded="true" />
           </folding>
@@ -931,40 +964,47 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/Entity/Address.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-320">
-          <caret line="50" column="67" selection-start-line="50" selection-start-column="61" selection-end-line="50" selection-end-column="67" />
+        <state relative-caret-position="450">
+          <caret line="30" column="69" selection-start-line="30" selection-start-column="1" selection-end-line="30" selection-end-column="69" />
           <folding>
             <element signature="e#30#72#0#PHP" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Entity/User.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="617">
-          <caret line="83" column="62" selection-start-line="83" selection-start-column="62" selection-end-line="83" selection-end-column="62" />
-          <folding>
-            <element signature="e#30#62#0#PHP" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/Entity/Realty.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2100">
-          <caret line="140" column="56" selection-start-line="140" selection-start-column="56" selection-end-line="140" selection-end-column="56" />
+        <state relative-caret-position="300">
+          <caret line="20" column="90" selection-start-line="20" selection-start-column="50" selection-end-line="20" selection-end-column="90" />
           <folding>
             <element signature="e#30#72#0#PHP" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/EventListener/StreamSubscriber.php">
+    <entry file="file://$PROJECT_DIR$/src/Entity/MediaObject.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1785">
-          <caret line="124" selection-start-line="124" selection-end-line="124" />
+        <state relative-caret-position="390">
+          <caret line="26" column="7" selection-start-line="26" selection-start-column="7" selection-end-line="26" selection-end-column="7" />
           <folding>
-            <element signature="e#119#146#0#PHP" expanded="true" />
+            <element signature="e#30#72#0#PHP" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/config/packages/liip_imagine.yaml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="746">
+          <caret line="58" column="24" selection-start-line="58" selection-start-column="24" selection-end-line="58" selection-end-column="24" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/EventListener/MediaObjectSubscriber.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="660">
+          <caret line="49" column="1" selection-start-line="49" selection-start-column="1" selection-end-line="49" selection-end-column="1" />
+          <folding>
+            <element signature="e#120#147#0#PHP" expanded="true" />
           </folding>
         </state>
       </provider>

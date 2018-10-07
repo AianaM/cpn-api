@@ -24,11 +24,12 @@ use ApiPlatform\Core\Bridge\Doctrine\Orm\Filter\SearchFilter;
  *          "postMultiple"={"method"="POST", "path"="/media_objects/multi", "controller"=CreateMultipleMediaObjectAction::class, "defaults"={"_api_receive"=false}, "access_control"="is_granted('IS_AUTHENTICATED_FULLY')"}
  *     },
  *     attributes={
+ *          "pagination_client_items_per_page"=true,
  *          "access_control_message"="Только зарегистрированные пользователи могут загружать файлы",
  *          "normalization_context"={"groups"={"media"}},
  *          "denormalization_context"={"groups"={"media:input"}}
  *     })
- * @ApiFilter(SearchFilter::class, properties={"tags": "partial"})
+ * @ApiFilter(SearchFilter::class, properties={"tags": "ipartial"})
  * @ORM\Entity(repositoryClass="App\Repository\MediaObjectRepository")
  * @Vich\Uploadable
  */
@@ -38,7 +39,7 @@ class MediaObject
      * @ORM\Id()
      * @ORM\GeneratedValue()
      * @ORM\Column(type="integer")
-     * @Groups({"media", "realty:input", "realty:output", "user"})
+     * @Groups({"media", "realty:input", "realty:output", "user", "user:input"})
      */
     private $id;
 

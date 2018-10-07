@@ -53,3 +53,11 @@ liip_imagine:
                     size: [64, 64]
                     mode: outbound
                     allow_upscale: true
+        thumbnail_1080:
+            filters:
+                auto_rotate: ~
+                strip: ~
+                thumbnail:
+                    size: [1080, 1080]
+                    mode: outbound
+                    allow_upscale: true

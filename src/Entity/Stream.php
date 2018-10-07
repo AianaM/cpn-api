@@ -2,9 +2,11 @@
 
 namespace App\Entity;
 
+use ApiPlatform\Core\Annotation\ApiFilter;
 use ApiPlatform\Core\Annotation\ApiResource;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Serializer\Annotation\Groups;
+use ApiPlatform\Core\Bridge\Doctrine\Orm\Filter\SearchFilter;
 
 /**
  * @ApiResource(attributes={
@@ -14,6 +16,9 @@ use Symfony\Component\Serializer\Annotation\Groups;
  *     "order"={"createdAt": "DESC"}
  * })
  * @ORM\Entity(repositoryClass="App\Repository\StreamRepository")
+ * @ApiFilter(SearchFilter::class, properties={"action": "exact", "item": "exact",
+ *     "itemId": "exact"
+ * })
  */
 class Stream
 {

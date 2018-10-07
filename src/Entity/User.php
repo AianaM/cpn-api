@@ -142,6 +142,10 @@ class User implements UserInterface
             $this->name['firstName'] = $name['firstName'];
         }
 
+        if (array_key_exists('phone', $name)) {
+            $this->name['phone'] = $name['phone'];
+        }
+
         return $this;
     }
 

@@ -18,7 +18,7 @@ use App\Filter\SearchJsonbFilter;
  * @ApiResource(
  *     normalizationContext={"groups"={"realty:output"}},
  *     denormalizationContext={"groups"={"realty:input"}},
- *     attributes={"order"={"updatedAt": "DESC"},
+ *     attributes={"order"={"updatedAt": "DESC"}, "pagination_client_items_per_page"=true,
  *     "access_control_message"="Только менеджеры могут создавать и изменять объявления"},
  *     collectionOperations={
  *          "post"={"access_control"="is_granted('ROLE_ADMIN') or is_granted('ROLE_MANAGER')"},
@@ -31,7 +31,9 @@ use App\Filter\SearchJsonbFilter;
  * )
  * @ORM\Entity(repositoryClass="App\Repository\RealtyRepository")
  * @ApiFilter(SearchFilter::class, properties={"rooms": "exact", "category": "exact",
- *     "address.district": "exact", "address.floors": "exact", "address.developer": "exact", "address.type": "exact",
+ *     "address.district": "exact", "address.street": "exact", "address.number": "exact",
+ *     "address.floors": "exact", "address.developer": "exact", "address.type": "exact",
+ *     "manager.id": "exact"
  * })
  * @ApiFilter(BooleanFilter::class, properties={"address.newBuilding"})
  * @ApiFilter(RangeFilter::class, properties={"price", "area", "address.year"})

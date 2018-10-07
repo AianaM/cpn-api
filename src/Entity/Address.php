@@ -10,6 +10,8 @@ use Doctrine\ORM\Mapping as ORM;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 use Symfony\Component\Serializer\Annotation\Groups;
 use ApiPlatform\Core\Serializer\Filter\GroupFilter;
+use ApiPlatform\Core\Bridge\Doctrine\Orm\Filter\SearchFilter;
+use ApiPlatform\Core\Bridge\Doctrine\Orm\Filter\BooleanFilter;
 
 /**
  * @ApiResource(
@@ -26,6 +28,8 @@ use ApiPlatform\Core\Serializer\Filter\GroupFilter;
  *     }
  * )
  * @ApiFilter(GroupFilter::class, arguments={"parameterName": "groups", "overrideDefaultGroups": false, "whitelist": {"street"}})
+ * @ApiFilter(SearchFilter::class, properties={"street": "ipartial"})
+ * @ApiFilter(BooleanFilter::class, properties={"newBuilding"})
  * @ORM\Entity(repositoryClass="App\Repository\AddressRepository")
  * @UniqueEntity(fields={"street", "number"}, errorPath="number", message="This number is already in use on that street.")
  */
