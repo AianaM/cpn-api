@@ -80,7 +80,7 @@ class Realty
 
     /**
      * @ORM\Column(type="string", length=255)
-     * @Groups({"realty:input", "realty:output"})
+     * @Groups({"realty:input", "address", "realty:output"})
      */
     private $status;
 
@@ -124,13 +124,13 @@ class Realty
 
     /**
      * @ORM\Column(type="smallint", nullable=true)
-     * @Groups({"realty:input", "realty:output"})
+     * @Groups({"realty:input", "address", "realty:output"})
      */
     private $rooms;
 
     /**
      * @ORM\Column(type="smallint", nullable=true)
-     * @Groups({"realty:input", "realty:output"})
+     * @Groups({"realty:input", "address", "realty:output"})
      */
     private $floor;
 

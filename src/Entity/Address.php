@@ -121,9 +121,17 @@ class Address
      */
     private $realty;
 
+    /**
+     * @Groups({"address", "realty:input", "realty:output"})
+     *
+     * @ORM\ManyToMany(targetEntity="App\Entity\MediaObject", inversedBy="addresses")
+     */
+    private $mediaObjects;
+
     public function __construct()
     {
         $this->realty = new ArrayCollection();
+        $this->mediaObjects = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -277,6 +285,32 @@ class Address
             if ($realty->getAddress() === $this) {
                 $realty->setAddress(null);
             }
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|MediaObject[]
+     */
+    public function getMediaObjects(): Collection
+    {
+        return $this->mediaObjects;
+    }
+
+    public function addMediaObject(MediaObject $mediaObject): self
+    {
+        if (!$this->mediaObjects->contains($mediaObject)) {
+            $this->mediaObjects[] = $mediaObject;
+        }
+
+        return $this;
+    }
+
+    public function removeMediaObject(MediaObject $mediaObject): self
+    {
+        if ($this->mediaObjects->contains($mediaObject)) {
+            $this->mediaObjects->removeElement($mediaObject);
         }
 
         return $this;

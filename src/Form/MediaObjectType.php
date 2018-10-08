@@ -8,6 +8,7 @@
 
 namespace App\Form;
 
+use App\Entity\Address;
 use App\Entity\MediaObject;
 use App\Entity\Realty;
 use App\Entity\User;
@@ -37,6 +38,11 @@ final class MediaObjectType extends AbstractType
             ])
             ->add('realties', EntityType::class, [
                 'class' => Realty::class,
+                'multiple' => true,
+                'required' => false,
+            ])
+            ->add('addresses', EntityType::class, [
+                'class' => Address::class,
                 'multiple' => true,
                 'required' => false,
             ])

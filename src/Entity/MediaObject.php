@@ -61,7 +61,7 @@ class MediaObject
 
     /**
      * @var array|null
-     * @Groups({"media", "realty:output", "user"})
+     * @Groups({"media", "realty:output", "user", "address"})
      */
     public $links;
 
@@ -104,10 +104,17 @@ class MediaObject
      */
     private $realties;
 
+    /**
+     * @ORM\ManyToMany(targetEntity="App\Entity\Address", mappedBy="mediaObjects")
+     * @Groups({"media", "media:input"})
+     */
+    private $addresses;
+
     public function __construct()
     {
         $this->users = new ArrayCollection();
         $this->realties = new ArrayCollection();
+        $this->addresses = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -230,6 +237,34 @@ class MediaObject
         if ($this->realties->contains($realty)) {
             $this->realties->removeElement($realty);
             $realty->removeMediaObject($this);
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|Address[]
+     */
+    public function getAddresses(): Collection
+    {
+        return $this->addresses;
+    }
+
+    public function addAddress(Address $address): self
+    {
+        if (!$this->addresses->contains($address)) {
+            $this->addresses[] = $address;
+            $address->addMediaObject($this);
+        }
+
+        return $this;
+    }
+
+    public function removeAddress(Address $address): self
+    {
+        if ($this->addresses->contains($address)) {
+            $this->addresses->removeElement($address);
+            $address->removeMediaObject($this);
         }
 
         return $this;

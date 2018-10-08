@@ -43,7 +43,7 @@ class CreateMultipleMediaObjectAction
             foreach ($mediaObjects as $mediaObject) {
                 if ($mediaObject instanceof MediaObject) {
                     if (false === $this->authChecker->isGranted('ROLE_ADMIN') && false === $this->authChecker->isGranted('ROLE_MANAGER') &&
-                        !$mediaObject->getRealties()->isEmpty()) {
+                        !$mediaObject->getRealties()->isEmpty() && !$mediaObject->getAddresses()->isEmpty()) {
                         $em->clear();
                         throw new AccessDeniedException('Только менеджеры могут добавлять фотографии к объектам');
                     }
