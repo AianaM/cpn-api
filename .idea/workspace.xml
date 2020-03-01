@@ -2,12 +2,59 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="a9e7079d-a76e-4f83-a7d8-b05a5588615f" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/.idea/webServers.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.env.dist" beforeDir="false" afterPath="$PROJECT_DIR$/.env.dist" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources.local.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.local.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/deployment.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/deployment.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Controller/CreateMultipleMediaObjectAction.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/CreateMultipleMediaObjectAction.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Entity/Address.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/Address.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Entity/MediaObject.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/MediaObject.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Entity/Realty.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/Realty.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Form/MediaObjectType.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Form/MediaObjectType.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/media/5ba3af45e9797538553321.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/media/5ba3b3b0dd5a4850029705.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/media/5ba3b3b11aa37747464676.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/media/5ba3b6d01c3cb295817558.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/media/5ba3b77c4c80b571634093.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/media/5ba3b841a4087908746402.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/media/5ba3b8de7a3dd898368492.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/media/5ba3ba9879c33344751981.jpeg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/media/5ba3ba98ace4c621394997.jpeg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/media/5ba3bcc37ff0b602849022.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/media/5ba3bcc3ab3e6721851520.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/media/5ba47aa6882db112645430.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/media/5ba47aa6baebe478631931.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/media/5ba8b1ba5a4d5816453642.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/media/5ba8b27b3278a147375564.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/media/5ba8b283bbf42506140007.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/media/5ba909e7d5bd8412541830.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/media/5ba9cf5b7b313547948970.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/media/5ba9cf601639f484349677.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/media/5ba9d3cce9789936836518.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/media/5ba9dd1e1bc64744415537.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/media/5bb5d0d0902a6076310687.jpeg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/media/5bb5d0d0eec4b233422337.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/media/5bb5d36d6ce47337638344.jpeg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/media/5bb5d36da11c3765013446.jpeg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/media/5bb5d3ab64393491735246.jpeg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/media/5bb5f64fb9a2e786139211.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/media/5bb5f9319311f776397868.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/media/5bb5f931bddbe328098502.jpeg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/media/5bb725ae04bbe620038159.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/media/5bb72b20d1c59458740260.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/media/5bb731463c873285057643.jpeg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/media/5bb731c94aa95684318843.jpeg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/media/5bb731c96e6b1066576423.jpeg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/media/5bb77d88d4c2a439311472.jpeg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/media/5bb77d8911ce7635572685.jpeg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/media/5bb77d892acfa744679767.jpeg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/media/5bb996e29474b542127903.jpeg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/media/5bb99736d71c5437460176.jpeg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/media/5bb9981006ff7257110895.jpeg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/media/5bb998fac4c05066420608.jpeg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/media/5bb9999bd3dbb322127884.jpeg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/media/5bb99b3f37409276847000.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/media/5bb99cbec05bc109541039.jpeg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/EventListener/UserSubscriber.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/EventListener/UserSubscriber.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Migrations/Version20180920142848.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Migrations/Version20181007051015.php" beforeDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -32,39 +79,39 @@
     <expand>
       <path>
         <item name="Database" type="3277223f:DatabaseStructure$DbRootGroup" />
-        <item name="aiana-miachina_cpn@postgresql.aiana-miachina.myjino.ru" type="feb32156:DbDataSourceImpl" />
+        <item name="respublica14_api@postgresql.respublica14.myjino.ru" type="feb32156:DbDataSourceImpl" />
       </path>
       <path>
         <item name="Database" type="3277223f:DatabaseStructure$DbRootGroup" />
-        <item name="aiana-miachina_cpn@postgresql.aiana-miachina.myjino.ru" type="feb32156:DbDataSourceImpl" />
+        <item name="respublica14_api@postgresql.respublica14.myjino.ru" type="feb32156:DbDataSourceImpl" />
         <item name="databases" type="d4e8921:DatabaseStructure$FamilyGroup" />
       </path>
       <path>
         <item name="Database" type="3277223f:DatabaseStructure$DbRootGroup" />
-        <item name="aiana-miachina_cpn@postgresql.aiana-miachina.myjino.ru" type="feb32156:DbDataSourceImpl" />
+        <item name="respublica14_api@postgresql.respublica14.myjino.ru" type="feb32156:DbDataSourceImpl" />
         <item name="databases" type="d4e8921:DatabaseStructure$FamilyGroup" />
-        <item name="aiana-miachina_cpn: database" type="6d9b600a:PostgresImplModel$Database" />
+        <item name="respublica14_api: database" type="6d9b600a:PostgresImplModel$Database" />
       </path>
       <path>
         <item name="Database" type="3277223f:DatabaseStructure$DbRootGroup" />
-        <item name="aiana-miachina_cpn@postgresql.aiana-miachina.myjino.ru" type="feb32156:DbDataSourceImpl" />
+        <item name="respublica14_api@postgresql.respublica14.myjino.ru" type="feb32156:DbDataSourceImpl" />
         <item name="databases" type="d4e8921:DatabaseStructure$FamilyGroup" />
-        <item name="aiana-miachina_cpn: database" type="6d9b600a:PostgresImplModel$Database" />
+        <item name="respublica14_api: database" type="6d9b600a:PostgresImplModel$Database" />
         <item name="schemas" type="d4e8921:DatabaseStructure$FamilyGroup" />
       </path>
       <path>
         <item name="Database" type="3277223f:DatabaseStructure$DbRootGroup" />
-        <item name="aiana-miachina_cpn@postgresql.aiana-miachina.myjino.ru" type="feb32156:DbDataSourceImpl" />
+        <item name="respublica14_api@postgresql.respublica14.myjino.ru" type="feb32156:DbDataSourceImpl" />
         <item name="databases" type="d4e8921:DatabaseStructure$FamilyGroup" />
-        <item name="aiana-miachina_cpn: database" type="6d9b600a:PostgresImplModel$Database" />
+        <item name="respublica14_api: database" type="6d9b600a:PostgresImplModel$Database" />
         <item name="schemas" type="d4e8921:DatabaseStructure$FamilyGroup" />
         <item name="public: schema" type="a16502c0:PostgresImplModel$Schema" />
       </path>
       <path>
         <item name="Database" type="3277223f:DatabaseStructure$DbRootGroup" />
-        <item name="aiana-miachina_cpn@postgresql.aiana-miachina.myjino.ru" type="feb32156:DbDataSourceImpl" />
+        <item name="respublica14_api@postgresql.respublica14.myjino.ru" type="feb32156:DbDataSourceImpl" />
         <item name="databases" type="d4e8921:DatabaseStructure$FamilyGroup" />
-        <item name="aiana-miachina_cpn: database" type="6d9b600a:PostgresImplModel$Database" />
+        <item name="respublica14_api: database" type="6d9b600a:PostgresImplModel$Database" />
         <item name="schemas" type="d4e8921:DatabaseStructure$FamilyGroup" />
         <item name="public: schema" type="a16502c0:PostgresImplModel$Schema" />
         <item name="tables" type="d4e8921:DatabaseStructure$FamilyGroup" />
@@ -76,69 +123,70 @@
     <session id="-1784567696">
       <usages-collector id="statistics.lifecycle.project">
         <counts>
-          <entry key="project.closed" value="19" />
+          <entry key="project.closed" value="23" />
+          <entry key="project.open.time.0" value="2" />
           <entry key="project.open.time.1" value="1" />
           <entry key="project.open.time.10" value="1" />
           <entry key="project.open.time.13" value="1" />
           <entry key="project.open.time.2" value="4" />
-          <entry key="project.open.time.4" value="1" />
+          <entry key="project.open.time.4" value="2" />
           <entry key="project.open.time.5" value="4" />
           <entry key="project.open.time.6" value="4" />
           <entry key="project.open.time.7" value="1" />
           <entry key="project.open.time.9" value="3" />
-          <entry key="project.opened" value="20" />
+          <entry key="project.opened" value="23" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.open">
         <counts>
           <entry key="address" value="4" />
-          <entry key="app_users" value="20" />
+          <entry key="app_users" value="24" />
           <entry key="category" value="1" />
-          <entry key="dist" value="10" />
-          <entry key="env" value="18" />
+          <entry key="dist" value="21" />
+          <entry key="env" value="24" />
           <entry key="htaccess" value="3" />
           <entry key="json" value="1" />
           <entry key="media_object" value="5" />
           <entry key="migration_versions" value="1" />
-          <entry key="php" value="595" />
+          <entry key="php" value="599" />
           <entry key="product" value="2" />
           <entry key="realty" value="13" />
           <entry key="realty_media_object" value="1" />
           <entry key="refresh_tokens" value="5" />
-          <entry key="sql" value="30" />
+          <entry key="sql" value="31" />
           <entry key="stream" value="16" />
           <entry key="twig" value="2" />
-          <entry key="yaml" value="101" />
+          <entry key="yaml" value="103" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.open">
         <counts>
-          <entry key="Database Element" value="68" />
+          <entry key="Database Element" value="72" />
           <entry key="JSON" value="1" />
-          <entry key="PHP" value="595" />
-          <entry key="PLAIN_TEXT" value="28" />
-          <entry key="Scratch" value="30" />
+          <entry key="PHP" value="599" />
+          <entry key="PLAIN_TEXT" value="45" />
+          <entry key="Scratch" value="31" />
           <entry key="Twig" value="2" />
-          <entry key="YAML" value="101" />
+          <entry key="YAML" value="103" />
           <entry key="htaccess" value="3" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
           <entry key="cell" value="1" />
-          <entry key="dist" value="5" />
-          <entry key="env" value="9" />
-          <entry key="php" value="16318" />
+          <entry key="dist" value="52" />
+          <entry key="env" value="17" />
+          <entry key="php" value="16335" />
           <entry key="sql" value="1330" />
           <entry key="twig" value="1" />
-          <entry key="txt" value="11" />
+          <entry key="txt" value="15" />
           <entry key="yaml" value="461" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
-          <entry key="PHP" value="16318" />
-          <entry key="PLAIN_TEXT" value="25" />
+          <entry key="PHP" value="16335" />
+          <entry key="PLAIN_TEXT" value="84" />
           <entry key="SQL" value="11" />
           <entry key="Scratch" value="1320" />
           <entry key="Twig" value="1" />
@@ -159,7 +207,7 @@
     </session>
   </component>
   <component name="FileEditorManager">
-    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300" />
+    <leaf />
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
@@ -221,13 +269,10 @@
         <option value="$PROJECT_DIR$/src/Filter/JsonbFilter.php" />
         <option value="$PROJECT_DIR$/src/Filter/SearchJsonbFilter.php" />
         <option value="$PROJECT_DIR$/public/.htaccess" />
-        <option value="$PROJECT_DIR$/.env.dist" />
-        <option value="$PROJECT_DIR$/.env" />
         <option value="$PROJECT_DIR$/src/Doctrine/RealtyStatusExtension.php" />
         <option value="$PROJECT_DIR$/config/services.yaml" />
         <option value="$PROJECT_DIR$/src/Controller/UserController.php" />
         <option value="$APPLICATION_CONFIG_DIR$/consoles/db/412047b9-36e3-4b59-a724-ec33796e6860/console.sql" />
-        <option value="$PROJECT_DIR$/src/EventListener/UserSubscriber.php" />
         <option value="$PROJECT_DIR$/src/EventListener/StreamSubscriber.php" />
         <option value="$PROJECT_DIR$/src/Entity/User.php" />
         <option value="$PROJECT_DIR$/src/Entity/Stream.php" />
@@ -238,6 +283,9 @@
         <option value="$PROJECT_DIR$/src/Controller/CreateMultipleMediaObjectAction.php" />
         <option value="$PROJECT_DIR$/src/Entity/MediaObject.php" />
         <option value="$PROJECT_DIR$/src/Entity/Realty.php" />
+        <option value="$PROJECT_DIR$/.env" />
+        <option value="$PROJECT_DIR$/src/EventListener/UserSubscriber.php" />
+        <option value="$PROJECT_DIR$/.env.dist" />
       </list>
     </option>
   </component>
@@ -382,6 +430,17 @@
               <item name="cpn-api" type="b2602c69:ProjectViewProjectNode" />
               <item name="cpn-api" type="462c0819:PsiDirectoryNode" />
             </path>
+            <path>
+              <item name="cpn-api" type="b2602c69:ProjectViewProjectNode" />
+              <item name="cpn-api" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="cpn-api" type="b2602c69:ProjectViewProjectNode" />
+              <item name="cpn-api" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="Migrations" type="462c0819:PsiDirectoryNode" />
+            </path>
           </expand>
           <select />
         </subPane>
@@ -449,7 +508,10 @@
       <workItem from="1537568877750" duration="6496000" />
       <workItem from="1537929816680" duration="3177000" />
       <workItem from="1538383439052" duration="15641000" />
-      <workItem from="1538990123698" duration="1543000" />
+      <workItem from="1538990123698" duration="3014000" />
+      <workItem from="1539008073859" duration="1198000" />
+      <workItem from="1539058322817" duration="6996000" />
+      <workItem from="1539179892699" duration="1986000" />
     </task>
     <task id="LOCAL-00001" summary="check">
       <created>1538885566829</created>
@@ -462,12 +524,12 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="322086000" />
+    <option name="totallyTimeSpent" value="333737000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="0" width="1680" height="1050" extended-state="0" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.49895614" visible="true" weight="0.25763127" />
+      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.49895614" visible="true" weight="0.26678878" />
       <window_info id="Favorites" order="1" side_tool="true" />
       <window_info id="Structure" order="2" sideWeight="0.50104386" weight="0.25885227" />
       <window_info anchor="bottom" id="Message" order="0" />
@@ -481,7 +543,7 @@
       <window_info anchor="bottom" id="Docker" order="8" show_stripe_button="false" />
       <window_info anchor="bottom" id="Version Control" order="9" weight="0.32985386" />
       <window_info anchor="bottom" id="Database Changes" order="10" weight="0.32985386" />
-      <window_info anchor="bottom" id="Terminal" order="11" weight="0.37995824" />
+      <window_info active="true" anchor="bottom" id="Terminal" order="11" visible="true" weight="0.37995824" />
       <window_info anchor="bottom" id="Event Log" order="12" side_tool="true" weight="0.32985386" />
       <window_info anchor="bottom" id="Messages" order="13" weight="0.32985386" />
       <window_info anchor="bottom" id="File Transfer" order="14" weight="0.32985386" />
@@ -556,34 +618,6 @@
     <option name="LAST_COMMIT_MESSAGE" value="check" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/vendor/liip/imagine-bundle/Imagine/Cache/CacheManager.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="234">
-          <caret line="190" column="20" selection-start-line="190" selection-start-column="20" selection-end-line="190" selection-end-column="20" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/vendor/vich/uploader-bundle/Handler/DownloadHandler.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="135">
-          <caret line="12" column="6" selection-start-line="12" selection-start-column="6" selection-end-line="12" selection-end-column="6" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/config/packages/dev/web_profiler.yaml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="90">
-          <caret line="6" lean-forward="true" selection-start-line="6" selection-end-line="6" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="das://412047b9-36e3-4b59-a724-ec33796e6860/database/aiana-miachina_cpn/schema/public/table/refresh_tokens">
-      <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
-        <state>
-          <filtering enabled="true" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$APPLICATION_CONFIG_DIR$/consoles/db/412047b9-36e3-4b59-a724-ec33796e6860/console_2.sql">
       <provider selected="true" editor-type-id="text-editor">
         <state>
@@ -686,13 +720,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/.env.dist">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="300">
-          <caret line="20" selection-start-line="20" selection-end-line="20" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/Filter/AndPartialFilter.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="270">
@@ -764,20 +791,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/.env">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="300">
-          <caret line="20" column="55" selection-start-line="20" selection-start-column="40" selection-end-line="20" selection-end-column="55" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/EventListener/UserSubscriber.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="750">
-          <caret line="55" column="42" selection-start-line="55" selection-start-column="42" selection-end-line="55" selection-end-column="42" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/config/packages/lexik_jwt_authentication.yaml">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
@@ -802,13 +815,6 @@
           <column-attributes>
             <column name="name" languageId="JSON" />
           </column-attributes>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Controller/UserController.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="900">
-          <caret line="62" column="21" selection-start-line="62" selection-start-column="21" selection-end-line="62" selection-end-column="21" />
         </state>
       </provider>
     </entry>
@@ -844,9 +850,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="198">
           <caret line="85" column="33" selection-start-line="85" selection-start-column="33" selection-end-line="85" selection-end-column="33" />
-          <folding>
-            <element signature="e#30#72#0#PHP" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -885,9 +888,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="945">
           <caret line="63" column="59" selection-start-line="63" selection-start-column="59" selection-end-line="63" selection-end-column="59" />
-          <folding>
-            <element signature="e#30#72#0#PHP" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -902,9 +902,60 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="182">
           <caret line="132" column="42" selection-start-line="132" selection-start-column="42" selection-end-line="132" selection-end-column="42" />
-          <folding>
-            <element signature="e#30#72#0#PHP" expanded="true" />
-          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/config/packages/nelmio_cors.yaml">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$APPLICATION_CONFIG_DIR$/consoles/db/2e3a5b54-4663-43de-8bb8-689513167ea6/console.sql">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="das://2e3a5b54-4663-43de-8bb8-689513167ea6/database/respublica14/schema/public/table/app_users">
+      <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
+        <state>
+          <filtering enabled="true" />
+          <column-attributes>
+            <column name="name" languageId="JSON" />
+          </column-attributes>
+        </state>
+      </provider>
+    </entry>
+    <entry file="das://2e3a5b54-4663-43de-8bb8-689513167ea6/database/respublica14_api/schema/public/table/app_users">
+      <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
+        <state>
+          <filtering enabled="true" />
+          <column-attributes>
+            <column name="name" languageId="JSON" />
+          </column-attributes>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Controller/UserController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="626">
+          <caret line="62" column="21" selection-start-line="62" selection-start-column="21" selection-end-line="62" selection-end-column="21" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/EventListener/UserSubscriber.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="429">
+          <caret line="55" column="49" selection-start-line="55" selection-start-column="49" selection-end-line="55" selection-end-column="49" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/.env">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="330">
+          <caret line="22" selection-start-line="22" selection-end-line="22" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/.env.dist">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="330">
+          <caret line="22" selection-start-line="22" selection-end-line="22" />
         </state>
       </provider>
     </entry>

@@ -8,7 +8,7 @@ use Doctrine\Migrations\AbstractMigration;
 /**
  * Auto-generated Migration: Please modify to your needs!
  */
-final class Version20180920142848 extends AbstractMigration
+final class Version20181010151921 extends AbstractMigration
 {
     public function up(Schema $schema) : void
     {
@@ -28,6 +28,9 @@ final class Version20180920142848 extends AbstractMigration
         $this->addSql('COMMENT ON COLUMN app_users.name IS \'(DC2Type:json_array)\'');
         $this->addSql('CREATE TABLE address (id INT NOT NULL, street VARCHAR(255) NOT NULL, number VARCHAR(255) NOT NULL, district VARCHAR(255) NOT NULL, name VARCHAR(255) DEFAULT NULL, type VARCHAR(255) DEFAULT NULL, developer VARCHAR(255) DEFAULT NULL, new_building BOOLEAN DEFAULT \'false\' NOT NULL, year INT DEFAULT NULL, floors INT DEFAULT NULL, description JSONB DEFAULT NULL, PRIMARY KEY(id))');
         $this->addSql('COMMENT ON COLUMN address.description IS \'(DC2Type:json_array)\'');
+        $this->addSql('CREATE TABLE address_media_object (address_id INT NOT NULL, media_object_id INT NOT NULL, PRIMARY KEY(address_id, media_object_id))');
+        $this->addSql('CREATE INDEX IDX_1875E529F5B7AF75 ON address_media_object (address_id)');
+        $this->addSql('CREATE INDEX IDX_1875E52964DE5A5 ON address_media_object (media_object_id)');
         $this->addSql('CREATE TABLE stream (id INT NOT NULL, created_at TIMESTAMP(0) WITHOUT TIME ZONE NOT NULL, action VARCHAR(30) NOT NULL, snapshot JSONB DEFAULT NULL, item VARCHAR(30) NOT NULL, item_id INT NOT NULL, createdUser INT DEFAULT NULL, PRIMARY KEY(id))');
         $this->addSql('CREATE INDEX IDX_F0E9BE1C7AF16D89 ON stream (createdUser)');
         $this->addSql('COMMENT ON COLUMN stream.snapshot IS \'(DC2Type:json_array)\'');
@@ -47,6 +50,8 @@ final class Version20180920142848 extends AbstractMigration
         $this->addSql('CREATE TABLE refresh_tokens (id INT NOT NULL, refresh_token VARCHAR(128) NOT NULL, username VARCHAR(255) NOT NULL, valid TIMESTAMP(0) WITHOUT TIME ZONE NOT NULL, PRIMARY KEY(id))');
         $this->addSql('CREATE UNIQUE INDEX UNIQ_9BACE7E1C74F2195 ON refresh_tokens (refresh_token)');
         $this->addSql('ALTER TABLE app_users ADD CONSTRAINT FK_C25028247E9E4C8C FOREIGN KEY (photo_id) REFERENCES media_object (id) NOT DEFERRABLE INITIALLY IMMEDIATE');
+        $this->addSql('ALTER TABLE address_media_object ADD CONSTRAINT FK_1875E529F5B7AF75 FOREIGN KEY (address_id) REFERENCES address (id) ON DELETE CASCADE NOT DEFERRABLE INITIALLY IMMEDIATE');
+        $this->addSql('ALTER TABLE address_media_object ADD CONSTRAINT FK_1875E52964DE5A5 FOREIGN KEY (media_object_id) REFERENCES media_object (id) ON DELETE CASCADE NOT DEFERRABLE INITIALLY IMMEDIATE');
         $this->addSql('ALTER TABLE stream ADD CONSTRAINT FK_F0E9BE1C7AF16D89 FOREIGN KEY (createdUser) REFERENCES app_users (id) NOT DEFERRABLE INITIALLY IMMEDIATE');
         $this->addSql('ALTER TABLE media_object ADD CONSTRAINT FK_14D43132E104C1D3 FOREIGN KEY (created_user_id) REFERENCES app_users (id) NOT DEFERRABLE INITIALLY IMMEDIATE');
         $this->addSql('ALTER TABLE realty ADD CONSTRAINT FK_627221C783E3463 FOREIGN KEY (manager_id) REFERENCES app_users (id) NOT DEFERRABLE INITIALLY IMMEDIATE');
@@ -66,8 +71,10 @@ final class Version20180920142848 extends AbstractMigration
         $this->addSql('ALTER TABLE media_object DROP CONSTRAINT FK_14D43132E104C1D3');
         $this->addSql('ALTER TABLE realty DROP CONSTRAINT FK_627221C783E3463');
         $this->addSql('ALTER TABLE realty DROP CONSTRAINT FK_627221CBB649746');
+        $this->addSql('ALTER TABLE address_media_object DROP CONSTRAINT FK_1875E529F5B7AF75');
         $this->addSql('ALTER TABLE realty DROP CONSTRAINT FK_627221C627221C');
         $this->addSql('ALTER TABLE app_users DROP CONSTRAINT FK_C25028247E9E4C8C');
+        $this->addSql('ALTER TABLE address_media_object DROP CONSTRAINT FK_1875E52964DE5A5');
         $this->addSql('ALTER TABLE realty_media_object DROP CONSTRAINT FK_3681E3CE64DE5A5');
         $this->addSql('ALTER TABLE realty_media_object DROP CONSTRAINT FK_3681E3CE71C56C69');
         $this->addSql('DROP SEQUENCE app_users_id_seq CASCADE');
@@ -78,6 +85,7 @@ final class Version20180920142848 extends AbstractMigration
         $this->addSql('DROP SEQUENCE refresh_tokens_id_seq CASCADE');
         $this->addSql('DROP TABLE app_users');
         $this->addSql('DROP TABLE address');
+        $this->addSql('DROP TABLE address_media_object');
         $this->addSql('DROP TABLE stream');
         $this->addSql('DROP TABLE media_object');
         $this->addSql('DROP TABLE realty');

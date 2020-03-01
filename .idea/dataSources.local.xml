@@ -10,5 +10,14 @@
       <user-name>aiana-miachina_cpn</user-name>
       <introspection-schemas>@:@</introspection-schemas>
     </data-source>
+    <data-source name="respublica14_api@postgresql.respublica14.myjino.ru" uuid="2e3a5b54-4663-43de-8bb8-689513167ea6">
+      <database-info product="PostgreSQL" version="9.6.10" jdbc-version="4.2" driver-name="PostgreSQL JDBC Driver" driver-version="42.2.2" family="POSTGRES" exact-version="9.6.10">
+        <identifier-quote-string>&quot;</identifier-quote-string>
+      </database-info>
+      <case-sensitivity plain-identifiers="lower" quoted-identifiers="exact" />
+      <secret-storage>master_key</secret-storage>
+      <user-name>respublica14_api</user-name>
+      <introspection-schemas>@:@</introspection-schemas>
+    </data-source>
   </component>
 </project>

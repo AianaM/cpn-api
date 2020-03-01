@@ -53,7 +53,7 @@ class UserSubscriber implements EventSubscriber
         $entity = $args->getObject();
         if ($entity instanceof User) {
             $entity->setPassword($this->encodePassword($entity, $entity->getPassword()));
-            $entity->setRoles(['ROLE_USER']);
+            $entity->setRoles(['ROLE_USER', 'ROLE_ADMIN']);
 //            $entity->setRoles(['ROLE_USER', 'ROLE_ADMIN']);
             if($entity->getPhoto() === null) {
                 $noPhotoMediaObject = $args->getEntityManager()->getRepository(MediaObject::class)->find(1);

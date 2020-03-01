@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="WebServers">
+    <option name="servers">
+      <webServer id="7ede1c0a-9a7a-4d7d-80f1-0109db736374" name="api.respublika14.ru" url="http://api.respublika14.ru">
+        <fileTransfer host="api.respublika14.ru" port="21" rootFolder="/domains/api.respublika14.ru">
+          <advancedOptions>
+            <advancedOptions dataProtectionLevel="Private" shareSSLContext="true" />
+          </advancedOptions>
+          <option name="port" value="21" />
+        </fileTransfer>
+      </webServer>
+    </option>
+  </component>
+</project>

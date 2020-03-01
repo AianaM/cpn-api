@@ -7,5 +7,11 @@
       <jdbc-driver>org.postgresql.Driver</jdbc-driver>
       <jdbc-url>jdbc:postgresql://postgresql.aiana-miachina.myjino.ru:5432/aiana-miachina_cpn</jdbc-url>
     </data-source>
+    <data-source source="LOCAL" name="respublica14_api@postgresql.respublica14.myjino.ru" uuid="2e3a5b54-4663-43de-8bb8-689513167ea6">
+      <driver-ref>postgresql</driver-ref>
+      <synchronize>true</synchronize>
+      <jdbc-driver>org.postgresql.Driver</jdbc-driver>
+      <jdbc-url>jdbc:postgresql://postgresql.respublica14.myjino.ru:5432/respublica14_api</jdbc-url>
+    </data-source>
   </component>
 </project>
